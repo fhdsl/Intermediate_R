@@ -1,0 +1,185 @@
+# Data Cleaning, Part 2
+
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+## Tidy Data
+
+It is important to have standard of organizing data, as it facilitates a consistent way of thinking about data organization and building tools (functions) that make use of that standard. The principles of **Tidy data**, developed by Hadley Wickham:
+
+1.  Each variable must have its own column.
+
+2.  Each observation must have its own row.
+
+3.  Each value must have its own cell.
+
+If we want to be technical about what variables and observations are, Hadley Wickham describes:
+
+> A dataset is a collection of **values**, usually either numbers (if quantitative) or strings (if qualitative). Every value belongs to a **variable** and an **observation**. A **variable** contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An **observation** contains all values measured on the same unit (like a person, or a day, or a race) across attributes.
+
+![A tidy dataframe.](https://r4ds.hadley.nz/images/tidy-1.png){width="800"}
+
+Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more. These tools assumes the values of each variable fall in their own column vector.
+
+It seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren't Tidy, and it's easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:
+
+1.  Columns contain values of variables, rather than variables
+
+2.  Variables are stored in rows
+
+3.  Multiple variables are stored in a single column
+
+After some clear examples, we emphasize that "Tidy" data is *subjective* to what kind of analysis you want to do with the dataframe.
+
+### 1. Columns contain values, rather than variables (Long is tidy)
+
+```{r}
+df = data.frame(Store = c("A", "B"),
+                Year = c(2018, 2018),
+                Q1_Sales = c(55, 98),
+                Q2_Sales = c(45, 70),
+                Q3_Sales = c(22, 60),
+                Q4_Sales = c(50, 60))
+df
+```
+
+Each observation is a store, and each observation has its own row. That looks good.
+
+The columns "Q1_Sales", ..., "Q4_Sales" seem to be *values of a single variable "quarter"* of our observation. The values of "quarter" are not in a single column, but are instead in the columns.
+
+```{r}
+df_long = pivot_longer(df, c("Q1_Sales", "Q2_Sales", "Q3_Sales", "Q4_Sales"), names_to = "quarter", values_to = "sales")
+df_long
+```
+
+Now, each observation is a store's quarter, and each observation has its own row.
+
+The new columns "quarter" and "sales" are variables that describes our observation, and describes our values. We're in a tidy state!
+
+We have transformed our data to a "**longer**" format, as our observation represents something more granular or detailed than before. Often, the original variables values will repeat itself in a "longer format". We call the previous state of our dataframe is a "**wider**" format.
+
+### 2. Variables are stored in rows (Wide is tidy)
+
+Are all tidy dataframes Tidy in a "longer" format?
+
+```{r}
+df2 = data.frame(Sample = c("A", "B"),
+                 KRAS_mutation = c(TRUE, FALSE),
+                 KRAS_expression = c(2.3, 3.9))
+df2
+```
+
+Each observation is a sample, and each observation has its own row. Looks good. Each variable has its own column, and no values are in columns.
+
+What happens if we make it longer?
+
+```{r}
+df2_long = pivot_longer(df2, c("KRAS_mutation", "KRAS_expression"), names_to = "gene", values_to = "values")
+df2_long
+```
+
+Here, each observation is a sample's gene...type? The observation feels awkward because variables are stored in rows. Also, the column "values" contains multiple variable types: gene expression and mutation values that got coerced to numeric!
+
+To make this dataframe wider,
+
+```{r}
+df2_long_wide = pivot_wider(df2_long, names_from = "gene", values_from = "values") 
+df2_long_wide$KRAS_mutation = as.logical(df2_long_wide$KRAS_mutation)
+df2_long_wide
+```
+
+We are back to our orignal form, and it was already Tidy.
+
+### 3. Multiple variables are stored in a single column
+
+```{r}
+table3
+```
+
+There seems to be two variables in the numerator and denominator of "rate" column. Let's separate it.
+
+```{r}
+separate(table3, col = "rate", into = c("count", "population"), sep = "/")
+```
+
+## Uses of Tidy data
+
+In general, many functions for analysis and visualization in R assumes that the input dataframe is Tidy. These tools assumes the values of each variable fall in their own column vector. For instance, from our first example, we can compare sales across quarters and stores.
+
+```{r}
+df_long
+```
+
+```{r}
+ggplot(df_long) + aes(x = quarter, y = sales, group = Store) + geom_point() + geom_line()
+```
+
+Although in its original state we can also look at sales between quarter, we can only look between two quarters at once. Tidy data encourages looking at data in the most granular scale.
+
+```{r}
+ggplot(df) + aes(x = Q1_Sales, y = Q2_Sales, color = Store) + geom_point()
+```
+
+## Subjectivity in Tidy Data
+
+We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations.
+
+```{r}
+kidney = data.frame(stone_size = c("Small", "Large"),
+                    treatment.A_recovered = c(81, 192),
+                    treatment.A_failed = c(6, 71),
+                    treatment.B_recovered = c(234, 55),
+                    treatment.B_failed = c(36, 25))
+kidney
+```
+
+Right now, the `kidney` dataframe clearly has values of a variable in the column. Let's try to make it Tidy by making it into a longer form and separating out variables that are together in a column.
+
+```{r}
+kidney_long = pivot_longer(kidney, c("treatment.A_recovered", "treatment.A_failed", "treatment.B_recovered", "treatment.B_failed"), names_to = "treatment_outcome", values_to = "count")
+
+kidney_long = separate(kidney_long, "treatment_outcome", c("treatment", "outcome"), "_")
+
+kidney_long
+```
+
+Here, each observation is a kidney stone's treatment's outcome type, and each observation has its own row.
+
+The column "count" describes our observation, and describes our values. This dataframe seems reasonably Tidy.
+
+How about this?
+
+```{r}
+kidney_long_still = pivot_wider(kidney_long, names_from = "outcome", values_from = "count")
+kidney_long_still
+```
+
+Here, each observation is a kidney stone's treatment, and each observation has its own row.
+
+The columns "recovered" and "failed" are variables that describes our observation, and describes its corresponding values. This dataframe seems reasonably Tidy, also.
+
+The reason why both of these versions seem Tidy is that the columns "recovered" and "failed" can be interpreted as independent variables *and* values of the variable "treatment".
+
+Ultimately, we decide which dataframe we prefer based on the analysis we want to do.
+
+For instance, when our observation is about a kidney stone's treatment's outcome type, we compare it between outcome type, treatment, and stone size.
+
+```{r}
+ggplot(kidney_long) + aes(x = treatment, y = count, fill = outcome) + geom_bar(position="dodge", stat="identity") + facet_wrap(~stone_size)
+
+```
+
+When our observation is about a kidney stone's treatment's, we compare a new variable *recovery rate* ( = recovered / (recovered + failed)) between treatment and stone size.
+
+```{r}
+kidney_long_still = mutate(kidney_long_still, recovery_rate = recovered / (recovered + failed))
+ggplot(kidney_long_still) + aes(x = treatment, y = recovery_rate, fill = stone_size) + geom_bar(position="dodge", stat="identity")
+```
+
+## References
+
+https://vita.had.co.nz/papers/tidy-data.html
+
+https://kiwidamien.github.io/what-is-tidy-data.html
