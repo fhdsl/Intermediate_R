@@ -1,8 +1,0 @@
-1-About-this-Course.md
-2-Intro-to-Computing.md
-3-Working-with-data-structures.md
-4-Data-Wrangling-with-Tidy-Data,-Part-1.md
-5-Data-Wrangling-with-Tidy-Data,-Part-2.md
-6-Data-Visualization.md
-7-References.md
-About-the-Authors.md
