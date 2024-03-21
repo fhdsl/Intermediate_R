@@ -137,9 +137,11 @@ It is often said that 80% of data analysis is spent on the cleaning and preparin
 
 Here are popular recoding logical scenarios:
 
-1.  If: "If elements of the vector meets \[condition\], then they are assigned \[value\]."
-2.  If-else: "If elements of the vector meets \[condition\], then they are assigned \[value X\]. Otherwise, they are assigned \[value Y\]."
-3.  If-else_if-else: "If elements of the vector meets \[condition A\], then they are assigned \[value X\]. Else, if the elements of the vector meets \[condition B\], they are assigned \[value Y\]. Otherwise, they are assigned \[value Z\]."
+1.  If: "If elements of the vector meets *condition*, then they are assigned *value*."
+
+2.  If-else: "If elements of the vector meets *condition*, then they are assigned *value X*. Otherwise, they are assigned *value Y*."
+
+3.  If-else_if-else: "If elements of the vector meets *condition A*, then they are assigned *value X*. Else, if the elements of the vector meets *condition B*, they are assigned *value Y*. Otherwise, they are assigned *value Z*."
 
 Let's look at a vector of grade values, as an example:
 
