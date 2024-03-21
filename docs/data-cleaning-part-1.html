@@ -324,9 +324,9 @@ Arguments:
 <p>It is often said that 80% of data analysis is spent on the cleaning and preparing data. Today we will start looking at common data cleaning tasks. Suppose that you have a column in your data that needs to be recoded. Since a dataframe’s column, when selected via <code>$</code>, is a vector, let’s start talking about recoding vectors. If we have a numeric vector, then maybe you want to have certain values to be out of bounds, or assign a range of values to a character category. If we have a character vector, then maybe you want to reassign it to a different value.</p>
 <p>Here are popular recoding logical scenarios:</p>
 <ol style="list-style-type: decimal">
-<li>If: “If elements of the vector meets <span class="math display">\[condition\]</span>, then they are assigned <span class="math display">\[value\]</span>.”</li>
-<li>If-else: “If elements of the vector meets <span class="math display">\[condition\]</span>, then they are assigned <span class="math display">\[value X\]</span>. Otherwise, they are assigned <span class="math display">\[value Y\]</span>.”</li>
-<li>If-else_if-else: “If elements of the vector meets <span class="math display">\[condition A\]</span>, then they are assigned <span class="math display">\[value X\]</span>. Else, if the elements of the vector meets <span class="math display">\[condition B\]</span>, they are assigned <span class="math display">\[value Y\]</span>. Otherwise, they are assigned <span class="math display">\[value Z\]</span>.”</li>
+<li><p>If: “If elements of the vector meets <em>condition</em>, then they are assigned <em>value</em>.”</p></li>
+<li><p>If-else: “If elements of the vector meets <em>condition</em>, then they are assigned <em>value X</em>. Otherwise, they are assigned <em>value Y</em>.”</p></li>
+<li><p>If-else_if-else: “If elements of the vector meets <em>condition A</em>, then they are assigned <em>value X</em>. Else, if the elements of the vector meets <em>condition B</em>, they are assigned <em>value Y</em>. Otherwise, they are assigned <em>value Z</em>.”</p></li>
 </ol>
 <p>Let’s look at a vector of grade values, as an example:</p>
 <div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-cleaning-part-1.html#cb51-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code></pre></div>
@@ -509,20 +509,6 @@ gitbook.start({
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
