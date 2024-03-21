@@ -1,0 +1,9 @@
+url	chapt_title	img_path
+https://hutchdatascience.org/Intro_to_R/no_toc/index.html	1 About this Course	resources/chapt_screen_images/index.png
+https://hutchdatascience.org/Intro_to_R/no_toc/intro-to-computing.html	2 Intro to Computing	resources/chapt_screen_images/intro-to-computing.png
+https://hutchdatascience.org/Intro_to_R/no_toc/working-with-data-structures.html	3 Working with data structures	resources/chapt_screen_images/working-with-data-structures.png
+https://hutchdatascience.org/Intro_to_R/no_toc/data-wrangling-with-tidy-data-part-1.html	4 Data Wrangling with Tidy Data, Part 1	resources/chapt_screen_images/data-wrangling-with-tidy-data-part-1.png
+https://hutchdatascience.org/Intro_to_R/no_toc/data-wrangling-with-tidy-data-part-2.html	5 Data Wrangling with Tidy Data, Part 2	resources/chapt_screen_images/data-wrangling-with-tidy-data-part-2.png
+https://hutchdatascience.org/Intro_to_R/no_toc/data-visualization.html	6 Data Visualization	resources/chapt_screen_images/data-visualization.png
+https://hutchdatascience.org/Intro_to_R/no_toc/about-the-authors.html	About the Authors	resources/chapt_screen_images/about-the-authors.png
+https://hutchdatascience.org/Intro_to_R/no_toc/references.html	7 References	resources/chapt_screen_images/references.png

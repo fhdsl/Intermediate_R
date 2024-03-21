@@ -7,13 +7,11 @@ url-checker: yes
 # Render preview of content with changes (Rmd's and md's are checked)
 render-preview: yes
 # Spell check Rmds and quizzes
-spell-check: yes
+spell-check: no
 # Style any R code
 style-code: yes
 # Test build the docker image if any docker-relevant files have been changed
 docker-test: no
-# Should URLs be tested periodically?
-url-check-periodically: yes
 
 ##### Renderings run upon merge to main branch #####
 # Rendering each platform's content
