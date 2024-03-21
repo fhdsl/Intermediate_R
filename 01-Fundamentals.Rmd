@@ -2,6 +2,8 @@
 
 
 ```{r, echo=F, message=F, warning=F}
+install.packages("palmerpenguins")
+library(palmerpenguins)
 library(tidyverse)
 ```
 
