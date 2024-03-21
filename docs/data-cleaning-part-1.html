@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data Cleaning, Part 1 | Intermediate R, Season 3</title>
+  <meta name="description" content="Chapter 4 Data Cleaning, Part 1 | Intermediate R, Season 3" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data Cleaning, Part 1 | Intermediate R, Season 3" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data Cleaning, Part 1 | Intermediate R, Season 3" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
+<link rel="prev" href="fundamentals-exercises.html"/>
+<link rel="next" href="data-cleaning-part-1-exercises.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://hutchdatascience.org/" target="_blank"><img src="assets/big-dasl-stacked.png" style="width: 80%; padding-left: 34px; padding-top: 8px;"</a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this Course</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#curriculum"><i class="fa fa-check"></i><b>1.1</b> Curriculum</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#target-audience"><i class="fa fa-check"></i><b>1.2</b> Target Audience</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="fundamentals.html"><a href="fundamentals.html"><i class="fa fa-check"></i><b>2</b> Fundamentals</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="fundamentals.html"><a href="fundamentals.html#goals-of-this-course"><i class="fa fa-check"></i><b>2.1</b> Goals of this course</a></li>
+<li class="chapter" data-level="2.2" data-path="fundamentals.html"><a href="fundamentals.html#data-types-in-r"><i class="fa fa-check"></i><b>2.2</b> Data types in R</a></li>
+<li class="chapter" data-level="2.3" data-path="fundamentals.html"><a href="fundamentals.html#data-structures"><i class="fa fa-check"></i><b>2.3</b> Data structures</a></li>
+<li class="chapter" data-level="2.4" data-path="fundamentals.html"><a href="fundamentals.html#vector"><i class="fa fa-check"></i><b>2.4</b> Vector</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="fundamentals.html"><a href="fundamentals.html#ways-to-subset-a-vector"><i class="fa fa-check"></i><b>2.4.1</b> Ways to subset a vector</a></li>
+<li class="chapter" data-level="2.4.2" data-path="fundamentals.html"><a href="fundamentals.html#practice-implicit-subsetting"><i class="fa fa-check"></i><b>2.4.2</b> Practice implicit subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.5</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="fundamentals.html"><a href="fundamentals.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#lists"><i class="fa fa-check"></i><b>2.6</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html"><i class="fa fa-check"></i><b>3</b> Fundamentals Exercises</a></li>
+<li class="chapter" data-level="4" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html"><i class="fa fa-check"></i><b>4</b> Data Cleaning, Part 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#interpreting-functions-carefully"><i class="fa fa-check"></i><b>4.1</b> Interpreting functions, carefully</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#application-data-importing"><i class="fa fa-check"></i><b>4.1.1</b> Application: Data Importing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#recoding-data-conditionals"><i class="fa fa-check"></i><b>4.2</b> Recoding Data / Conditionals</a></li>
+<li class="chapter" data-level="4.3" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#conditionals"><i class="fa fa-check"></i><b>4.3</b> Conditionals</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html"><i class="fa fa-check"></i><b>5</b> Data Cleaning, Part 1 Exercises</a></li>
+<li class="chapter" data-level="6" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html"><i class="fa fa-check"></i><b>6</b> Data Cleaning, Part 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#tidy-data"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#columns-contain-values-rather-than-variables-long-is-tidy"><i class="fa fa-check"></i><b>6.1.1</b> 1. Columns contain values, rather than variables (Long is tidy)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#variables-are-stored-in-rows-wide-is-tidy"><i class="fa fa-check"></i><b>6.1.2</b> 2. Variables are stored in rows (Wide is tidy)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#multiple-variables-are-stored-in-a-single-column"><i class="fa fa-check"></i><b>6.1.3</b> 3. Multiple variables are stored in a single column</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#uses-of-tidy-data"><i class="fa fa-check"></i><b>6.2</b> Uses of Tidy data</a></li>
+<li class="chapter" data-level="6.3" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#subjectivity-in-tidy-data"><i class="fa fa-check"></i><b>6.3</b> Subjectivity in Tidy Data</a></li>
+<li class="chapter" data-level="6.4" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#references"><i class="fa fa-check"></i><b>6.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-cleaning-part-2-exercises.html"><a href="data-cleaning-part-2-exercises.html"><i class="fa fa-check"></i><b>7</b> Data Cleaning, Part 2 Exercises</a></li>
+<li class="chapter" data-level="8" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html"><i class="fa fa-check"></i><b>8</b> Writing your first function</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#anatomy-of-a-function-definition"><i class="fa fa-check"></i><b>8.0.1</b> Anatomy of a function definition</a></li>
+<li class="chapter" data-level="8.0.2" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#local-and-global-environments"><i class="fa fa-check"></i><b>8.0.2</b> Local and global environments</a></li>
+<li class="chapter" data-level="8.0.3" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#a-step-by-step-example"><i class="fa fa-check"></i><b>8.0.3</b> A step-by-step example</a></li>
+<li class="chapter" data-level="8.0.4" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#function-arguments-create-modularity"><i class="fa fa-check"></i><b>8.0.4</b> Function arguments create modularity</a></li>
+<li class="chapter" data-level="8.0.5" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#exercises"><i class="fa fa-check"></i><b>8.0.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="functions-exercises.html"><a href="functions-exercises.html"><i class="fa fa-check"></i><b>9</b> Functions Exercises</a></li>
+<li class="chapter" data-level="10" data-path="repetition.html"><a href="repetition.html"><i class="fa fa-check"></i><b>10</b> Repetition</a></li>
+<li class="chapter" data-level="11" data-path="repetition-exercises.html"><a href="repetition-exercises.html"><i class="fa fa-check"></i><b>11</b> Repetition Exercises</a></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a></li>
+<li class="chapter" data-level="12" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+<li class="divider"></li>
+<p style="text-align:center;"> <a href="https://github.com/jhudsl/OTTR_Template" target="blank" > This content was published with</a> <a href="https://bookdown.org/" target="blank"> bookdown by: </a> </p>
+<p style="text-align:center;"> <a href="https://hutchdatascience.org/"> The Fred Hutch Data Science Lab </a></p>
+<p style="text-align:center; font-size: 12px;"> <a href="https://github.com/rstudio4edu/rstudio4edu-book/"> Style adapted from: rstudio4edu-book </a> <a href ="https://creativecommons.org/licenses/by/2.0/"> (CC-BY 2.0) </a></p>
+<p style="padding-left: 40px;"><div class="trapezoid" style = "padding-left: 40px;"><span>  <a href="https://forms.gle/W6Mg4rzuMK6Yk3Am8"> Click here to provide feedback</a> <img src="assets/itcr_arrow.png" style=" width: 10%" ></span></div></p>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R, Season 3</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <!--<script src="assets/hideOutput.js"></script>-->
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="assets/dasl_thin_main_image.png">
+</div>
+<div id="data-cleaning-part-1" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Data Cleaning, Part 1</h1>
+<div id="interpreting-functions-carefully" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Interpreting functions, carefully</h2>
+<p>As you become more independent R programmers, you will spend time learning about new functions on your own. We have gone over the basic anatomy of a function call back in Intro to R, but now let’s go a bit deeper to understand how a function is built and how to call them.</p>
+<p>Recall that a function has a <strong>function name</strong>, <strong>input arguments</strong>, and a <strong>return value</strong>.</p>
+<p><em>Function definition consists of assigning a <strong>function name</strong> with a “function” statement that has a comma-separated list of named <strong>function arguments</strong>, and a <strong>return expression</strong>. The function name is stored as a variable in the global environment.</em></p>
+<p>In order to use the function, one defines or import it, then one calls it.</p>
+<p>Example:</p>
+<pre><code>addFunction = function(num1, num2) {
+  result = num1 + num2 
+  return(result)
+}
+result = addFunction(3, 4)</code></pre>
+<p>When the function is called in line 5, the variables for the arguments are reassigned to function arguments to be used within the function and helps with the modular form.</p>
+<p><em>What do you think are some valid inputs for this function?</em></p>
+<p>To see why we need the variables of the arguments to be reassigned, consider the following function that is <em>not</em> modular:</p>
+<pre><code>x = 3
+y = 4
+addFunction = function(num1, num2) {
+  result = x + y 
+  return(result)
+}
+result = addFunction(10, -10)</code></pre>
+<p>Some syntax equivalents on calling the function:</p>
+<pre><code>addFunction(3, 4)
+addFunction(num1 = 3, num2 = 4)
+addFunction(num2 = 4, num1 = 3)</code></pre>
+<p>but this <em>could</em> be different:</p>
+<pre><code>addFunction(4, 3)</code></pre>
+<p>With a deeper knowledge of how functions are built, when you encounter a foreign function, you can look up its help page to understand how to use it. For example, let’s look at <code>mean()</code>:</p>
+<pre><code>?mean
+
+Arithmetic Mean
+
+Description:
+
+     Generic function for the (trimmed) arithmetic mean.
+
+Usage:
+
+     mean(x, ...)
+     
+     ## Default S3 method:
+     mean(x, trim = 0, na.rm = FALSE, ...)
+     
+Arguments:
+
+       x: An R object.  Currently there are methods for numeric/logical
+          vectors and date, date-time and time interval objects.
+          Complex vectors are allowed for ‘trim = 0’, only.
+
+    trim: the fraction (0 to 0.5) of observations to be trimmed from
+          each end of ‘x’ before the mean is computed.  Values of trim
+          outside that range are taken as the nearest endpoint.
+
+   na.rm: a logical evaluating to ‘TRUE’ or ‘FALSE’ indicating whether
+          ‘NA’ values should be stripped before the computation
+          proceeds.
+
+     ...: further arguments passed to or from other methods.</code></pre>
+<p>Notice that the arguments <code>trim = 0</code>, <code>na.rm = FALSE</code> have default values. This means that these arguments are <em>optional</em> - you should provide it only if you want to. With this understanding, you can use <code>mean()</code> in a new way:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-cleaning-part-1.html#cb48-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb48-2"><a href="data-cleaning-part-1.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> numbers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 2.333333</code></pre>
+<p>The use of <code>. . .</code> (dot-dot-dot): This is a special argument that allows a function to <em>take any number of arguments</em>. This isn’t very useful for the <code>mean()</code> function, but it makes sense for function such as <code>select()</code> and <code>filter()</code>, and <code>mutate()</code>. For instance, in <code>select()</code>, once you provide your dataframe for the argument <code>.data</code>, you can pile on as many columns to select in the rest of the argument.</p>
+<pre><code>Usage:
+
+     select(.data, ...)
+     
+Arguments:
+
+   .data: A data frame, data frame extension (e.g. a tibble), or a lazy
+          data frame (e.g. from dbplyr or dtplyr). See _Methods_,
+          below, for more details.
+
+     ...: &lt;‘tidy-select’&gt; One or more unquoted expressions separated by
+          commas. Variable names can be used as if they were positions
+          in the data frame, so expressions like ‘x:y’ can be used to
+          select a range of variables.</code></pre>
+<div id="application-data-importing" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Application: Data Importing</h3>
+<p>Here are some common functions for importing your data:</p>
+<ul>
+<li><p><code>read_csv("file.csv")</code> for comma-separated files</p></li>
+<li><p><code>read_tsv("file.tsv")</code> for tab-deliminated files</p></li>
+<li><p><code>read_excel("example.xlsx")</code> for excel files</p></li>
+<li><p><code>read_excel("example.xlsx", sheet = "sheet1")</code> for excel files with a sheet name</p></li>
+<li><p><code>read_delim()</code> for general-deliminated files, such as: <code>read_delim("file.csv", sep = ",")</code>.</p></li>
+</ul>
+<p>You will look at the function documentation on your own to see how to deal with more complex cases.</p>
+</div>
+</div>
+<div id="recoding-data-conditionals" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Recoding Data / Conditionals</h2>
+<p>It is often said that 80% of data analysis is spent on the cleaning and preparing data. Today we will start looking at common data cleaning tasks. Suppose that you have a column in your data that needs to be recoded. Since a dataframe’s column, when selected via <code>$</code>, is a vector, let’s start talking about recoding vectors. If we have a numeric vector, then maybe you want to have certain values to be out of bounds, or assign a range of values to a character category. If we have a character vector, then maybe you want to reassign it to a different value.</p>
+<p>Here are popular recoding logical scenarios:</p>
+<ol style="list-style-type: decimal">
+<li>If: “If elements of the vector meets <span class="math display">\[condition\]</span>, then they are assigned <span class="math display">\[value\]</span>.”</li>
+<li>If-else: “If elements of the vector meets <span class="math display">\[condition\]</span>, then they are assigned <span class="math display">\[value X\]</span>. Otherwise, they are assigned <span class="math display">\[value Y\]</span>.”</li>
+<li>If-else_if-else: “If elements of the vector meets <span class="math display">\[condition A\]</span>, then they are assigned <span class="math display">\[value X\]</span>. Else, if the elements of the vector meets <span class="math display">\[condition B\]</span>, they are assigned <span class="math display">\[value Y\]</span>. Otherwise, they are assigned <span class="math display">\[value Z\]</span>.”</li>
+</ol>
+<p>Let’s look at a vector of grade values, as an example:</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-cleaning-part-1.html#cb51-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>If</li>
+</ol>
+<p>Instead of having the bracket <code>[ ]</code> notation on the right hand side of the equation, if it is on the left hand side of the equation, then we can modify a subset of the vector.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-cleaning-part-1.html#cb52-1" aria-hidden="true" tabindex="-1"></a>grade1 <span class="ot">=</span> grade</span>
+<span id="cb52-2"><a href="data-cleaning-part-1.html#cb52-2" aria-hidden="true" tabindex="-1"></a>grade1[grade1 <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>If-else</li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-cleaning-part-1.html#cb53-1" aria-hidden="true" tabindex="-1"></a>grade2 <span class="ot">=</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>If-else_if-else</li>
+</ol>
+<pre><code>grade3 = case_when(grade &gt;= 90 ~ &quot;A&quot;,
+                   grade &gt;= 80 ~ &quot;B&quot;,
+                   grade &gt;= 70 ~ &quot;C&quot;, 
+                   grade &gt;= 60 ~ &quot;D&quot;,
+                   .default = &quot;F&quot;)</code></pre>
+<p>Let’s do it for dataframes now.</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-cleaning-part-1.html#cb55-1" aria-hidden="true" tabindex="-1"></a>simple_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>),</span>
+<span id="cb55-2"><a href="data-cleaning-part-1.html#cb55-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">status =</span> <span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Case&quot;</span>, <span class="st">&quot;case&quot;</span>))</span></code></pre></div>
+<ol style="list-style-type: decimal">
+<li>If</li>
+</ol>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-cleaning-part-1.html#cb56-1" aria-hidden="true" tabindex="-1"></a>simple_df1 <span class="ot">=</span> simple_df</span>
+<span id="cb56-2"><a href="data-cleaning-part-1.html#cb56-2" aria-hidden="true" tabindex="-1"></a>simple_df1<span class="sc">$</span>grade[simple_df1<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>If-else</li>
+</ol>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-cleaning-part-1.html#cb57-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> simple_df</span>
+<span id="cb57-2"><a href="data-cleaning-part-1.html#cb57-2" aria-hidden="true" tabindex="-1"></a>simple_df2<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">ifelse</span>(simple_df2<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<p>or</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-cleaning-part-1.html#cb58-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">ifelse</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>If-else_if-else</li>
+</ol>
+<pre><code>simple_df3 = simple_df
+
+simple_df3$grade = case_when(simple_df3$grade &gt;= 90 ~ &quot;A&quot;,
+                             simple_df3$grade &gt;= 80 ~ &quot;B&quot;,
+                             simple_df3$grade &gt;= 70 ~ &quot;C&quot;, 
+                             simple_df3$grade &gt;= 60 ~ &quot;D&quot;,
+                             .default = &quot;F&quot;)</code></pre>
+<p>or</p>
+<pre><code>simple_df3 = mutate(simple_df, grade = case_when(grade &gt;= 90 ~ &quot;A&quot;,
+                                                 grade &gt;= 80 ~ &quot;B&quot;,
+                                                 grade &gt;= 70 ~ &quot;C&quot;, 
+                                                 grade &gt;= 60 ~ &quot;D&quot;,
+                                                 .default = &quot;F&quot;))</code></pre>
+</div>
+<div id="conditionals" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Conditionals</h2>
+<p>The 3 common scenarios we looked at for recoding data is closely tied to the concept of <strong>conditionals</strong> in programming: <em>given certain conditions, you run a specific code chunk.</em> Given a vector’s value, assign it a different value. Or, given a value, run the following hundred lines of code. Here is what it looks like:</p>
+<ol style="list-style-type: decimal">
+<li>If:</li>
+</ol>
+<pre><code>if(expression_is_TRUE) {
+  #code goes here
+}</code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li>If-else:</li>
+</ol>
+<pre><code>if(expression_is_TRUE) {
+  #code goes here
+}else {
+  #other code goes here
+}</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>If-else_if-else:</li>
+</ol>
+<pre><code>if(expression_A_is_TRUE) 
+  #code goes here
+}else if(expression_B_is_TRUE) {
+  #other code goes here
+}else {
+  #some other code goes here
+}</code></pre>
+<p>The expression that is being tested whether it is <code>TRUE</code> <strong>must be a singular logical value</strong>, and not a logical vector. If the latter, see the recoding section for now.</p>
+<p>Example:</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-cleaning-part-1.html#cb64-1" aria-hidden="true" tabindex="-1"></a>nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb64-2"><a href="data-cleaning-part-1.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="data-cleaning-part-1.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;A&quot;</span>) {</span>
+<span id="cb64-4"><a href="data-cleaning-part-1.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;T&quot;</span></span>
+<span id="cb64-5"><a href="data-cleaning-part-1.html#cb64-5" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;T&quot;</span>) {</span>
+<span id="cb64-6"><a href="data-cleaning-part-1.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb64-7"><a href="data-cleaning-part-1.html#cb64-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;C&quot;</span>) {</span>
+<span id="cb64-8"><a href="data-cleaning-part-1.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb64-9"><a href="data-cleaning-part-1.html#cb64-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;G&quot;</span>) {</span>
+<span id="cb64-10"><a href="data-cleaning-part-1.html#cb64-10" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb64-11"><a href="data-cleaning-part-1.html#cb64-11" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> {</span>
+<span id="cb64-12"><a href="data-cleaning-part-1.html#cb64-12" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb64-13"><a href="data-cleaning-part-1.html#cb64-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb64-14"><a href="data-cleaning-part-1.html#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-15"><a href="data-cleaning-part-1.html#cb64-15" aria-hidden="true" tabindex="-1"></a>nuc</span></code></pre></div>
+<pre><code>## [1] &quot;T&quot;</code></pre>
+<p>Example:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-cleaning-part-1.html#cb66-1" aria-hidden="true" tabindex="-1"></a>my_input <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
+<span id="cb66-2"><a href="data-cleaning-part-1.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#my_input = c(&quot;e&quot;, &quot;e&quot;, &quot;a&quot;, &quot;i&quot;, &quot;o&quot;)</span></span>
+<span id="cb66-3"><a href="data-cleaning-part-1.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-4"><a href="data-cleaning-part-1.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.numeric</span>(my_input)) {</span>
+<span id="cb66-5"><a href="data-cleaning-part-1.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">mean</span>(my_input)</span>
+<span id="cb66-6"><a href="data-cleaning-part-1.html#cb66-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(<span class="fu">is.character</span>(my_input)) {</span>
+<span id="cb66-7"><a href="data-cleaning-part-1.html#cb66-7" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">table</span>(my_input)</span>
+<span id="cb66-8"><a href="data-cleaning-part-1.html#cb66-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb66-9"><a href="data-cleaning-part-1.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-10"><a href="data-cleaning-part-1.html#cb66-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+
+</div>
+</div>
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY. </a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/4.0/"> CC-BY </a> unless noted otherwise.
+      <a href="https://hutchdatascience.org/" target="_blank"><img src="https://hutchdatascience.org/images/crazy-idea-wide.png" style="width: 80%; padding-left: 15px; padding-top: 8px;"</a>
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="fundamentals-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-cleaning-part-1-exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
