@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 6 Data Cleaning, Part 2 | Intermediate R, Season 3</title>
+  <meta name="description" content="Chapter 6 Data Cleaning, Part 2 | Intermediate R, Season 3" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 6 Data Cleaning, Part 2 | Intermediate R, Season 3" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Data Cleaning, Part 2 | Intermediate R, Season 3" />
+  
+  
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
+<link rel="prev" href="data-cleaning-part-1-exercises.html"/>
+<link rel="next" href="data-cleaning-part-2-exercises.html"/>
+<script src="libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="assets/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="https://hutchdatascience.org/" target="_blank"><img src="assets/big-dasl-stacked.png" style="width: 80%; padding-left: 34px; padding-top: 8px;"</a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this Course</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#curriculum"><i class="fa fa-check"></i><b>1.1</b> Curriculum</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#target-audience"><i class="fa fa-check"></i><b>1.2</b> Target Audience</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="fundamentals.html"><a href="fundamentals.html"><i class="fa fa-check"></i><b>2</b> Fundamentals</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="fundamentals.html"><a href="fundamentals.html#goals-of-this-course"><i class="fa fa-check"></i><b>2.1</b> Goals of this course</a></li>
+<li class="chapter" data-level="2.2" data-path="fundamentals.html"><a href="fundamentals.html#data-types-in-r"><i class="fa fa-check"></i><b>2.2</b> Data types in R</a></li>
+<li class="chapter" data-level="2.3" data-path="fundamentals.html"><a href="fundamentals.html#data-structures"><i class="fa fa-check"></i><b>2.3</b> Data structures</a></li>
+<li class="chapter" data-level="2.4" data-path="fundamentals.html"><a href="fundamentals.html#vector"><i class="fa fa-check"></i><b>2.4</b> Vector</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="fundamentals.html"><a href="fundamentals.html#ways-to-subset-a-vector"><i class="fa fa-check"></i><b>2.4.1</b> Ways to subset a vector</a></li>
+<li class="chapter" data-level="2.4.2" data-path="fundamentals.html"><a href="fundamentals.html#practice-implicit-subsetting"><i class="fa fa-check"></i><b>2.4.2</b> Practice implicit subsetting</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.5</b> Dataframes</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="fundamentals.html"><a href="fundamentals.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Subsetting dataframes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#lists"><i class="fa fa-check"></i><b>2.6</b> Lists</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html"><i class="fa fa-check"></i><b>3</b> Fundamentals Exercises</a></li>
+<li class="chapter" data-level="4" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html"><i class="fa fa-check"></i><b>4</b> Data Cleaning, Part 1</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#interpreting-functions-carefully"><i class="fa fa-check"></i><b>4.1</b> Interpreting functions, carefully</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#application-data-importing"><i class="fa fa-check"></i><b>4.1.1</b> Application: Data Importing</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#recoding-data-conditionals"><i class="fa fa-check"></i><b>4.2</b> Recoding Data / Conditionals</a></li>
+<li class="chapter" data-level="4.3" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#conditionals"><i class="fa fa-check"></i><b>4.3</b> Conditionals</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html"><i class="fa fa-check"></i><b>5</b> Data Cleaning, Part 1 Exercises</a></li>
+<li class="chapter" data-level="6" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html"><i class="fa fa-check"></i><b>6</b> Data Cleaning, Part 2</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#tidy-data"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#columns-contain-values-rather-than-variables-long-is-tidy"><i class="fa fa-check"></i><b>6.1.1</b> 1. Columns contain values, rather than variables (Long is tidy)</a></li>
+<li class="chapter" data-level="6.1.2" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#variables-are-stored-in-rows-wide-is-tidy"><i class="fa fa-check"></i><b>6.1.2</b> 2. Variables are stored in rows (Wide is tidy)</a></li>
+<li class="chapter" data-level="6.1.3" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#multiple-variables-are-stored-in-a-single-column"><i class="fa fa-check"></i><b>6.1.3</b> 3. Multiple variables are stored in a single column</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#uses-of-tidy-data"><i class="fa fa-check"></i><b>6.2</b> Uses of Tidy data</a></li>
+<li class="chapter" data-level="6.3" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#subjectivity-in-tidy-data"><i class="fa fa-check"></i><b>6.3</b> Subjectivity in Tidy Data</a></li>
+<li class="chapter" data-level="6.4" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#references"><i class="fa fa-check"></i><b>6.4</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="data-cleaning-part-2-exercises.html"><a href="data-cleaning-part-2-exercises.html"><i class="fa fa-check"></i><b>7</b> Data Cleaning, Part 2 Exercises</a></li>
+<li class="chapter" data-level="8" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html"><i class="fa fa-check"></i><b>8</b> Writing your first function</a>
+<ul>
+<li class="chapter" data-level="8.0.1" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#anatomy-of-a-function-definition"><i class="fa fa-check"></i><b>8.0.1</b> Anatomy of a function definition</a></li>
+<li class="chapter" data-level="8.0.2" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#local-and-global-environments"><i class="fa fa-check"></i><b>8.0.2</b> Local and global environments</a></li>
+<li class="chapter" data-level="8.0.3" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#a-step-by-step-example"><i class="fa fa-check"></i><b>8.0.3</b> A step-by-step example</a></li>
+<li class="chapter" data-level="8.0.4" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#function-arguments-create-modularity"><i class="fa fa-check"></i><b>8.0.4</b> Function arguments create modularity</a></li>
+<li class="chapter" data-level="8.0.5" data-path="writing-your-first-function.html"><a href="writing-your-first-function.html#exercises"><i class="fa fa-check"></i><b>8.0.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="functions-exercises.html"><a href="functions-exercises.html"><i class="fa fa-check"></i><b>9</b> Functions Exercises</a></li>
+<li class="chapter" data-level="10" data-path="repetition.html"><a href="repetition.html"><i class="fa fa-check"></i><b>10</b> Repetition</a></li>
+<li class="chapter" data-level="11" data-path="repetition-exercises.html"><a href="repetition-exercises.html"><i class="fa fa-check"></i><b>11</b> Repetition Exercises</a></li>
+<li class="chapter" data-level="" data-path="about-the-authors.html"><a href="about-the-authors.html"><i class="fa fa-check"></i>About the Authors</a></li>
+<li class="chapter" data-level="12" data-path="references-1.html"><a href="references-1.html"><i class="fa fa-check"></i><b>12</b> References</a></li>
+<li class="divider"></li>
+<p style="text-align:center;"> <a href="https://github.com/jhudsl/OTTR_Template" target="blank" > This content was published with</a> <a href="https://bookdown.org/" target="blank"> bookdown by: </a> </p>
+<p style="text-align:center;"> <a href="https://hutchdatascience.org/"> The Fred Hutch Data Science Lab </a></p>
+<p style="text-align:center; font-size: 12px;"> <a href="https://github.com/rstudio4edu/rstudio4edu-book/"> Style adapted from: rstudio4edu-book </a> <a href ="https://creativecommons.org/licenses/by/2.0/"> (CC-BY 2.0) </a></p>
+<p style="padding-left: 40px;"><div class="trapezoid" style = "padding-left: 40px;"><span>  <a href="https://forms.gle/W6Mg4rzuMK6Yk3Am8"> Click here to provide feedback</a> <img src="assets/itcr_arrow.png" style=" width: 10%" ></span></div></p>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R, Season 3</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<head>
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=10.0,initial-scale=1.0">
+  <!--script src="https://kit.fontawesome.com/6a26f47516.js"></script-->
+  <!--<script src="assets/hideOutput.js"></script>-->
+  <link href="assets/style.css" rel="stylesheet">
+</head>
+        
+
+
+<div class="hero-image-container"> 
+  <img class= "hero-image" src="assets/dasl_thin_main_image.png">
+</div>
+<div id="data-cleaning-part-2" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Data Cleaning, Part 2</h1>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-cleaning-part-2.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="tidy-data" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Tidy Data</h2>
+<p>It is important to have standard of organizing data, as it facilitates a consistent way of thinking about data organization and building tools (functions) that make use of that standard. The principles of <strong>Tidy data</strong>, developed by Hadley Wickham:</p>
+<ol style="list-style-type: decimal">
+<li><p>Each variable must have its own column.</p></li>
+<li><p>Each observation must have its own row.</p></li>
+<li><p>Each value must have its own cell.</p></li>
+</ol>
+<p>If we want to be technical about what variables and observations are, Hadley Wickham describes:</p>
+<blockquote>
+<p>A dataset is a collection of <strong>values</strong>, usually either numbers (if quantitative) or strings (if qualitative). Every value belongs to a <strong>variable</strong> and an <strong>observation</strong>. A <strong>variable</strong> contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An <strong>observation</strong> contains all values measured on the same unit (like a person, or a day, or a race) across attributes.</p>
+</blockquote>
+<div class="figure">
+<img src="https://r4ds.hadley.nz/images/tidy-1.png" width="800" alt="" />
+<p class="caption">A tidy dataframe.</p>
+</div>
+<p>Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more. These tools assumes the values of each variable fall in their own column vector.</p>
+<p>It seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren’t Tidy, and it’s easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:</p>
+<ol style="list-style-type: decimal">
+<li><p>Columns contain values of variables, rather than variables</p></li>
+<li><p>Variables are stored in rows</p></li>
+<li><p>Multiple variables are stored in a single column</p></li>
+</ol>
+<p>After some clear examples, we emphasize that “Tidy” data is <em>subjective</em> to what kind of analysis you want to do with the dataframe.</p>
+<div id="columns-contain-values-rather-than-variables-long-is-tidy" class="section level3" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> 1. Columns contain values, rather than variables (Long is tidy)</h3>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-cleaning-part-2.html#cb70-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Store =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),</span>
+<span id="cb70-2"><a href="data-cleaning-part-2.html#cb70-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">Year =</span> <span class="fu">c</span>(<span class="dv">2018</span>, <span class="dv">2018</span>),</span>
+<span id="cb70-3"><a href="data-cleaning-part-2.html#cb70-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">Q1_Sales =</span> <span class="fu">c</span>(<span class="dv">55</span>, <span class="dv">98</span>),</span>
+<span id="cb70-4"><a href="data-cleaning-part-2.html#cb70-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">Q2_Sales =</span> <span class="fu">c</span>(<span class="dv">45</span>, <span class="dv">70</span>),</span>
+<span id="cb70-5"><a href="data-cleaning-part-2.html#cb70-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">Q3_Sales =</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">60</span>),</span>
+<span id="cb70-6"><a href="data-cleaning-part-2.html#cb70-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">Q4_Sales =</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">60</span>))</span>
+<span id="cb70-7"><a href="data-cleaning-part-2.html#cb70-7" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   Store Year Q1_Sales Q2_Sales Q3_Sales Q4_Sales
+## 1     A 2018       55       45       22       50
+## 2     B 2018       98       70       60       60</code></pre>
+<p>Each observation is a store, and each observation has its own row. That looks good.</p>
+<p>The columns “Q1_Sales”, …, “Q4_Sales” seem to be <em>values of a single variable “quarter”</em> of our observation. The values of “quarter” are not in a single column, but are instead in the columns.</p>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="data-cleaning-part-2.html#cb72-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(df, <span class="fu">c</span>(<span class="st">&quot;Q1_Sales&quot;</span>, <span class="st">&quot;Q2_Sales&quot;</span>, <span class="st">&quot;Q3_Sales&quot;</span>, <span class="st">&quot;Q4_Sales&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;quarter&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;sales&quot;</span>)</span>
+<span id="cb72-2"><a href="data-cleaning-part-2.html#cb72-2" aria-hidden="true" tabindex="-1"></a>df_long</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 4
+##   Store  Year quarter  sales
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+## 1 A      2018 Q1_Sales    55
+## 2 A      2018 Q2_Sales    45
+## 3 A      2018 Q3_Sales    22
+## 4 A      2018 Q4_Sales    50
+## 5 B      2018 Q1_Sales    98
+## 6 B      2018 Q2_Sales    70
+## 7 B      2018 Q3_Sales    60
+## 8 B      2018 Q4_Sales    60</code></pre>
+<p>Now, each observation is a store’s quarter, and each observation has its own row.</p>
+<p>The new columns “quarter” and “sales” are variables that describes our observation, and describes our values. We’re in a tidy state!</p>
+<p>We have transformed our data to a “<strong>longer</strong>” format, as our observation represents something more granular or detailed than before. Often, the original variables values will repeat itself in a “longer format”. We call the previous state of our dataframe is a “<strong>wider</strong>” format.</p>
+</div>
+<div id="variables-are-stored-in-rows-wide-is-tidy" class="section level3" number="6.1.2">
+<h3><span class="header-section-number">6.1.2</span> 2. Variables are stored in rows (Wide is tidy)</h3>
+<p>Are all tidy dataframes Tidy in a “longer” format?</p>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-cleaning-part-2.html#cb74-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">Sample =</span> <span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>),</span>
+<span id="cb74-2"><a href="data-cleaning-part-2.html#cb74-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">KRAS_mutation =</span> <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>),</span>
+<span id="cb74-3"><a href="data-cleaning-part-2.html#cb74-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">KRAS_expression =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">3.9</span>))</span>
+<span id="cb74-4"><a href="data-cleaning-part-2.html#cb74-4" aria-hidden="true" tabindex="-1"></a>df2</span></code></pre></div>
+<pre><code>##   Sample KRAS_mutation KRAS_expression
+## 1      A          TRUE             2.3
+## 2      B         FALSE             3.9</code></pre>
+<p>Each observation is a sample, and each observation has its own row. Looks good. Each variable has its own column, and no values are in columns.</p>
+<p>What happens if we make it longer?</p>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="data-cleaning-part-2.html#cb76-1" aria-hidden="true" tabindex="-1"></a>df2_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(df2, <span class="fu">c</span>(<span class="st">&quot;KRAS_mutation&quot;</span>, <span class="st">&quot;KRAS_expression&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;gene&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;values&quot;</span>)</span>
+<span id="cb76-2"><a href="data-cleaning-part-2.html#cb76-2" aria-hidden="true" tabindex="-1"></a>df2_long</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 3
+##   Sample gene            values
+##   &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt;
+## 1 A      KRAS_mutation      1  
+## 2 A      KRAS_expression    2.3
+## 3 B      KRAS_mutation      0  
+## 4 B      KRAS_expression    3.9</code></pre>
+<p>Here, each observation is a sample’s gene…type? The observation feels awkward because variables are stored in rows. Also, the column “values” contains multiple variable types: gene expression and mutation values that got coerced to numeric!</p>
+<p>To make this dataframe wider,</p>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="data-cleaning-part-2.html#cb78-1" aria-hidden="true" tabindex="-1"></a>df2_long_wide <span class="ot">=</span> <span class="fu">pivot_wider</span>(df2_long, <span class="at">names_from =</span> <span class="st">&quot;gene&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;values&quot;</span>) </span>
+<span id="cb78-2"><a href="data-cleaning-part-2.html#cb78-2" aria-hidden="true" tabindex="-1"></a>df2_long_wide<span class="sc">$</span>KRAS_mutation <span class="ot">=</span> <span class="fu">as.logical</span>(df2_long_wide<span class="sc">$</span>KRAS_mutation)</span>
+<span id="cb78-3"><a href="data-cleaning-part-2.html#cb78-3" aria-hidden="true" tabindex="-1"></a>df2_long_wide</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 3
+##   Sample KRAS_mutation KRAS_expression
+##   &lt;chr&gt;  &lt;lgl&gt;                   &lt;dbl&gt;
+## 1 A      TRUE                      2.3
+## 2 B      FALSE                     3.9</code></pre>
+<p>We are back to our orignal form, and it was already Tidy.</p>
+</div>
+<div id="multiple-variables-are-stored-in-a-single-column" class="section level3" number="6.1.3">
+<h3><span class="header-section-number">6.1.3</span> 3. Multiple variables are stored in a single column</h3>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-cleaning-part-2.html#cb80-1" aria-hidden="true" tabindex="-1"></a>table3</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 3
+##   country      year rate             
+## * &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;            
+## 1 Afghanistan  1999 745/19987071     
+## 2 Afghanistan  2000 2666/20595360    
+## 3 Brazil       1999 37737/172006362  
+## 4 Brazil       2000 80488/174504898  
+## 5 China        1999 212258/1272915272
+## 6 China        2000 213766/1280428583</code></pre>
+<p>There seems to be two variables in the numerator and denominator of “rate” column. Let’s separate it.</p>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="data-cleaning-part-2.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(table3, <span class="at">col =</span> <span class="st">&quot;rate&quot;</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">&quot;count&quot;</span>, <span class="st">&quot;population&quot;</span>), <span class="at">sep =</span> <span class="st">&quot;/&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 4
+##   country      year count  population
+##   &lt;chr&gt;       &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;     
+## 1 Afghanistan  1999 745    19987071  
+## 2 Afghanistan  2000 2666   20595360  
+## 3 Brazil       1999 37737  172006362 
+## 4 Brazil       2000 80488  174504898 
+## 5 China        1999 212258 1272915272
+## 6 China        2000 213766 1280428583</code></pre>
+</div>
+</div>
+<div id="uses-of-tidy-data" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Uses of Tidy data</h2>
+<p>In general, many functions for analysis and visualization in R assumes that the input dataframe is Tidy. These tools assumes the values of each variable fall in their own column vector. For instance, from our first example, we can compare sales across quarters and stores.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="data-cleaning-part-2.html#cb84-1" aria-hidden="true" tabindex="-1"></a>df_long</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 4
+##   Store  Year quarter  sales
+##   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt;
+## 1 A      2018 Q1_Sales    55
+## 2 A      2018 Q2_Sales    45
+## 3 A      2018 Q3_Sales    22
+## 4 A      2018 Q4_Sales    50
+## 5 B      2018 Q1_Sales    98
+## 6 B      2018 Q2_Sales    70
+## 7 B      2018 Q3_Sales    60
+## 8 B      2018 Q4_Sales    60</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-cleaning-part-2.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_long) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> quarter, <span class="at">y =</span> sales, <span class="at">group =</span> Store) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<p><img src="03-Data_cleaning_2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Although in its original state we can also look at sales between quarter, we can only look between two quarters at once. Tidy data encourages looking at data in the most granular scale.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="data-cleaning-part-2.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> Q1_Sales, <span class="at">y =</span> Q2_Sales, <span class="at">color =</span> Store) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<p><img src="03-Data_cleaning_2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+</div>
+<div id="subjectivity-in-tidy-data" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Subjectivity in Tidy Data</h2>
+<p>We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations.</p>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-cleaning-part-2.html#cb88-1" aria-hidden="true" tabindex="-1"></a>kidney <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">stone_size =</span> <span class="fu">c</span>(<span class="st">&quot;Small&quot;</span>, <span class="st">&quot;Large&quot;</span>),</span>
+<span id="cb88-2"><a href="data-cleaning-part-2.html#cb88-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">treatment.A_recovered =</span> <span class="fu">c</span>(<span class="dv">81</span>, <span class="dv">192</span>),</span>
+<span id="cb88-3"><a href="data-cleaning-part-2.html#cb88-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">treatment.A_failed =</span> <span class="fu">c</span>(<span class="dv">6</span>, <span class="dv">71</span>),</span>
+<span id="cb88-4"><a href="data-cleaning-part-2.html#cb88-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">treatment.B_recovered =</span> <span class="fu">c</span>(<span class="dv">234</span>, <span class="dv">55</span>),</span>
+<span id="cb88-5"><a href="data-cleaning-part-2.html#cb88-5" aria-hidden="true" tabindex="-1"></a>                    <span class="at">treatment.B_failed =</span> <span class="fu">c</span>(<span class="dv">36</span>, <span class="dv">25</span>))</span>
+<span id="cb88-6"><a href="data-cleaning-part-2.html#cb88-6" aria-hidden="true" tabindex="-1"></a>kidney</span></code></pre></div>
+<pre><code>##   stone_size treatment.A_recovered treatment.A_failed treatment.B_recovered
+## 1      Small                    81                  6                   234
+## 2      Large                   192                 71                    55
+##   treatment.B_failed
+## 1                 36
+## 2                 25</code></pre>
+<p>Right now, the <code>kidney</code> dataframe clearly has values of a variable in the column. Let’s try to make it Tidy by making it into a longer form and separating out variables that are together in a column.</p>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="data-cleaning-part-2.html#cb90-1" aria-hidden="true" tabindex="-1"></a>kidney_long <span class="ot">=</span> <span class="fu">pivot_longer</span>(kidney, <span class="fu">c</span>(<span class="st">&quot;treatment.A_recovered&quot;</span>, <span class="st">&quot;treatment.A_failed&quot;</span>, <span class="st">&quot;treatment.B_recovered&quot;</span>, <span class="st">&quot;treatment.B_failed&quot;</span>), <span class="at">names_to =</span> <span class="st">&quot;treatment_outcome&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;count&quot;</span>)</span>
+<span id="cb90-2"><a href="data-cleaning-part-2.html#cb90-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-3"><a href="data-cleaning-part-2.html#cb90-3" aria-hidden="true" tabindex="-1"></a>kidney_long <span class="ot">=</span> <span class="fu">separate</span>(kidney_long, <span class="st">&quot;treatment_outcome&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;treatment&quot;</span>, <span class="st">&quot;outcome&quot;</span>), <span class="st">&quot;_&quot;</span>)</span>
+<span id="cb90-4"><a href="data-cleaning-part-2.html#cb90-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb90-5"><a href="data-cleaning-part-2.html#cb90-5" aria-hidden="true" tabindex="-1"></a>kidney_long</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 4
+##   stone_size treatment   outcome   count
+##   &lt;chr&gt;      &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;
+## 1 Small      treatment.A recovered    81
+## 2 Small      treatment.A failed        6
+## 3 Small      treatment.B recovered   234
+## 4 Small      treatment.B failed       36
+## 5 Large      treatment.A recovered   192
+## 6 Large      treatment.A failed       71
+## 7 Large      treatment.B recovered    55
+## 8 Large      treatment.B failed       25</code></pre>
+<p>Here, each observation is a kidney stone’s treatment’s outcome type, and each observation has its own row.</p>
+<p>The column “count” describes our observation, and describes our values. This dataframe seems reasonably Tidy.</p>
+<p>How about this?</p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="data-cleaning-part-2.html#cb92-1" aria-hidden="true" tabindex="-1"></a>kidney_long_still <span class="ot">=</span> <span class="fu">pivot_wider</span>(kidney_long, <span class="at">names_from =</span> <span class="st">&quot;outcome&quot;</span>, <span class="at">values_from =</span> <span class="st">&quot;count&quot;</span>)</span>
+<span id="cb92-2"><a href="data-cleaning-part-2.html#cb92-2" aria-hidden="true" tabindex="-1"></a>kidney_long_still</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 4
+##   stone_size treatment   recovered failed
+##   &lt;chr&gt;      &lt;chr&gt;           &lt;dbl&gt;  &lt;dbl&gt;
+## 1 Small      treatment.A        81      6
+## 2 Small      treatment.B       234     36
+## 3 Large      treatment.A       192     71
+## 4 Large      treatment.B        55     25</code></pre>
+<p>Here, each observation is a kidney stone’s treatment, and each observation has its own row.</p>
+<p>The columns “recovered” and “failed” are variables that describes our observation, and describes its corresponding values. This dataframe seems reasonably Tidy, also.</p>
+<p>The reason why both of these versions seem Tidy is that the columns “recovered” and “failed” can be interpreted as independent variables <em>and</em> values of the variable “treatment”.</p>
+<p>Ultimately, we decide which dataframe we prefer based on the analysis we want to do.</p>
+<p>For instance, when our observation is about a kidney stone’s treatment’s outcome type, we compare it between outcome type, treatment, and stone size.</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="data-cleaning-part-2.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kidney_long) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> count, <span class="at">fill =</span> outcome) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>) <span class="sc">+</span> <span class="fu">facet_wrap</span>(<span class="sc">~</span>stone_size)</span></code></pre></div>
+<p><img src="03-Data_cleaning_2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>When our observation is about a kidney stone’s treatment’s, we compare a new variable <em>recovery rate</em> ( = recovered / (recovered + failed)) between treatment and stone size.</p>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="data-cleaning-part-2.html#cb95-1" aria-hidden="true" tabindex="-1"></a>kidney_long_still <span class="ot">=</span> <span class="fu">mutate</span>(kidney_long_still, <span class="at">recovery_rate =</span> recovered <span class="sc">/</span> (recovered <span class="sc">+</span> failed))</span>
+<span id="cb95-2"><a href="data-cleaning-part-2.html#cb95-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(kidney_long_still) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> recovery_rate, <span class="at">fill =</span> stone_size) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="st">&quot;dodge&quot;</span>, <span class="at">stat=</span><span class="st">&quot;identity&quot;</span>)</span></code></pre></div>
+<p><img src="03-Data_cleaning_2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+</div>
+<div id="references" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> References</h2>
+<p><a href="https://vita.had.co.nz/papers/tidy-data.html" class="uri">https://vita.had.co.nz/papers/tidy-data.html</a></p>
+<p><a href="https://kiwidamien.github.io/what-is-tidy-data.html" class="uri">https://kiwidamien.github.io/what-is-tidy-data.html</a></p>
+
+</div>
+</div>
+<hr>
+<center> 
+  <div class="footer">
+      All illustrations <a href="https://creativecommons.org/licenses/by/4.0/">CC-BY. </a>
+      <br>
+      All other materials <a href= "https://creativecommons.org/licenses/by/4.0/"> CC-BY </a> unless noted otherwise.
+      <a href="https://hutchdatascience.org/" target="_blank"><img src="https://hutchdatascience.org/images/crazy-idea-wide.png" style="width: 80%; padding-left: 15px; padding-top: 8px;"</a>
+  </div>
+</center>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="data-cleaning-part-1-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-cleaning-part-2-exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "section"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

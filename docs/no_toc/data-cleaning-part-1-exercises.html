@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Intermediate R, Season 3</title>
-  <meta name="description" content="Intermediate R, Season 3" />
+  <title>Chapter 5 Data Cleaning, Part 1 Exercises | Intermediate R, Season 3</title>
+  <meta name="description" content="Chapter 5 Data Cleaning, Part 1 Exercises | Intermediate R, Season 3" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Intermediate R, Season 3" />
+  <meta property="og:title" content="Chapter 5 Data Cleaning, Part 1 Exercises | Intermediate R, Season 3" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intermediate R, Season 3" />
+  <meta name="twitter:title" content="Chapter 5 Data Cleaning, Part 1 Exercises | Intermediate R, Season 3" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="fundamentals.html"/>
+<link rel="prev" href="data-cleaning-part-1.html"/>
+<link rel="next" href="data-cleaning-part-2.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -226,21 +226,40 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/dasl_thin_main_image.png">
 </div>
-<div id="header">
-<h1 class="title">Intermediate R, Season 3</h1>
-<p class="date"><em>March, 2024</em></p>
-</div>
-<div id="about-this-course" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About this Course</h1>
-<div id="curriculum" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Curriculum</h2>
-<p>The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow.</p>
-</div>
-<div id="target-audience" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Target Audience</h2>
-<p>The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our <a href="https://github.com/fhdsl/Intro_to_R">Intro to R course</a>.</p>
+<div id="data-cleaning-part-1-exercises" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Data Cleaning, Part 1 Exercises</h1>
+<p>Suppose that you want to load in some data, and you don’t know what tools to use. You decide to see whether the package “readr” can be useful to solve your problem. Where should you look? All R packages must be stored on CRAN (Comprehensive R Archive Network), and all packages have a website that points to the reference manual (what is pulled up using the <code>?</code> command), source code, vignettes examples, and dependencies on other packages. Here is <a href="https://cran.r-project.org/web/packages/readr/">the website</a> for “readr”.</p>
+<p>After looking at the vignettes, it seems that <code>read_delim()</code> is a function to try.</p>
+<p>Let’s look at the <code>read_delim()</code> function documentation.</p>
+<pre><code>Usage:
 
-</div>
+     read_delim(
+       file,
+       delim = NULL,
+       quote = &quot;\&quot;&quot;,
+       escape_backslash = FALSE,
+       escape_double = TRUE,
+       col_names = TRUE,
+       col_types = NULL,
+       col_select = NULL,
+       id = NULL,
+       locale = default_locale(),
+       na = c(&quot;&quot;, &quot;NA&quot;),
+       quoted_na = TRUE,
+       comment = &quot;&quot;,
+       trim_ws = FALSE,
+       skip = 0,
+       n_max = Inf,
+       guess_max = min(1000, n_max),
+       name_repair = &quot;unique&quot;,
+       num_threads = readr_threads(),
+       progress = show_progress(),
+       show_col_types = should_show_types(),
+       skip_empty_rows = TRUE,
+       lazy = should_read_lazy()
+     )</code></pre>
+<p><a href="https://r4ds.hadley.nz/spreadsheets" class="uri">https://r4ds.hadley.nz/spreadsheets</a></p>
+
 </div>
 <hr>
 <center> 
@@ -256,8 +275,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="fundamentals.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-cleaning-part-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-cleaning-part-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

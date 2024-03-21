@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Intermediate R, Season 3</title>
-  <meta name="description" content="Intermediate R, Season 3" />
+  <title>Chapter 8 Writing your first function | Intermediate R, Season 3</title>
+  <meta name="description" content="Chapter 8 Writing your first function | Intermediate R, Season 3" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Intermediate R, Season 3" />
+  <meta property="og:title" content="Chapter 8 Writing your first function | Intermediate R, Season 3" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intermediate R, Season 3" />
+  <meta name="twitter:title" content="Chapter 8 Writing your first function | Intermediate R, Season 3" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="fundamentals.html"/>
+<link rel="prev" href="data-cleaning-part-2-exercises.html"/>
+<link rel="next" href="functions-exercises.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -226,19 +226,119 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/dasl_thin_main_image.png">
 </div>
-<div id="header">
-<h1 class="title">Intermediate R, Season 3</h1>
-<p class="date"><em>March, 2024</em></p>
+<div id="writing-your-first-function" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Writing your first function</h1>
+<div class="figure">
+<img src="https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png" alt="" />
+<p class="caption">Function machine from algebra class.</p>
 </div>
-<div id="about-this-course" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About this Course</h1>
-<div id="curriculum" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Curriculum</h2>
-<p>The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow.</p>
+<p>We write functions for two main, often overlapping, reasons:</p>
+<ol style="list-style-type: decimal">
+<li><p>Following DRY (Don’t Repeat Yourself) principle: If you find yourself repeating similar patterns of code, you should write a function that executes that pattern. This saves time and the risk of mistakes.</p></li>
+<li><p>Create modular structure and abstraction: Having all of your code in one place becomes increasingly complicated as your program grows. Think of the function as a mini-program that can perform without the rest of the program. Organizing your code by functions gives modular structure, as well as abstraction: you only need to know the function name, inputs, and output to use it and don’t have to worry how it works.</p></li>
+</ol>
+<p>Some advice on writing functions:</p>
+<ul>
+<li><p>Code that has a well-defined set of inputs and outputs make a good function.</p></li>
+<li><p>A function should do only one, well-defined task.</p></li>
+</ul>
+<div id="anatomy-of-a-function-definition" class="section level3" number="8.0.1">
+<h3><span class="header-section-number">8.0.1</span> Anatomy of a function definition</h3>
+<p><em>Function definition consists of assigning a <strong>function name</strong> with a “function” statement that has a comma-separated list of named <strong>function arguments</strong>, and a <strong>return expression</strong>. The function name is stored as a variable in the global environment.</em></p>
+<p>In order to use the function, one defines or import it, then one calls it.</p>
+<p>Example:</p>
+<pre><code>addFunction = function(argument1, argument2) {
+  result = argument1 + argument2 
+  return(result)
+}
+z = addFunction(3, 4)</code></pre>
+<p>With function definitions, not all code runs from top to bottom. The first four lines defines the function, but the function is never run. It is called on line 5, and the lines within the function are executed.</p>
+<p>When the function is called in line 5, the variables for the arguments are reassigned to function arguments to be used within the function and helps with the modular form. We need to introduce the concept of local and global environments to distinguish variables used only for a function from variables used for the entire program.</p>
 </div>
-<div id="target-audience" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Target Audience</h2>
-<p>The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our <a href="https://github.com/fhdsl/Intro_to_R">Intro to R course</a>.</p>
+<div id="local-and-global-environments" class="section level3" number="8.0.2">
+<h3><span class="header-section-number">8.0.2</span> Local and global environments</h3>
+<p><em>{ } represents variable scoping: within each { }, if variables are defined, they are stored in a <strong>local environment</strong>, and is only accessible within { }. All function arguments are stored in the local environment. The overall environment of the program is called the <strong>global environment</strong> and can be also accessed within { }.</em></p>
+<p>The reason of having some of this “privacy” in the local environment is to make functions modular - they are independent little tools that should not interact with the rest of the global environment. Imagine someone writing a tool that they want to give someone else to use, but the tool depends on your environment, vice versa.</p>
+</div>
+<div id="a-step-by-step-example" class="section level3" number="8.0.3">
+<h3><span class="header-section-number">8.0.3</span> A step-by-step example</h3>
+<p>Using the <code>addFunction</code> function, let’s see step-by-step how the R interpreter understands our code:</p>
+<div class="figure">
+<img src="images/func1.png" alt="" />
+<p class="caption">We define the function in the global environment.</p>
+</div>
+<div class="figure">
+<img src="images/func2.png" alt="" />
+<p class="caption">We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function’s local environment.</p>
+</div>
+<div class="figure">
+<img src="images/func3.png" alt="" />
+<p class="caption">We run the first line of code in the function body. The new variable “result” is stored in the local environment because it is within { }.</p>
+</div>
+<div class="figure">
+<img src="images/func4.png" alt="" />
+<p class="caption">We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.</p>
+</div>
+</div>
+<div id="function-arguments-create-modularity" class="section level3" number="8.0.4">
+<h3><span class="header-section-number">8.0.4</span> Function arguments create modularity</h3>
+<p>First time writers of functions might ask: why are variables we use for the arguments of a function <em>reassigned</em> for function arguments in the local environment? Here is an example when that process is skipped - what are the consequences?</p>
+<pre><code>x = 3
+y = 4
+addFunction = function(argument1, argument2) {
+    result = x + y 
+    return(result)
+}
+z = addFunction(x, y)
+w = addFunction(10, -5)</code></pre>
+<p>What do you expect the value of <code>z</code> to be? How about <code>w</code>?</p>
+<p>Here is the execution for <code>w</code>:</p>
+<div class="figure">
+<img src="images/func5.png" alt="" />
+<p class="caption">We define the variables and function in the global environment.</p>
+</div>
+<div class="figure">
+<img src="images/func6.png" alt="" />
+<p class="caption">We call the function, and the function arguments 10, -5 are assigned to argument1 and argument2, respectively in the function’s local environment.</p>
+</div>
+<div class="figure">
+<img src="images/func7.png" alt="" />
+<p class="caption">We run the first line of code in the function body. The new variable “result” is stored in the local environment because it is within { }.</p>
+</div>
+<div class="figure">
+<img src="images/func8.png" alt="" />
+<p class="caption">We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable w in the global environment. All local variables for the function are erased now that the function call is over.</p>
+</div>
+<p>The function did not work as expected because we used hard-coded variables from the global environment and not function argument variables unique to the function use!</p>
+</div>
+<div id="exercises" class="section level3" number="8.0.5">
+<h3><span class="header-section-number">8.0.5</span> Exercises</h3>
+<ul>
+<li><p>Create a function, called <code>add_and_raise_power</code> in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and raised to a power determined by the 3rd argument. The function returns the resulting value. Here is a use case: <code>add_and_raise_power(1, 2, 3) = 27</code> because the function will return this expression: <code>(1 + 2) ^ 3</code>. Another use case: <code>add_and_raise_power(3, 1, 2) = 16</code> because of the expression <code>(3 + 1) ^ 2</code>. Confirm with that these use cases work. Can this function used for numeric vectors?</p>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="writing-your-first-function.html#cb98-1" aria-hidden="true" tabindex="-1"></a>add_and_raise_power <span class="ot">=</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb98-2"><a href="writing-your-first-function.html#cb98-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> (x <span class="sc">+</span> y)<span class="sc">^</span>z</span>
+<span id="cb98-3"><a href="writing-your-first-function.html#cb98-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb98-4"><a href="writing-your-first-function.html#cb98-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb98-5"><a href="writing-your-first-function.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="fu">add_and_raise_power</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 27</code></pre></li>
+<li><p>Create a function, called <code>my_dim</code> in which the function takes in one argument: a dataframe. The function returns the following: a length-2 numeric vector in which the first element is the number of rows in the dataframe, and the second element is the number of columns in the dataframe. Your result should be identical as the <code>dim</code> function. How can you leverage existing functions such as <code>nrow</code> and <code>ncol</code>? Use case: <code>my_dim(penguins) = c(344, 8)</code></p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="writing-your-first-function.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb100-2"><a href="writing-your-first-function.html#cb100-2" aria-hidden="true" tabindex="-1"></a>my_dim <span class="ot">=</span> <span class="cf">function</span>(df) {</span>
+<span id="cb100-3"><a href="writing-your-first-function.html#cb100-3" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">nrow</span>(df), <span class="fu">ncol</span>(df))</span>
+<span id="cb100-4"><a href="writing-your-first-function.html#cb100-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb100-5"><a href="writing-your-first-function.html#cb100-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb100-6"><a href="writing-your-first-function.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="fu">my_dim</span>(penguins)</span></code></pre></div>
+<pre><code>## [1] 344   8</code></pre></li>
+<li><p>Create a function, called <code>medicaid_eligible</code> in which the function takes in one argument: a numeric vector called <code>age</code>. The function returns a numeric vector with the same length as <code>age</code>, in which elements are <code>0</code> for indicies that are less than 65 in <code>age</code>, and <code>1</code> for indicies 65 or higher in <code>age</code>. Use cases: <code>medicaid_eligible(c(30, 70)) = c(0, 1)</code></p>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="writing-your-first-function.html#cb102-1" aria-hidden="true" tabindex="-1"></a>medicaid_eligible <span class="ot">=</span> <span class="cf">function</span>(age) {</span>
+<span id="cb102-2"><a href="writing-your-first-function.html#cb102-2" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> age</span>
+<span id="cb102-3"><a href="writing-your-first-function.html#cb102-3" aria-hidden="true" tabindex="-1"></a>  result[age <span class="sc">&lt;</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb102-4"><a href="writing-your-first-function.html#cb102-4" aria-hidden="true" tabindex="-1"></a>  result[age <span class="sc">&gt;=</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb102-5"><a href="writing-your-first-function.html#cb102-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb102-6"><a href="writing-your-first-function.html#cb102-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb102-7"><a href="writing-your-first-function.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="fu">medicaid_eligible</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">70</span>))</span></code></pre></div>
+<pre><code>## [1] 0 1</code></pre></li>
+</ul>
 
 </div>
 </div>
@@ -256,8 +356,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="fundamentals.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-cleaning-part-2-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="functions-exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

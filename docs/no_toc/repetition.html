@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Intermediate R, Season 3</title>
-  <meta name="description" content="Intermediate R, Season 3" />
+  <title>Chapter 10 Repetition | Intermediate R, Season 3</title>
+  <meta name="description" content="Chapter 10 Repetition | Intermediate R, Season 3" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Intermediate R, Season 3" />
+  <meta property="og:title" content="Chapter 10 Repetition | Intermediate R, Season 3" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intermediate R, Season 3" />
+  <meta name="twitter:title" content="Chapter 10 Repetition | Intermediate R, Season 3" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="fundamentals.html"/>
+<link rel="prev" href="functions-exercises.html"/>
+<link rel="next" href="repetition-exercises.html"/>
 <script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -226,21 +226,16 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/dasl_thin_main_image.png">
 </div>
-<div id="header">
-<h1 class="title">Intermediate R, Season 3</h1>
-<p class="date"><em>March, 2024</em></p>
-</div>
-<div id="about-this-course" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About this Course</h1>
-<div id="curriculum" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Curriculum</h2>
-<p>The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow.</p>
-</div>
-<div id="target-audience" class="section level2" number="1.2">
-<h2><span class="header-section-number">1.2</span> Target Audience</h2>
-<p>The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our <a href="https://github.com/fhdsl/Intro_to_R">Intro to R course</a>.</p>
+<div id="repetition" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Repetition</h1>
+<p>Suppose that you want to repeat a chunk of code many times, but changing one variable’s value each time you do it. This could be modifying each element of a vector with the same operation, or analyzing a dataframe with different parameters.</p>
+<p>There are three common strategies to go about this:</p>
+<ol style="list-style-type: decimal">
+<li>Copy and paste the code chunk, and change that variable’s value. Repeat. <em>This can be a starting point in your analysis, but will lead to errors easily.</em></li>
+<li>Use a <code>for</code> loop to repeat the chunk of code, and let it loop over the changing variable’s value. <em>This is popular for many programming languages, but the R programming culture encourages a functional way instead</em>.</li>
+<li><strong>Functionals</strong> allow you to take a function that solves the problem for a single input and generalize it to handle any number of inputs. <em>This is very popular in R programming culture.</em></li>
+</ol>
 
-</div>
 </div>
 <hr>
 <center> 
@@ -256,8 +251,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="fundamentals.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions-exercises.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="repetition-exercises.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
