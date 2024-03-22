@@ -118,19 +118,6 @@ Arguments:
           select a range of variables.
 ```
 
-### Application: Data Importing
-
-Here are some common functions for importing your data:
-
--   `read_csv("file.csv")` for comma-separated files
-
--   `read_tsv("file.tsv")` for tab-deliminated files
-
--   `read_excel("example.xlsx")` for excel files
-
--   `read_excel("example.xlsx", sheet = "sheet1")` for excel files with a sheet name
-
--   `read_delim()` for general-deliminated files, such as: `read_delim("file.csv", sep = ",")`.
 
 You will look at the function documentation on your own to see how to deal with more complex cases.
 
