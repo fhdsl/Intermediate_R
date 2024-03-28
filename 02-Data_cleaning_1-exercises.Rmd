@@ -52,7 +52,9 @@ We see that the only *required* argument is the `file` variable, which is docume
 Load in "students.csv" via `read_csv()` function as a dataframe variable `students` and take a look at its contents via `View()`.
 
 ```{r}
-x = read_csv("classroom_data/students.csv", comment = "#")
+library(tidyverse)
+
+
 ```
 
 Something looks weird here. There is only one column, and it seems that the first two entries start with "\#", and don't fit a CSV file format. These first two entries that start with "\#" likely are comments giving metadata about the file, and they should be ignore when loading in the data.
