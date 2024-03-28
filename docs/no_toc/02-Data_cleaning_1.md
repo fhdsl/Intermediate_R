@@ -118,7 +118,6 @@ Arguments:
           select a range of variables.
 ```
 
-
 You will look at the function documentation on your own to see how to deal with more complex cases.
 
 ## Recoding Data / Conditionals
@@ -159,7 +158,7 @@ grade2 = if_else(grade > 60, TRUE, FALSE)
 
 3.  If-else_if-else
 
-```
+```         
 grade3 = case_when(grade >= 90 ~ "A",
                    grade >= 80 ~ "B",
                    grade >= 70 ~ "C", 
@@ -200,7 +199,7 @@ simple_df2 = mutate(simple_df, grade = ifelse(grade > 60, TRUE, FALSE))
 
 3.  If-else_if-else
 
-```
+```         
 simple_df3 = simple_df
 
 simple_df3$grade = case_when(simple_df3$grade >= 90 ~ "A",
@@ -212,7 +211,7 @@ simple_df3$grade = case_when(simple_df3$grade >= 90 ~ "A",
 
 or
 
-```
+```         
 simple_df3 = mutate(simple_df, grade = case_when(grade >= 90 ~ "A",
                                                  grade >= 80 ~ "B",
                                                  grade >= 70 ~ "C", 

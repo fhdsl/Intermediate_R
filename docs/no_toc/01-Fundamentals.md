@@ -2,7 +2,6 @@
 
 
 
-
 ## Goals of this course
 
 -   Continue building *programming fundamentals*: how to make use of complex data structures, use custom functions built by other R users, and creating your own functions. How to iterate repeated tasks that scales naturally.
@@ -27,17 +26,21 @@
 
 -   Vector
 
--   **Factor**
+-   *Factor*
+
+-   Dataframe
 
 -   **List**
 
--   Dataframe
+-   *Matrix*
 
 ## Vector
 
 We know what an **(atomic) vector** is: it can contains a data type, and all elements must be the same data type.
 
 ![](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="400"}
+
+Within the Numeric type that we are familiar with, there are more specific types: *Integer* consists of whole number values, and *Double* consists of decimal values. Most of the time we only need to consider Numeric types, but once in a while we need to be more specific.
 
 -   We can test whether a vector is a certain type with `is.___()` functions, such as `is.character()`.
 
@@ -163,6 +166,55 @@ vec_with_NA[!is.na(vec_with_NA)]
 ```
 ## [1] 2 4 3
 ```
+
+## Factors
+
+Factors are a type of vector that holds categorical information, such as sex, gender, or cancer subtype. They are useful for:
+
+-   When you know you have a fixed number of categories.
+
+-   When you want to display character vectors in a non-alphabetical order, which is common in plotting.
+
+-   Inputs for statistical models, as factors are a special type of numerical vectors.
+
+
+```r
+place = factor(c("first", "third", "third", "second", "second", "fourth"))
+place
+```
+
+```
+## [1] first  third  third  second second fourth
+## Levels: first fourth second third
+```
+
+
+```r
+df = data.frame(p = place)
+ggplot(df) + geom_bar(aes(x = p))
+```
+
+<img src="01-Fundamentals_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+
+We can construct ordered factors:
+
+
+```r
+place = ordered(c("first", "third", "third", "second","second", "fourth"), levels =  c("first", "second", "third", "fourth"))
+place
+```
+
+```
+## [1] first  third  third  second second fourth
+## Levels: first < second < third < fourth
+```
+
+```r
+df = data.frame(p = place)
+ggplot(df) + geom_bar(aes(x = p))
+```
+
+<img src="01-Fundamentals_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ## Dataframes
 
@@ -377,3 +429,49 @@ l1$score
 Therefore, `l1$score` is the same as `l1[[4]]` and is the same as `l1[["score"]]`.
 
 A dataframe is just a named list of vectors of same length with **attributes** of (column) `names` and `row.names`.
+
+## Matrix
+
+A matrix holds information of the same data type in two dimensions - it's like a two dimensional vector. Matricies are most often used in statistical computing and matrix algebra, such as creating a design matrix. They are often created by taking a vector and reshaping it with a set number of rows and columns, or converting from a dataframe with only one data type.
+
+
+```r
+my_matrix = matrix(1:10, nrow = 2)
+my_matrix
+```
+
+```
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    3    5    7    9
+## [2,]    2    4    6    8   10
+```
+
+You access elements of a matrix similar to that of a dataframe's indexing:
+
+
+```r
+#column 3
+my_matrix[, 3]
+```
+
+```
+## [1] 5 6
+```
+
+```r
+#row 2
+my_matrix[2 ,]
+```
+
+```
+## [1]  2  4  6  8 10
+```
+
+```r
+#column 3, row 2
+my_matrix[2, 3]
+```
+
+```
+## [1] 6
+```

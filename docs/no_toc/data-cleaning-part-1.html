@@ -149,20 +149,34 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.1" data-path="fundamentals.html"><a href="fundamentals.html#ways-to-subset-a-vector"><i class="fa fa-check"></i><b>2.4.1</b> Ways to subset a vector</a></li>
 <li class="chapter" data-level="2.4.2" data-path="fundamentals.html"><a href="fundamentals.html#practice-implicit-subsetting"><i class="fa fa-check"></i><b>2.4.2</b> Practice implicit subsetting</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.5</b> Dataframes</a>
+<li class="chapter" data-level="2.5" data-path="fundamentals.html"><a href="fundamentals.html#factors"><i class="fa fa-check"></i><b>2.5</b> Factors</a></li>
+<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.6</b> Dataframes</a>
 <ul>
-<li class="chapter" data-level="2.5.1" data-path="fundamentals.html"><a href="fundamentals.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Subsetting dataframes</a></li>
+<li class="chapter" data-level="2.6.1" data-path="fundamentals.html"><a href="fundamentals.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.6.1</b> Subsetting dataframes</a></li>
 </ul></li>
-<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#lists"><i class="fa fa-check"></i><b>2.6</b> Lists</a></li>
+<li class="chapter" data-level="2.7" data-path="fundamentals.html"><a href="fundamentals.html#lists"><i class="fa fa-check"></i><b>2.7</b> Lists</a></li>
+<li class="chapter" data-level="2.8" data-path="fundamentals.html"><a href="fundamentals.html#matrix"><i class="fa fa-check"></i><b>2.8</b> Matrix</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html"><i class="fa fa-check"></i><b>3</b> Fundamentals Exercises</a></li>
+<li class="chapter" data-level="3" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html"><i class="fa fa-check"></i><b>3</b> Fundamentals Exercises</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html#part-1-vectors"><i class="fa fa-check"></i><b>3.1</b> Part 1: Vectors</a></li>
+<li class="chapter" data-level="3.2" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html#part-2-lists"><i class="fa fa-check"></i><b>3.2</b> Part 2: Lists</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="fundamentals-exercises.html"><a href="fundamentals-exercises.html#part-3-dataframes-lists"><i class="fa fa-check"></i><b>3.2.1</b> Part 3: Dataframes (Lists)</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html"><i class="fa fa-check"></i><b>4</b> Data Cleaning, Part 1</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#interpreting-functions-carefully"><i class="fa fa-check"></i><b>4.1</b> Interpreting functions, carefully</a></li>
 <li class="chapter" data-level="4.2" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#recoding-data-conditionals"><i class="fa fa-check"></i><b>4.2</b> Recoding Data / Conditionals</a></li>
 <li class="chapter" data-level="4.3" data-path="data-cleaning-part-1.html"><a href="data-cleaning-part-1.html#conditionals"><i class="fa fa-check"></i><b>4.3</b> Conditionals</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html"><i class="fa fa-check"></i><b>5</b> Data Cleaning, Part 1 Exercises</a></li>
+<li class="chapter" data-level="5" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html"><i class="fa fa-check"></i><b>5</b> Data Cleaning, Part 1 Exercises</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html#part-1-looking-at-documentation-to-load-in-data"><i class="fa fa-check"></i><b>5.1</b> Part 1: Looking at documentation to load in data</a></li>
+<li class="chapter" data-level="5.2" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html#part-2-recoding-data-warm-up"><i class="fa fa-check"></i><b>5.2</b> Part 2: Recoding data: warm-up</a></li>
+<li class="chapter" data-level="5.3" data-path="data-cleaning-part-1-exercises.html"><a href="data-cleaning-part-1-exercises.html#part-3-recoding-data-in-state-cancer-profiles"><i class="fa fa-check"></i><b>5.3</b> Part 3: Recoding data in State Cancer Profiles</a></li>
+</ul></li>
 <li class="chapter" data-level="6" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html"><i class="fa fa-check"></i><b>6</b> Data Cleaning, Part 2</a>
 <ul>
 <li class="chapter" data-level="6.1" data-path="data-cleaning-part-2.html"><a href="data-cleaning-part-2.html#tidy-data"><i class="fa fa-check"></i><b>6.1</b> Tidy Data</a>
@@ -295,8 +309,8 @@ Arguments:
 
      ...: further arguments passed to or from other methods.</code></pre>
 <p>Notice that the arguments <code>trim = 0</code>, <code>na.rm = FALSE</code> have default values. This means that these arguments are <em>optional</em> - you should provide it only if you want to. With this understanding, you can use <code>mean()</code> in a new way:</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-cleaning-part-1.html#cb48-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb48-2"><a href="data-cleaning-part-1.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> numbers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="data-cleaning-part-1.html#cb70-1" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
+<span id="cb70-2"><a href="data-cleaning-part-1.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="at">x =</span> numbers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## [1] 2.333333</code></pre>
 <p>The use of <code>. . .</code> (dot-dot-dot): This is a special argument that allows a function to <em>take any number of arguments</em>. This isn’t very useful for the <code>mean()</code> function, but it makes sense for function such as <code>select()</code> and <code>filter()</code>, and <code>mutate()</code>. For instance, in <code>select()</code>, once you provide your dataframe for the argument <code>.data</code>, you can pile on as many columns to select in the rest of the argument.</p>
 <pre><code>Usage:
@@ -325,17 +339,17 @@ Arguments:
 <li><p>If-else_if-else: “If elements of the vector meets <em>condition A</em>, then they are assigned <em>value X</em>. Else, if the elements of the vector meets <em>condition B</em>, they are assigned <em>value Y</em>. Otherwise, they are assigned <em>value Z</em>.”</p></li>
 </ol>
 <p>Let’s look at a vector of grade values, as an example:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="data-cleaning-part-1.html#cb51-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-cleaning-part-1.html#cb73-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>If</li>
 </ol>
 <p>Instead of having the bracket <code>[ ]</code> notation on the right hand side of the equation, if it is on the left hand side of the equation, then we can modify a subset of the vector.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-cleaning-part-1.html#cb52-1" aria-hidden="true" tabindex="-1"></a>grade1 <span class="ot">=</span> grade</span>
-<span id="cb52-2"><a href="data-cleaning-part-1.html#cb52-2" aria-hidden="true" tabindex="-1"></a>grade1[grade1 <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="data-cleaning-part-1.html#cb74-1" aria-hidden="true" tabindex="-1"></a>grade1 <span class="ot">=</span> grade</span>
+<span id="cb74-2"><a href="data-cleaning-part-1.html#cb74-2" aria-hidden="true" tabindex="-1"></a>grade1[grade1 <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>If-else</li>
 </ol>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="data-cleaning-part-1.html#cb53-1" aria-hidden="true" tabindex="-1"></a>grade2 <span class="ot">=</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-cleaning-part-1.html#cb75-1" aria-hidden="true" tabindex="-1"></a>grade2 <span class="ot">=</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>If-else_if-else</li>
 </ol>
@@ -345,20 +359,20 @@ Arguments:
                    grade &gt;= 60 ~ &quot;D&quot;,
                    .default = &quot;F&quot;)</code></pre>
 <p>Let’s do it for dataframes now.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-cleaning-part-1.html#cb55-1" aria-hidden="true" tabindex="-1"></a>simple_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>),</span>
-<span id="cb55-2"><a href="data-cleaning-part-1.html#cb55-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">status =</span> <span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Case&quot;</span>, <span class="st">&quot;case&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-cleaning-part-1.html#cb77-1" aria-hidden="true" tabindex="-1"></a>simple_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>),</span>
+<span id="cb77-2"><a href="data-cleaning-part-1.html#cb77-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">status =</span> <span class="fu">c</span>(<span class="st">&quot;case&quot;</span>, <span class="st">&quot; &quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;control&quot;</span>, <span class="st">&quot;Control&quot;</span>, <span class="st">&quot;Case&quot;</span>, <span class="st">&quot;case&quot;</span>))</span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>If</li>
 </ol>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="data-cleaning-part-1.html#cb56-1" aria-hidden="true" tabindex="-1"></a>simple_df1 <span class="ot">=</span> simple_df</span>
-<span id="cb56-2"><a href="data-cleaning-part-1.html#cb56-2" aria-hidden="true" tabindex="-1"></a>simple_df1<span class="sc">$</span>grade[simple_df1<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="data-cleaning-part-1.html#cb78-1" aria-hidden="true" tabindex="-1"></a>simple_df1 <span class="ot">=</span> simple_df</span>
+<span id="cb78-2"><a href="data-cleaning-part-1.html#cb78-2" aria-hidden="true" tabindex="-1"></a>simple_df1<span class="sc">$</span>grade[simple_df1<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
 <li>If-else</li>
 </ol>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-cleaning-part-1.html#cb57-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> simple_df</span>
-<span id="cb57-2"><a href="data-cleaning-part-1.html#cb57-2" aria-hidden="true" tabindex="-1"></a>simple_df2<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">ifelse</span>(simple_df2<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="data-cleaning-part-1.html#cb79-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> simple_df</span>
+<span id="cb79-2"><a href="data-cleaning-part-1.html#cb79-2" aria-hidden="true" tabindex="-1"></a>simple_df2<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">ifelse</span>(simple_df2<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-cleaning-part-1.html#cb58-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">ifelse</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="data-cleaning-part-1.html#cb80-1" aria-hidden="true" tabindex="-1"></a>simple_df2 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">ifelse</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code></pre></div>
 <ol start="3" style="list-style-type: decimal">
 <li>If-else_if-else</li>
 </ol>
@@ -405,33 +419,33 @@ simple_df3$grade = case_when(simple_df3$grade &gt;= 90 ~ &quot;A&quot;,
 }</code></pre>
 <p>The expression that is being tested whether it is <code>TRUE</code> <strong>must be a singular logical value</strong>, and not a logical vector. If the latter, see the recoding section for now.</p>
 <p>Example:</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="data-cleaning-part-1.html#cb64-1" aria-hidden="true" tabindex="-1"></a>nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
-<span id="cb64-2"><a href="data-cleaning-part-1.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-3"><a href="data-cleaning-part-1.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;A&quot;</span>) {</span>
-<span id="cb64-4"><a href="data-cleaning-part-1.html#cb64-4" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;T&quot;</span></span>
-<span id="cb64-5"><a href="data-cleaning-part-1.html#cb64-5" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;T&quot;</span>) {</span>
-<span id="cb64-6"><a href="data-cleaning-part-1.html#cb64-6" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
-<span id="cb64-7"><a href="data-cleaning-part-1.html#cb64-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;C&quot;</span>) {</span>
-<span id="cb64-8"><a href="data-cleaning-part-1.html#cb64-8" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb64-9"><a href="data-cleaning-part-1.html#cb64-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;G&quot;</span>) {</span>
-<span id="cb64-10"><a href="data-cleaning-part-1.html#cb64-10" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
-<span id="cb64-11"><a href="data-cleaning-part-1.html#cb64-11" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> {</span>
-<span id="cb64-12"><a href="data-cleaning-part-1.html#cb64-12" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="cn">NA</span></span>
-<span id="cb64-13"><a href="data-cleaning-part-1.html#cb64-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb64-14"><a href="data-cleaning-part-1.html#cb64-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb64-15"><a href="data-cleaning-part-1.html#cb64-15" aria-hidden="true" tabindex="-1"></a>nuc</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="data-cleaning-part-1.html#cb86-1" aria-hidden="true" tabindex="-1"></a>nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb86-2"><a href="data-cleaning-part-1.html#cb86-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-3"><a href="data-cleaning-part-1.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;A&quot;</span>) {</span>
+<span id="cb86-4"><a href="data-cleaning-part-1.html#cb86-4" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;T&quot;</span></span>
+<span id="cb86-5"><a href="data-cleaning-part-1.html#cb86-5" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;T&quot;</span>) {</span>
+<span id="cb86-6"><a href="data-cleaning-part-1.html#cb86-6" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;A&quot;</span></span>
+<span id="cb86-7"><a href="data-cleaning-part-1.html#cb86-7" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;C&quot;</span>) {</span>
+<span id="cb86-8"><a href="data-cleaning-part-1.html#cb86-8" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb86-9"><a href="data-cleaning-part-1.html#cb86-9" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">&quot;G&quot;</span>) {</span>
+<span id="cb86-10"><a href="data-cleaning-part-1.html#cb86-10" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="st">&quot;C&quot;</span></span>
+<span id="cb86-11"><a href="data-cleaning-part-1.html#cb86-11" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> {</span>
+<span id="cb86-12"><a href="data-cleaning-part-1.html#cb86-12" aria-hidden="true" tabindex="-1"></a>  nuc <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb86-13"><a href="data-cleaning-part-1.html#cb86-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb86-14"><a href="data-cleaning-part-1.html#cb86-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb86-15"><a href="data-cleaning-part-1.html#cb86-15" aria-hidden="true" tabindex="-1"></a>nuc</span></code></pre></div>
 <pre><code>## [1] &quot;T&quot;</code></pre>
 <p>Example:</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-cleaning-part-1.html#cb66-1" aria-hidden="true" tabindex="-1"></a>my_input <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
-<span id="cb66-2"><a href="data-cleaning-part-1.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co">#my_input = c(&quot;e&quot;, &quot;e&quot;, &quot;a&quot;, &quot;i&quot;, &quot;o&quot;)</span></span>
-<span id="cb66-3"><a href="data-cleaning-part-1.html#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="data-cleaning-part-1.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.numeric</span>(my_input)) {</span>
-<span id="cb66-5"><a href="data-cleaning-part-1.html#cb66-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">mean</span>(my_input)</span>
-<span id="cb66-6"><a href="data-cleaning-part-1.html#cb66-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(<span class="fu">is.character</span>(my_input)) {</span>
-<span id="cb66-7"><a href="data-cleaning-part-1.html#cb66-7" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">table</span>(my_input)</span>
-<span id="cb66-8"><a href="data-cleaning-part-1.html#cb66-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb66-9"><a href="data-cleaning-part-1.html#cb66-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-10"><a href="data-cleaning-part-1.html#cb66-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="data-cleaning-part-1.html#cb88-1" aria-hidden="true" tabindex="-1"></a>my_input <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span>
+<span id="cb88-2"><a href="data-cleaning-part-1.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="co">#my_input = c(&quot;e&quot;, &quot;e&quot;, &quot;a&quot;, &quot;i&quot;, &quot;o&quot;)</span></span>
+<span id="cb88-3"><a href="data-cleaning-part-1.html#cb88-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-4"><a href="data-cleaning-part-1.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="fu">is.numeric</span>(my_input)) {</span>
+<span id="cb88-5"><a href="data-cleaning-part-1.html#cb88-5" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">mean</span>(my_input)</span>
+<span id="cb88-6"><a href="data-cleaning-part-1.html#cb88-6" aria-hidden="true" tabindex="-1"></a>}<span class="cf">else</span> <span class="cf">if</span>(<span class="fu">is.character</span>(my_input)) {</span>
+<span id="cb88-7"><a href="data-cleaning-part-1.html#cb88-7" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">table</span>(my_input)</span>
+<span id="cb88-8"><a href="data-cleaning-part-1.html#cb88-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb88-9"><a href="data-cleaning-part-1.html#cb88-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb88-10"><a href="data-cleaning-part-1.html#cb88-10" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 
 </div>
