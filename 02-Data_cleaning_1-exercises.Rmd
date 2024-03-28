@@ -130,11 +130,13 @@ In this analysis, we want to examine cancer incidence rates in state of Washingt
 To access this data easier in R, DaSL staff built a R package `cancerprof` to easily load in the data. Let's look at the package's documentation to see how to get access to cancer incidence data.
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
-install.packages("pak")
-library(pak)
-pak("getwilds/cancerprof@practice")
-library(cancerprof)
-?incidence_cancer
+#uncomment to run!
+
+#install.packages("pak")
+#library(pak)
+#pak("getwilds/cancerprof@practice")
+#library(cancerprof)
+#?incidence_cancer
 ```
 
 Towards the bottom of the documentation are some useful examples to consider as starting point.
@@ -163,7 +165,7 @@ Let's select a few columns of interest and give them column names that doesn't c
 #names(melanoma_incidence) = c("County", "Age_adjusted_incidence_rate", "Recent_trend")
 ```
 
-Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*" (notice the space after \*). Recode "\*"as `NA`.
+Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*" (notice the space after \*). Recode "\*" as `NA`.
 
 ```{r}
 
