@@ -131,14 +131,15 @@ To access this data easier in R, DaSL staff built a R package `cancerprof` to ea
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
 install.packages("pak")
-pak::pak("getwilds/cancerprof@practice")
+library(pak)
+pak("getwilds/cancerprof@practice")
 library(cancerprof)
 ?incidence_cancer
 ```
 
 Towards the bottom of the documentation are some useful examples to consider as starting point.
 
-Load in data about the following population: **melanoma incidence in WA at the county level for males of all ages, all cancer stages, averaged in the past 5 years.** Store it as a dataframe variable of choice.
+Load in data about the following population: **melanoma incidence in WA at the county level for males of all ages, all cancer stages, averaged in the past 5 years.** Store it as a dataframe variable named `melanoma_incidence`
 
 (If you are stuck, you can use the first example in the documentation.)
 
@@ -155,9 +156,11 @@ Take a look at the data yourself and explore it.
 Let's select a few columns of interest and give them column names that doesn't contain spaces. We can access column names with spaces via the backtick \` symbol.
 
 ```{r}
-male_melanoma_WA = select(male_melanoma_WA, County, `Age Adjusted Incidence Rate`, `Recent Trend`)
+#uncomment to run!
 
-names(male_melanoma_WA) = c("County", "Age_adjusted_incidence_rate", "Recent_trend")
+#melanoma_incidence = select(melanoma_incidence, County, `Age Adjusted Incidence Rate`, `Recent Trend`)
+
+#names(melanoma_incidence) = c("County", "Age_adjusted_incidence_rate", "Recent_trend")
 ```
 
 Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*" (notice the space after \*). Recode "\*"as `NA`.
