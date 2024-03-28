@@ -85,11 +85,15 @@ Create a new list `all_visits` with elements `visit1` and `visit2`. Yes, we're m
 Suppose you want to use `all_visits` to access visit 1's symptoms. You would continue the double brackets [[ ]] or \$ notation: `all_visits[[1]]` returns a list, so we access the first element of *that* list via `all_visits[[1]][[1]]`.
 
 ```{r}
-all_visits[[1]][[1]]
+#all_visits[[1]][[1]]
+
 #or
-all_visits[[1]][["symptoms"]]
+
+#ll_visits[[1]][["symptoms"]]
+
 #or
-all_visits[[1]]$symptoms
+
+#ll_visits[[1]]$symptoms
 ```
 
 How would you use `all_visits` to access visit 2's prescription?

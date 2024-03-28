@@ -105,7 +105,7 @@ Recode "five" to 5 in the `age` column:
 
 Create a new column `age_category` so that it has value "toddler" if `age` is \< 6, and "child" if `age` is \>= 6.
 
-(Hint: You can create a new column via `mutate`, or you can directly refer to the new column via `student$``age_category`.)
+(Hint: You can create a new column via `mutate`, or you can directly refer to the new column via ``` student$``age_category ```.)
 
 ```{r}
 
@@ -127,8 +127,9 @@ In this analysis, we want to examine cancer incidence rates in state of Washingt
 
 To access this data easier in R, DaSL staff built a R package `cancerprof` to easily load in the data. Let's look at the package's documentation to see how to get access to cancer incidence data.
 
-```{r}
-#pak::pak("getwilds/cancerprof@practice")
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+install.packages("pak")
+pak::pak("getwilds/cancerprof@practice")
 library(cancerprof)
 ?incidence_cancer
 ```
@@ -157,7 +158,7 @@ male_melanoma_WA = select(male_melanoma_WA, County, `Age Adjusted Incidence Rate
 names(male_melanoma_WA) = c("County", "Age_adjusted_incidence_rate", "Recent_trend")
 ```
 
-Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\* " (notice the space after \*). Recode "\* "as `NA`.
+Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*" (notice the space after \*). Recode "\*"as `NA`.
 
 ```{r}
 
