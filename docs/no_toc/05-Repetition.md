@@ -1,4 +1,3 @@
-
 # Repeating tasks
 
 Suppose that you want to repeat a chunk of code many times, but changing one variable's value each time you do it. This could be modifying each element of a vector with the same operation, or analyzing a dataframe with different parameters.
@@ -117,7 +116,7 @@ All of these are toy examples that gets us familiar with the syntax, but we alre
 
 ## Case studies
 
-### 1. Loading in multiple dataframes from files for analysis 
+### 1. Loading in multiple dataframes from files for analysis
 
 Suppose that we want to load in a few dataframes, and store them in a list of dataframes for analysis downstream.
 
@@ -143,7 +142,7 @@ result = read_csv(paths[1])
 
 -   The repeated task as a function: `read_csv()`
 
--   The output data type, which determines the function to facilitate the looping mechanism: `map()` outputs lists.
+-   The looping mechanism, and its output: `map()` outputs lists.
 
 
 ```r
@@ -168,7 +167,7 @@ for(i in seq_along(paths)) {
 }
 ```
 
-### 2. Analyze a dataframe differently with different parameters. 
+### 2. Analyze a dataframe differently with different parameters.
 
 Suppose you are working with the `penguins` dataframe:
 
@@ -212,7 +211,7 @@ mean(penguins_subset$bill_length_mm, na.rm = TRUE)
 
 -   The repeated task as a function: a custom function that takes in a specie of interest. The function filters the rows of `penguins` to the species of interest, and compute the mean of `bill_length_mm`.
 
--   The output data type, which determines the function to facilitate the looping mechanism: `map_dbl()` outputs (double) numeric vectors.
+-   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
 
 
 ```r
@@ -250,7 +249,7 @@ outcome
 ## [1] 38.79139 48.83382 47.50488
 ```
 
-### 3. Calculate summary statistics on columns of a dataframe. 
+### 3. Calculate summary statistics on columns of a dataframe.
 
 Suppose that you are interested in the numeric columns of the `penguins` dataframe.
 
@@ -278,7 +277,7 @@ mean(penguins_numeric[[1]], na.rm = TRUE)
 
 -   The repeated task as a function: `mean()` with the argument `na.rm = TRUE`.
 
--   The output data type, which determines the function to facilitate the looping mechanism: `map_dbl()` outputs (double) numeric vectors.
+-   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
 
 
 ```r
