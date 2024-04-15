@@ -1,5 +1,11 @@
 # Fundamentals Exercises
 
+To reset your environment, run this line of code:
+
+```{r}
+rm(list = ls())
+```
+
 ## Part 1: Vectors
 
 How do you subset the following vector to the first three elements?
@@ -28,7 +34,7 @@ vec_with_NA = c(2, 4, NA, NA, 3, NA)
 
 ```
 
-Consider the following logical vector `some_logicals`. Convert Logical vector -\> Numeric vector -\> Character vector in two steps. Check that you are doing this correctly along the way by using the `class()` function, or `is.numeric()` and `is.character()`, on the converted data.
+Consider the following logical vector `some_logicals`. *Coerce* the data type from Logical vector -\> Numeric vector -\> Character vector in two steps via `as.___()` functions. Check that you are doing this correctly along the way by using the `class()` function, or `is.numeric()` and `is.character()`, on the converted data.
 
 ```{r}
 some_logicals = c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)
@@ -38,9 +44,52 @@ some_logicals = c(TRUE, TRUE, TRUE, FALSE, TRUE, FALSE)
 
 ```
 
-## Part 2: Lists
+## Part 2: Dataframes
 
-Consider the following lists with names.
+We look back to our `penguins` dataset again.
+
+```{r, message=F, warning=F}
+library(tidyverse)
+library(palmerpenguins)
+head(penguins)
+```
+
+Access the `body_mass_g` column of `penguins`, like what we did in class today. There are several ways to do this, as we explored in class this week, and see the Appendix for a full list. I highly recommend using the `$` operation, as it gives you a vector (not dataframe), which we will use downstream.
+
+```{r}
+
+```
+
+Compute the mean of this column: use `mean(x, na.rm=TRUE)` to remove calculate the mean without missing data, where `x` is your vector.
+
+```{r}
+
+```
+
+We now create a new dataframe called `penguins_clean` that filters out any `NA`s in `body_mass_g`:
+
+```{r}
+penguins_clean = filter(penguins, !is.na(body_mass_g))
+```
+
+Subset the columns of `penguins_clean` to have columns `species` and `body_mass_g`. See Appendix to see a variety of ways to do this as discussed in class.
+
+```{r}
+
+```
+
+Subset the rows of `penguins_clean` so that the rows only contain the `species` "Gentoo". Do it for the two other species, and compute their mean value of `body_mass_g`. Because you already got rid of `NA`s in `body_mass_g`, you can just use `mean(x)` without the `na.rm` option. How do they compare?
+
+```{r}
+penguins_clean_g = filter(penguins_clean, species == "Gentoo")
+mean(penguins_clean_g$body_mass_g)
+
+#your turn with the other two species
+```
+
+## Part 3: Lists
+
+Lists are from the wild west. You can have any data type or data structures within a list. Consider the following lists. These lists also have names metadata attached to them.
 
 ```{r}
 patient = list(
@@ -56,93 +105,85 @@ visit1 = list(
   prescription = "recommended time off from work, rest.",
   date = "1/1/2000"
 )
-
-visit2 = list(
-  symptoms = c("fainted", "pale complexion"),
-  prescription = "drink water and take time off work.",
-  date = "1/1/2001"
-)
 ```
 
-Access the first element of `patient` via double brackets [[ ]] and modify it to a value of your choice.
+You can access the elements of a list via the double bracket [[ ]]. Let's access the first element of `visit1`.
 
 ```{r}
-
+visit1[[1]]
 ```
 
-Access the named element "pronouns" of `patient` via double bracket [[ ]] or \$ and modify its value so that it doesn't contain the "/" element. (Use your vector subsetting skills here after you access the appropriate element from the list.)
+It gives you a vector, as expected. If a list has name attributes, you can access its elements by the following:
 
 ```{r}
-
-```
-
-Create a new list `all_visits` with elements `visit1` and `visit2`. Yes, we're making lists within lists!
-
-```{r}
-
-```
-
-Suppose you want to use `all_visits` to access visit 1's symptoms. You would continue the double brackets [[ ]] or \$ notation: `all_visits[[1]]` returns a list, so we access the first element of *that* list via `all_visits[[1]][[1]]`.
-
-```{r}
-#all_visits[[1]][[1]]
-
+visit1[["symptoms"]]
 #or
-
-#ll_visits[[1]][["symptoms"]]
-
-#or
-
-#ll_visits[[1]]$symptoms
+visit1$symptoms
 ```
 
-How would you use `all_visits` to access visit 2's prescription?
+Your turn: access the first list element of `patient` via double brackets [[ ]] or \$ and modify it to a value of your choice. Also, can you access the `visit1`'s first element's second element: "sore throat"?
 
 ```{r}
 
 ```
 
-How would you use `all_visits` to access visit 2's symptom element "pale complexion"? Remember, once you access a vector, you would go back to the single bracket [ ] to access its elements.
+Important note: It turns out that dataframes are a special type of list. A dataframe is a named list with vector elements of the same length, organized as columns. Therefore, if we consider `penguins` dataframe as a list, we can access its vector elements (columns):
+
+```{r}
+head(penguins[["species"]])
+head(penguins$species)
+```
+
+Set `patient$visits` to equal `visit1` and take a look at the result. Yes\...`patient` now has a list within a list\... 🤯 🙃
 
 ```{r}
 
 ```
 
-Finally, assign `all_visits` to `patient`'s visits.
+## Feedback!
+
+How many hours did you spend on this exercise?
 
 ```{r}
-
+time_spent = 0 
 ```
 
-### Part 3: Dataframes (Lists)
-
-A dataframe is just a named list of vectors of same length with **attributes** of (column) `names` and `row.names`.
+If you worked with other peers, write their names down in the following character vector: each element is one person's name.
 
 ```{r}
-library(palmerpenguins)
-head(penguins)
+peers = c("myself")
 ```
 
-Access the `body_mass_g` column vector of `penguins` via the double bracket [[ ]], treating `penguins` like a list, and compute the mean. Remember to use na.rm = TRUE to remove any `NA` values: `mean(x, na.rm = TRUE)`
+## Appendix
+
+### Accessing the column of a dataframe
+
+Suppose that you have a `dataframe` with column `column_name`. Here are some ways to access the column:
+
+1.  Recommended: `$` operation. `dataframe$column_name` will give you the column as a vector.
+2.  `select()` function. `select(dataframe, column_name)` will give you the column as a 1-column dataframe. Usually recommended when we select multiple columns.
+3.  With indexing vectors: `dataframe[, "column_name"]`. You provide an indexing vector for the row, a comma, and an indexing vector *or* name attribute for the column. Since we want all the rows, that part is blank: we just need a comma and a name attribute for the column. This can give you a 1-column dataframe, or a vector, depending on some subtle properties of the dataframe.
+4.  Treating the dataframe as a list: `dataframe[["column_name"]]`. This gives you a vector.
+
+### Subsetting rows and columns of a dataframe
+
+Suppose you have `penguins` dataframe and you want to select for `bill_length_mm`, `bill_depth_mm`, `species`, and filter the rows so that `species` only has "Gentoo".
+
+1.  Recommended: `select()` subsets for columns: you provide your dataframe, and column names of interest. Then, `filter()` subset for rows: you provide your dataframe, and a comparison operation on columns.
 
 ```{r}
-
+penguins_select = select(penguins, bill_length_mm, bill_depth_mm, species)
+filter(penguins_select, species == "Gentoo") 
 ```
 
-Create a new dataframe `penguins_clean`, which has no `NA` values in the `body_mass_g` column. You need to filter out rows that have `NA`s in the column `bill_length_mm`:
+2.  As above, but in a pipe notation:
 
 ```{r}
-
+penguins %>% select(bill_length_mm, bill_depth_mm, species) %>% filter(species == "Gentoo")
 ```
 
-Now, subset `penguins_clean` to each of the three species and compute their respective mean value of `body_mass_g`. Because you already got rid of `NA`s in `body_mass_g`, you can just use `mean(x)` without the extra option. How do they compare?
+3.  With indexing vectors: You provide an indexing vector for the row, a comma, and an indexing vector *or* name attribute for the column.
 
 ```{r}
-
-```
-
-Finally, make a box plot of `species` (x-axis) vs. `body_mass_g` (y-axis) via `penguins_clean` dataframe. I'll get you started...
-
-```{r}
-#ggplot(penguins_clean) + aes(x = , y = ) + geom_boxplot()
+penguins[penguins$species=="Gentoo", c("bill_length_mm", "bill_depth_mm", "species")]
 ```

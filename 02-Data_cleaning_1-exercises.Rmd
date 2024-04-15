@@ -141,7 +141,7 @@ To access this data easier in R, DaSL staff built a R package `cancerprof` to ea
 
 Towards the bottom of the documentation are some useful examples to consider as starting point.
 
-Load in data about the following population: **melanoma incidence in WA at the county level for males of all ages, all cancer stages, averaged in the past 5 years.** Store it as a dataframe variable named `melanoma_incidence`
+Load in data about the following population: **melanoma incidence in WA at the county level for females of all ages, all cancer stages, averaged in the past 5 years.** Store it as a dataframe variable named `melanoma_incidence`
 
 (If you are stuck, you can use the first example in the documentation.)
 
@@ -160,12 +160,12 @@ Let's select a few columns of interest and give them column names that doesn't c
 ```{r}
 #uncomment to run!
 
-#melanoma_incidence = select(melanoma_incidence, County, `Age Adjusted Incidence Rate`, `Recent Trend`)
+#melanoma_incidence = select(melanoma_incidence, County, `Age Adjusted Incidence Rate`)
 
-#names(melanoma_incidence) = c("County", "Age_adjusted_incidence_rate", "Recent_trend")
+#names(melanoma_incidence) = c("County", "Age_adjusted_incidence_rate")
 ```
 
-Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*" (notice the space after \*). Recode "\*" as `NA`.
+Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\* " (notice the space after \*). Recode "\* " as `NA`.
 
 ```{r}
 
@@ -175,4 +175,20 @@ Finally, notice that the data type for `Age_adjusted_incidence_rate` is characte
 
 ```{r}
 
+```
+
+
+
+## Feedback!
+
+How many hours did you spend on this exercise?
+
+```{r}
+time_spent = 0 
+```
+
+If you worked with other peers, write their names down in the following character vector: each element is one person's name.
+
+```{r}
+peers = c("myself")
 ```
