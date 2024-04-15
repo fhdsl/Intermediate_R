@@ -1,6 +1,5 @@
 # Data Cleaning, Part 2
 
-
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
@@ -180,6 +179,6 @@ ggplot(kidney_long_still) + aes(x = treatment, y = recovery_rate, fill = stone_s
 
 ## References
 
-https://vita.had.co.nz/papers/tidy-data.html
+<https://vita.had.co.nz/papers/tidy-data.html>
 
-https://kiwidamien.github.io/what-is-tidy-data.html
+<https://kiwidamien.github.io/what-is-tidy-data.html>

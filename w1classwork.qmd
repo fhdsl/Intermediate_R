@@ -1,0 +1,137 @@
+---
+title: "Comparing cancer incidence rates from NCI's State Cancer Profile"
+format: html
+editor: visual
+---
+
+```{r, echo=F, message=F, warning=F}
+library(tidyverse)
+library(cancerprof)
+```
+
+At the end of the Intermediate R course, we would like you to be able to conduct a full end-to-end data analysis (minus model).
+
+![](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png)
+
+Let's see what the end product looks like. In this project, we will build out an end-to-end analysis using [data from the National Cancer Institute's State Cancer Profile](https://statecancerprofiles.cancer.gov/index.html):
+
+> \[The State Cancer Profile data\] was developed with the idea to provide a geographic profile of cancer burden in the United States and reveal geographic disparities in cancer incidence, mortality, risk factors for cancer, and cancer screening, across different population subgroups.
+
+In this analysis, **we want to examine skin cancer incidence rates at the county level in state of Washington and make comparisons between females and males**. The cancer incidence rate can be accessed at this [website](https://statecancerprofiles.cancer.gov/incidencerates/index.php), once you give input of what kind of incidence data you want to access. If you want to analyze this data in R, it takes a bit of work of exporting the data and loading it into R.
+
+To access this data easier in R, DaSL staff (Brian Park, Sean Kross) built a R package `cancerprof` to easily load in the data.
+
+## 1. Load in the data
+
+Let's look at the documentation of the function `incidence_cancer()` to understand how to use it.
+
+```{r}
+?incidence_cancer
+```
+
+Load in data about the following population: **melanoma incidence in WA at the county level for females of all ages, all cancer stages, averaged in the past 5 years.** Store it as a dataframe variable named `female_melanoma`.
+
+```{r}
+female_melanoma = incidence_cancer("WA", "county", "melanoma of the skin", "all races (includes hispanic)", "females", "all ages", "all stages", "latest 5 year average")
+```
+
+## 2. Recode it
+
+Let's select a few columns of interest and give them column names that doesn't contain spaces. We can access column names with spaces via the backtick \` symbol.
+
+```{r}
+female_melanoma = select(female_melanoma, County, `Age Adjusted Incidence Rate`)
+names(female_melanoma) = c("County", "Age_adjusted_incidence_rate")
+```
+
+Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\* " (notice the space after \*). Recode "\* " as `NA`.
+
+```{r}
+female_melanoma = mutate(female_melanoma, 
+                            Age_adjusted_incidence_rate = if_else(Age_adjusted_incidence_rate == "* ", NA, Age_adjusted_incidence_rate))
+```
+
+Finally, notice that the data type for `Age_adjusted_incidence_rate` is character. Convert it to a numeric data type.
+
+```{r}
+female_melanoma$Age_adjusted_incidence_rate = as.numeric(female_melanoma$Age_adjusted_incidence_rate)
+```
+
+## 3. Wrangle it
+
+We repeat this same data recoding for males also.
+
+```{r}
+#male
+male_melanoma = incidence_cancer("WA", "county", "melanoma of the skin", "all races (includes hispanic)", "males", "all ages", "all stages", "latest 5 year average")
+male_melanoma = select(male_melanoma, County, `Age Adjusted Incidence Rate`)
+names(male_melanoma) = c("County", "Age_adjusted_incidence_rate")
+male_melanoma$Age_adjusted_incidence_rate[male_melanoma$Age_adjusted_incidence_rate == "* "] = NA
+male_melanoma$Age_adjusted_incidence_rate = as.numeric(male_melanoma$Age_adjusted_incidence_rate)
+```
+
+If we look at both dataframes, they seem to both be in a great Tidy state.
+
+To compare the incidence rate between the two groups, we need them to be in the same dataframe. Let's join them with a common column `County`.
+
+```{r}
+male_vs_female = full_join(male_melanoma, female_melanoma, by = "County", suffix = c(".male", ".female"))
+```
+
+Let's look at this `male_vs_female` dataframe carefully.
+
+```{r}
+head(male_vs_female)
+```
+
+This isn't quite in a Tidy format we want for the plot: we would like to have a grouped barchart figure in which the x-axis is the county name, the y-axis is the incidence rate, and each bar to have a component for each sex. In ggplot, that means we need a variable (column) of county, incidence rate, and sex. We need to make the dataframe "wider".
+
+```{r}
+male_vs_female_long = select(male_vs_female, County, Age_adjusted_incidence_rate.male, Age_adjusted_incidence_rate.female)
+
+male_vs_female_long = pivot_longer(male_vs_female_long, c("Age_adjusted_incidence_rate.male", "Age_adjusted_incidence_rate.female"), names_to = "sex", values_to = "Age_adjusted_incidence_rate")
+```
+
+Some more recoding:
+
+```{r}
+male_vs_female_long = mutate(male_vs_female_long, 
+                             sex = if_else(sex == "Age_adjusted_incidence_rate.female",
+                                           "female", "male"))
+```
+
+## 4. Do analysis!
+
+```{r}
+ggplot(male_vs_female_long, aes(x = County, y = Age_adjusted_incidence_rate, fill = sex)) + geom_bar(position="dodge", stat="identity") + theme(axis.text.x = element_text(angle = 90)) + labs(title = "Melanoma", y = "Incidence Rate per 100k people, avg. over 5 years")
+```
+
+This is great: we completed our analysis! However, there is quite a bit of copy and pasting that we did - we repeated the same analysis for males and females before joining the dataframes together. Can we write a *function* to make that process modular, and repeat it for males and females via a *functional*?
+
+## 5. Make it modular and scalable via functions and functionals
+
+```{r}
+clean_cancer_incidence_data = function(sex) {
+    df = incidence_cancer("WA", "county", "melanoma of the skin", "all races (includes hispanic)", sex, "all ages", "all stages", "latest 5 year average")
+  
+  df = select(df, County, `Age Adjusted Incidence Rate`)
+  
+  names(df) = c("County", "Age_adjusted_incidence_rate")
+  
+  df$Age_adjusted_incidence_rate[df$Age_adjusted_incidence_rate == "* "] = NA
+  df$Age_adjusted_incidence_rate = as.numeric(df$Age_adjusted_incidence_rate)
+  
+  df$sex = sex
+  return(df)
+}
+
+
+result = map(c("females", "males"), clean_cancer_incidence_data)
+result_reduced = reduce(result, rbind)
+```
+
+```{r}
+ggplot(result_reduced, aes(x = County, y = Age_adjusted_incidence_rate, fill = sex)) + geom_bar(position="dodge", stat="identity") + theme(axis.text.x = element_text(angle = 90)) + labs(title = "Melanoma", y = "Incidence Rate per 100k people, avg. over 5 years")
+```
+
+Much cleaner, shorter code.
