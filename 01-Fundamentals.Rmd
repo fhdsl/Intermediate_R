@@ -280,3 +280,7 @@ my_matrix[2 ,]
 #column 3, row 2
 my_matrix[2, 3]
 ```
+
+## Exercises
+
+You can find [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252), or on [GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).

@@ -52,19 +52,19 @@ This "privacy" in the local environment is to make functions modular - they are 
 
 Using the `addFunction` function, let's see step-by-step how the R interpreter understands our code:
 
-![We define the function in the global environment.](../images/func1.png){alt="We define the function in the global environment."}
+![We define the function in the global environment.](../images/func1.png)
 
 . . .
 
-![We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function's local environment.](../images/func2.png){alt="We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function's local environment."}
+![We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function's local environment.](../images/func2.png)
 
 . . .
 
-![We run the first line of code in the function body. The new variable "result" is stored in the local environment because it is within { }.](../images/func3.png){alt="We run the first line of code in the function body. The new variable \"result\" is stored in the local environment because it is within { }."}
+![We run the first line of code in the function body. The new variable "result" is stored in the local environment because it is within { }.](../images/func3.png)
 
 . . .
 
-![We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.](../images/func4.png){alt="We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over."}
+![We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.](../images/func4.png)
 
 ## Your turn!
 

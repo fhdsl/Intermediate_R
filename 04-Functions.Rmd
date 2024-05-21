@@ -14,7 +14,7 @@ Some advice on writing functions:
 
 -   A function should do only one, well-defined task.
 
-### Anatomy of a function definition
+## Anatomy of a function definition
 
 *Function definition consists of assigning a **function name** with a "function" statement that has a comma-separated list of named **function arguments**, and a **return expression**. The function name is stored as a variable in the global environment.*
 
@@ -34,13 +34,13 @@ With function definitions, not all code runs from top to bottom. The first four 
 
 When the function is called in line 5, the variables for the arguments are reassigned to function arguments to be used within the function and helps with the modular form. We need to introduce the concept of local and global environments to distinguish variables used only for a function from variables used for the entire program.
 
-### Local and global environments
+## Local and global environments
 
 *{ } represents variable scoping: within each { }, if variables are defined, they are stored in a **local environment**, and is only accessible within { }. All function arguments are stored in the local environment. The overall environment of the program is called the **global environment** and can be also accessed within { }.*
 
 The reason of having some of this "privacy" in the local environment is to make functions modular - they are independent little tools that should not interact with the rest of the global environment. Imagine someone writing a tool that they want to give someone else to use, but the tool depends on your environment, vice versa.
 
-### A step-by-step example
+## A step-by-step example
 
 Using the `addFunction` function, let's see step-by-step how the R interpreter understands our code:
 
@@ -52,7 +52,7 @@ Using the `addFunction` function, let's see step-by-step how the R interpreter u
 
 ![We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.](images/func4.png)
 
-### Function arguments create modularity
+## Function arguments create modularity
 
 First time writers of functions might ask: why are variables we use for the arguments of a function *reassigned* for function arguments in the local environment? Here is an example when that process is skipped - what are the consequences?
 
@@ -81,7 +81,7 @@ Here is the execution for `w`:
 
 The function did not work as expected because we used hard-coded variables from the global environment and not function argument variables unique to the function use!
 
-### Exercises
+## Examples
 
 -   Create a function, called `add_and_raise_power` in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and raised to a power determined by the 3rd argument. The function returns the resulting value. Here is a use case: `add_and_raise_power(1, 2, 3) = 27` because the function will return this expression: `(1 + 2) ^ 3`. Another use case: `add_and_raise_power(3, 1, 2) = 16` because of the expression `(3 + 1) ^ 2`. Confirm with that these use cases work. Can this function used for numeric vectors?
 
@@ -123,3 +123,7 @@ The function did not work as expected because we used hard-coded variables from 
     }
     medicaid_eligible(c(30, 70))
     ```
+
+## Exercises
+
+You can find [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252), or on [GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).

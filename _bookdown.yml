@@ -3,15 +3,10 @@ chapter_name: "Chapter "
 repo: https://github.com/jhudsl/OTTR_Template/
 rmd_files: ["index.Rmd",
             "01-Fundamentals.Rmd",
-            "01-Fundamentals-exercises.Rmd",
             "02-Data_cleaning_1.Rmd",
-            "02-Data_cleaning_1-exercises.Rmd",
             "03-Data_cleaning_2.Rmd",
-            "03-Data_cleaning_2-exercises.Rmd",
             "04-Functions.Rmd",
-            "04-Functions-exercises.Rmd",
             "05-Iteration.Rmd",
-            "05-Iteration-exercises.Rmd",
             "About.Rmd",
             "References.Rmd"]
 new_session: yes
