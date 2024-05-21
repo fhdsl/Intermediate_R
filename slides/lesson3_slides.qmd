@@ -1,0 +1,191 @@
+---
+title: "W3: Data Cleaning 2"
+format: 
+  revealjs:
+    smaller: true
+    scrollable: true
+    echo: true
+output-location: fragment
+---
+
+```{r, echo=F, message=F, warning=F}
+library(tidyverse)
+
+#demo data
+untidy1 = data.frame(Store = c("A", "B"),
+                Q1_Sales = c(55, 98),
+                Q2_Sales = c(45, 70),
+                Q3_Sales = c(22, 60),
+                Q4_Sales = c(50, 60))
+
+
+tidy2 = data.frame(Sample = c("A", "B"),
+                 KRAS_mutation = c(TRUE, FALSE),
+                 KRAS_expression = c(2.3, 3.9))
+
+untidy2 = pivot_longer(tidy2, c("KRAS_mutation", "KRAS_expression"), names_to = "gene", values_to = "values")
+
+untidy3 = table3
+```
+
+## Agenda:
+
+-   Introduce State Cancer Profiles project
+
+-   Review W2 Exercises
+
+-   Data Cleaning 2: Tidy Data
+
+## Tidy Data
+
+A standard of organizing data ready for analysis: Tidy data.
+
+Many tools in R, such as plotting, are most effective when your data is in a Tidy format.
+
+. . .
+
+1.  Each observation must have its own row.
+
+2.  Each variable must have its own column.
+
+3.  Each value must have its own cell.
+
+![](https://r4ds.hadley.nz/images/tidy-1.png){alt="A tidy dataframe." width="800"}
+
+. . .
+
+Easier to understand by looking at common un-Tidy data situations.
+
+## Columns contain values of variables, rather than variables
+
+```{r}
+untidy1
+```
+
+. . .
+
+Want to look at the relationship between sales numbers and quarters for each store type.
+
+. . .
+
+Need variables: Quarter, Sales numbers, Store type
+
+. . .
+
+👌 Observation is a store, and each observation has its own row.
+
+. . .
+
+😩 The columns "Q1_Sales", ..., "Q4_Sales" seem to be *values of a single variable "quarter"* of our observation.
+
+. . .
+
+Solution: make the data into a **longer** format.
+
+```{r}
+tidy1 = pivot_longer(untidy1, c("Q1_Sales", "Q2_Sales", "Q3_Sales", "Q4_Sales"), names_to = "Quarter", values_to = "Sales")
+tidy1
+```
+
+. . .
+
+👌 Observation is a store's quarter.
+
+. . .
+
+👌 The new columns "quarter" and "sales" are variables with their own columns.
+
+. . .
+
+```{r}
+ggplot(tidy1) + aes(x = Quarter, y = Sales, group = Store) + geom_line() + theme_bw()
+```
+
+. . .
+
+This is a common transformation, as it is easier to do data entry via a wider format, but the tools we use in programming often requires it in a longer format.
+
+## Variables are stored in rows
+
+```{r}
+untidy2
+```
+
+. . .
+
+What's the relationship between KRAS mutation and KRAS expression?
+
+. . .
+
+😩 Observation is a sample's gene type?
+
+. . .
+
+😩 The variables we want, KRAS_mutation and KRAS_expression, are in rows. The current columns contain multiple types of info: `gene` contains both mutations and expression, and `value` contains both gene expression and mutational status.
+
+. . .
+
+Solution: make the data into a **wider** format.
+
+```{r}
+tidy2 = pivot_wider(untidy2, names_from = "gene", values_from = "values") 
+tidy2
+```
+
+. . .
+
+👌 Observation is a sample.
+
+. . .
+
+👌 The new columns are appropriate variables for our analysis.
+
+. . .
+
+```{r}
+ggplot(tidy2) + aes(x = as.logical(KRAS_mutation), y = KRAS_expression) + geom_point() + theme_bw()
+```
+
+. . .
+
+`pivot_longer()` can undo what we did in `pivot_wider()`, and vice versa.
+
+. . .
+
+```{r}
+pivot_longer(tidy2, c("KRAS_mutation", "KRAS_expression"), names_to = "gene", values_to = "values")
+```
+
+## Multiple variables are stored in a single column
+
+```{r}
+untidy3
+```
+
+. . .
+
+😩 The rate column's values have multiple values in its cell.
+
+. . .
+
+Solution: Let's separate it:
+
+```{r}
+tidy3 = separate(untidy3, col = "rate", into = c("count", "population"), sep = "/")
+tidy3
+```
+
+## Subjectivity in Tidy data
+
+We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations for the analysis we want to conduct.
+
+Tools such as ggplot require precise definition of our variables, so planning ahead what we want to use with our tools creates clarity of what we call variables and observations.
+
+## Your turn!
+
+What analysis would you want to do with this dataset, and what kind of transformation would you do to get it Tidy?
+
+```{r}
+relig_income_sm = select(relig_income, religion, `<$10k`, `$10-20k`, `$20-30k`)
+relig_income_sm
+```

@@ -4,7 +4,7 @@
 
 Suppose that you want to load in data "students.csv" in a CSV format, and you don't know what tools to use. You decide to see whether the package "readr" can be useful to solve your problem. Where should you look?
 
-All R packages must be stored on CRAN (Comprehensive R Archive Network), and all packages have a website that points to the reference manual (what is pulled up using the `?` command), source code, vignettes examples, and dependencies on other packages. Here is [the website](https://cran.r-project.org/web/packages/readr/) for "readr".
+All R packages must be stored on CRAN (Comprehensive R Archive Network), and all packages have a website that points to the reference manual (what is pulled up using the `?` command), source code, vignettes examples, and dependencies on other packages. Here is [the website](https://cran.r-project.org/web/packages/readr/) for "readr". Within the website, I like to look at the [URL page](https://readr.tidyverse.org/) for more documentation, or the Vignettes page, such as [this page](https://cran.r-project.org/web/packages/readr/vignettes/column-types.html), for examples.
 
 In the package, you find some potential functions for importing your data:
 
@@ -51,7 +51,7 @@ We see that the only *required* argument is the `file` variable, which is docume
 
 Load in "students.csv" via `read_csv()` function as a dataframe variable `students` and take a look at its contents via `View()`.
 
-```{r}
+```{r, message=F, warning=F}
 library(tidyverse)
 
 
@@ -107,7 +107,7 @@ Recode "five" to 5 in the `age` column:
 
 Create a new column `age_category` so that it has value "toddler" if `age` is \< 6, and "child" if `age` is \>= 6.
 
-(Hint: You can create a new column via `mutate`, or you can directly refer to the new column via ``` student$``age_category ```.)
+(Hint: You can create a new column via `mutate`, or you can directly refer to the new column via `student$age_category`.)
 
 ```{r}
 
@@ -165,19 +165,17 @@ Let's select a few columns of interest and give them column names that doesn't c
 #names(melanoma_incidence) = c("County", "Age_adjusted_incidence_rate")
 ```
 
-Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\* " (notice the space after \*). Recode "\* " as `NA`.
+Take a look at the column `Age_adjusted_incidence_rate`. It has missing data coded as "\*." (notice the space after \*). Recode "\*" as `NA`.
 
 ```{r}
 
 ```
 
-Finally, notice that the data type for `Age_adjusted_incidence_rate` is character, if you run the function `is.character()` or `class()` on it. Convert it to a numeric data type.
+Finally, notice that the data type for `Age_adjusted_incidence_rate` is character, if you run the function `is.character()` or `class()` on it. Convert it to a numeric data type. I recommend to use `melanoma_incidence$Age_adjusted_incidence_rate` to access the column.
 
 ```{r}
 
 ```
-
-
 
 ## Feedback!
 

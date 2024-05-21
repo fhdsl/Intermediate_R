@@ -1,0 +1,342 @@
+---
+title: "W2: Data Cleaning 1"
+format: 
+  revealjs:
+    smaller: true
+    scrollable: true
+    echo: true
+output-location: fragment
+---
+
+```{r, echo=F, message=F, warning=F}
+library(tidyverse)
+```
+
+## Location change next week: M4-A805
+
+## Recoding Data / Conditionals
+
+. . .
+
+Suppose that you have a column in your dataframe that needs to be **recoded**.
+
+. . .
+
+```{r}
+simple_df = data.frame(grade = c(90, 78, 95, 74, 56, 81, 102),
+                       status = c("case", " ", "Control", "control", "Control", "Case", "case"))
+simple_df
+```
+
+. . .
+
+Since a dataframe's column, when selected via `$`, is a vector, let's start talking about **recoding vectors**.
+
+## Common recoding scenarios:
+
+1.  **If**: "If elements of the vector meets *condition*, then they are assigned *value*."
+
+. . .
+
+2.  **If-else**: "If elements of the vector meets *condition*, then they are assigned *value X*. Otherwise, they are assigned *value Y*."
+
+. . .
+
+3.  **If-else_if-else**: "If elements of the vector meets *condition A*, then they are assigned *value X*. Else, if the elements of the vector meets *condition B*, they are assigned *value Y*. Otherwise, they are assigned *value Z*."
+
+## Recoding a vector
+
+```{r}
+grade = c(90, 78, 95, 74, 56, 81, 102)
+```
+
+. . .
+
+1.  If `grade` is greater than 100, then they are assigned to 100.
+
+. . .
+
+```{r}
+grade1 = grade
+grade1[grade1 > 100] = 100
+grade1
+```
+
+. . .
+
+2.  If `grade` is greater than 60, then it is assigned to "Pass". Otherwise, then it is assigned to "Fail".
+
+. . .
+
+```{r}
+grade2 = if_else(grade > 60, "Pass", "Fail")
+grade2
+```
+
+. . .
+
+3.  If `grade` is greater than 90, then it is assigned to `"A"`. Else, if `grade` is greater than 80, then it is assigned to `"B"`. etc.\
+    Otherwise, they are assigned to `"F"`.
+
+```{r}
+grade3 = case_when(grade >= 90 ~ "A",
+                   grade >= 80 ~ "B",
+                   grade >= 70 ~ "C", 
+                   grade >= 60 ~ "D",
+                   .default = "F")
+grade3
+```
+
+## Recoding a dataframe column
+
+```{r}
+simple_df
+```
+
+. . .
+
+1.  If
+
+    ```{r}
+    simple_df1 = simple_df
+    simple_df1$grade[simple_df1$grade > 100] = 100
+    simple_df1
+    ```
+
+. . .
+
+2.  If-else
+
+```{r}
+simple_df2 = simple_df
+simple_df2$grade = ifelse(simple_df2$grade > 60, "Pass", "Fail")
+simple_df2
+```
+
+. . .
+
+or
+
+```{r}
+simple_df2 = mutate(simple_df, grade = ifelse(grade > 60, "Pass", "Fail"))
+```
+
+. . .
+
+3.  If-else_if-else
+
+```{r}
+simple_df3 = simple_df
+
+simple_df3$grade = case_when(simple_df3$grade >= 90 ~ "A",
+                             simple_df3$grade >= 80 ~ "B",
+                             simple_df3$grade >= 70 ~ "C", 
+                             simple_df3$grade >= 60 ~ "D",
+                             .default = "F")
+simple_df3
+```
+
+. . .
+
+or
+
+```{r}
+simple_df3 = mutate(simple_df, grade = case_when(grade >= 90 ~ "A",
+                                                 grade >= 80 ~ "B",
+                                                 grade >= 70 ~ "C", 
+                                                 grade >= 60 ~ "D",
+                                                 .default = "F"))
+```
+
+## Conditionals
+
+The 3 common scenarios we looked at for recoding data is closely tied to the concept of **conditionals** in programming: *given certain conditions, you run a specific code chunk.*
+
+. . .
+
+Given a vector's value, assign it a different value. Or, given a value, run the following hundred lines of code.
+
+. . .
+
+```         
+if(expression_is_TRUE) {
+  #code goes here
+}
+```
+
+. . .
+
+```         
+if(expression_A_is_TRUE) {
+  #code goes here
+}else if(expression_B_is_TRUE) {
+  #other code goes here
+}else {
+  #some other code goes here
+}
+```
+
+. . .
+
+```{r}
+nuc = "A"
+
+if(nuc == "A") {
+  nuc = "T"
+}else if(nuc == "T") {
+  nuc = "A"
+}else if(nuc == "C") {
+  nuc = "C"
+}else if(nuc == "G") {
+  nuc = "C"
+}else {
+  nuc = NA
+}
+
+nuc
+```
+
+## Interpreting Functions, carefully
+
+![](https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png){alt="Function machine from algebra class." width="300"}
+
+. . .
+
+We write functions for two main, often overlapping, reasons:
+
+. . .
+
+1.  Following DRY (Don't Repeat Yourself) principle
+
+. . .
+
+2.  Creates modular structure and abstraction
+
+. . .
+
+Even if you are not writing functions (yet!), it is helpful to know how they are constructed to use them.
+
+## How functions are created
+
+```{r}
+addFunction = function(num1, num2) {
+  result = num1 + num2 
+  return(result)
+}
+```
+
+. . .
+
+```{r}
+addFunction(3, 4)
+```
+
+. . .
+
+When the function is called, the variables for the arguments are reassigned to function arguments to be used within the function. This ensures modularity.
+
+## Is this function modular?
+
+```{r}
+x = 3
+y = 4
+addFunction = function(num1, num2) {
+    result = x + y 
+    return(result)
+}
+```
+
+. . .
+
+```{r}
+addFunction(10, -5)
+```
+
+## Ways to call the function
+
+```{r}
+addFunction = function(num1, num2) {
+    result = x + y 
+    return(result)
+}
+```
+
+. . .
+
+```{r}
+addFunction(3, 4)
+```
+
+. . .
+
+```{r}
+addFunction(num1 = 3, num2 = 4)
+```
+
+. . .
+
+```{r}
+addFunction(num2 = 4, num1 = 3)
+```
+
+. . .
+
+But this *could* give a different result:
+
+```{r}
+addFunction(4, 3)
+```
+
+## Interpreting functions
+
+```         
+?mean
+
+Arithmetic Mean
+
+Description:
+
+     Generic function for the (trimmed) arithmetic mean.
+
+Usage:
+
+     mean(x, ...)
+     
+     ## Default S3 method:
+     mean(x, trim = 0, na.rm = FALSE, ...)
+     
+Arguments:
+
+       x: An R object.  Currently there are methods for numeric/logical
+          vectors and date, date-time and time interval objects.
+          Complex vectors are allowed for ‘trim = 0’, only.
+
+    trim: the fraction (0 to 0.5) of observations to be trimmed from
+          each end of ‘x’ before the mean is computed.  Values of trim
+          outside that range are taken as the nearest endpoint.
+
+   na.rm: a logical evaluating to ‘TRUE’ or ‘FALSE’ indicating whether
+          ‘NA’ values should be stripped before the computation
+          proceeds.
+
+     ...: further arguments passed to or from other methods.
+```
+
+## Interpreting functions
+
+Notice that the arguments `trim = 0`, `na.rm = FALSE` have default values. This means that these arguments are *optional* - you should provide it only if you want to. With this understanding, you can use `mean()` in a new way:
+
+. . .
+
+```{r}
+numbers = c(1, 2, NA, 4)
+mean(x = numbers, na.rm = TRUE)
+```
+
+. . .
+
+The use of `. . .` (dot-dot-dot): This is a special argument that allows a function to *take any number of arguments*. This isn't very useful for the `mean()` function, but it makes sense for function such as `select()` and `filter()`, and `mutate()`. For instance, in `select()`, once you provide your dataframe for the argument `.data`, you can pile on as many columns to select in the rest of the argument.
+
+## That's all!
+
+Maybe see you Friday Noon - 1pm PT to practice together!

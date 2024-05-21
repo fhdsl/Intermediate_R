@@ -10,8 +10,8 @@ rmd_files: ["index.Rmd",
             "03-Data_cleaning_2-exercises.Rmd",
             "04-Functions.Rmd",
             "04-Functions-exercises.Rmd",
-            "05-Repetition.Rmd",
-            "05-Repetition-exercises.Rmd",
+            "05-Iteration.Rmd",
+            "05-Iteration-exercises.Rmd",
             "About.Rmd",
             "References.Rmd"]
 new_session: yes

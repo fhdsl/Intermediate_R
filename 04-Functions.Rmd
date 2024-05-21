@@ -104,7 +104,15 @@ The function did not work as expected because we used hard-coded variables from 
     my_dim(penguins)
     ```
 
--   Create a function, called `medicaid_eligible` in which the function takes in one argument: a numeric vector called `age`. The function returns a numeric vector with the same length as `age`, in which elements are `0` for indicies that are less than 65 in `age`, and `1` for indicies 65 or higher in `age`. Use cases: `medicaid_eligible(c(30, 70)) = c(0, 1)`
+-   Create a function, called `num_na` in which the function takes in any vector, and then return a single numeric value. This numeric value is the number of `NA`s in the vector. Use cases: `num_na(c(NA, 2, 3, 4, NA, 5)) = 2` and `num_na(c(2, 3, 4, 5)) = 0`. Hint 1: Use `is.na()` function. Hint 2: Given a logical vector, you can count the number of `TRUE` values by using `sum()`, such as `sum(c(TRUE, TRUE, FALSE)) = 2`.
+
+    ```{r}
+    num_na = function(x) {
+      return(sum(is.na(num_na)))
+    }
+    ```
+
+-   Create a function, called `medicaid_eligible` in which the function takes in one argument: a numeric vector called `age`. The function returns a numeric vector with the same length as `age`, in which elements are `0` for indicies that are less than 65 in `age`, and `1` for indicies 65 or higher in `age`. (Hint: This is a data recoding problem!) Use cases: `medicaid_eligible(c(30, 70)) = c(0, 1)`
 
     ```{r}
     medicaid_eligible = function(age) {
