@@ -253,7 +253,7 @@ data[c(TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE)]
 . . .
 
 Comparison operators, such as `>`, `<=`, `==`, `!=`, create logical vectors for subsetting.
-  
+
 ```{r}
 data < 0
 ```
@@ -313,7 +313,6 @@ So, we can access the column names of the dataframe via `names()`:
 ```{r}
 names(penguins)
 ```
-
 
 ## Review: Subsetting dataframes
 
@@ -392,7 +391,7 @@ What data structure does this remind you of?
 
 ## Dataframes as Lists
 
-A dataframe is just a named list of vectors of same length with  **attributes** of (column) `names` and `row.names`.
+A dataframe is just a named list of vectors of same length with **attributes** of (column) `names` and `row.names`.
 
 . . .
 

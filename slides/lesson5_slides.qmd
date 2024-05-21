@@ -1,0 +1,277 @@
+---
+title: "W5: Iterating tasks"
+format: 
+  revealjs:
+    smaller: true
+    scrollable: true
+    echo: true
+output-location: fragment
+---
+
+## Iterating tasks
+
+Suppose that you want to repeat a chunk of code many times, but changing one variable's value each time you do it: This could be modifying each element of a vector in the same way, or analyzing a dataframe multiple times with different parameters.
+
+. . .
+
+![](images/loop.png){width="200"}
+
+![](https://d33wubrfki0l68.cloudfront.net/f0494d020aa517ae7b1011cea4c4a9f21702df8b/2577b/diagrams/functionals/map.png){width="250"}
+
+## Iterating tasks: solutions
+
+1.  Copy and paste the code chunk, and change that variable's value. Repeat. *This can be a starting point in your analysis, but will lead to errors easily.*
+
+. . .
+
+2.  Use a `for` loop to repeat the chunk of code, and let it loop over the changing variable's value. *This is popular for many programming languages, but the R programming culture encourages a functional way instead*.
+
+. . .
+
+3.  **Functionals** (apply, map functions) allow you to take a function that solves the problem for a single input and generalize it to handle any number of inputs. *This is very popular in R programming culture.*
+
+## Functionals
+
+A **functional**, such as `map()`, is a function that takes in:
+
+-   The data to be iterated over
+
+-   The function that will be used on *one* element of the data
+
+. . .
+
+and applies the function on the data, element by element. It *maps* your input data structure to an output data structure based on the function.
+
+. . .
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/06/Mapping-steps-loillibe-new.gif)
+
+. . .
+
+![](https://d33wubrfki0l68.cloudfront.net/f0494d020aa517ae7b1011cea4c4a9f21702df8b/2577b/diagrams/functionals/map.png){width="250"}
+
+## Functionals via `map()`
+
+`map()` takes in a vector or a list, and then applies the function on each element of it. The output is *always* a list.
+
+```{r, warning=F, message=F, echo=FALSE}
+library(tidyverse)
+library(palmerpenguins)
+```
+
+```{r}
+my_vector = c(1, 3, 5, 7)
+result = map(my_vector, log)
+result
+```
+
+. . .
+
+```{r}
+result[[1]]
+```
+
+## Variations of `map()`
+
+To be more specific about the output type, you can do this via the `map_*` function, where `*` specifies the output type: `map_lgl()`, `map_chr()`, and `map_dbl()` functions return vectors of logical values, strings, or numbers respectively.
+
+![](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="300"}
+
+. . .
+
+```{r}
+map_dbl(my_vector, log)
+```
+
+## Case study 1: Iterate over filepaths to load them in
+
+```{r}
+paths = c("../classroom_data/students.csv", "../classroom_data/CCLE_metadata.csv")
+```
+
+Practice writing out the first iteration:
+
+```{r, warning=FALSE, message=FALSE}
+result = read_csv(paths[1])
+```
+
+. . .
+
+To do this functionally, we think about:
+
+. . .
+
+-   Variable we need to loop through: `paths`
+
+. . .
+
+-   The repeated task as a function: `read_csv()`
+
+. . .
+
+-   The looping mechanism, and its output: `map()` outputs lists.
+
+. . .
+
+Here it is:
+
+```{r, warning=F, message=F}
+result = map(paths, read_csv)
+```
+
+## Case Study 2: Iterate over columns of a dataframe to get metrics
+
+Suppose that you are interested in the numeric columns of the `penguins` dataframe, and you are interested to look at the mean of each column.
+
+. . .
+
+```{r}
+penguins_numeric = penguins %>% select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+head(penguins_numeric)
+```
+
+. . .
+
+It is very helpful to interpret the dataframe `penguins_numeric` as a *list*, iterating through each column as an element of a list.
+
+![](https://d33wubrfki0l68.cloudfront.net/12f6af8404d9723dff9cc665028a35f07759299d/d0d9a/diagrams/functionals/map-list.png){width="300"}
+
+. . .
+
+Let's practice writing out one iteration:
+
+```{r}
+mean(penguins_numeric[[1]], na.rm = TRUE)
+```
+
+## Case Study 2: Iterate over columns of a dataframe to get metrics
+
+To do this functionally, we think about:
+
+. . .
+
+-   Variable we need to loop through: the list `penguins_numeric`
+
+. . .
+
+-   The repeated task as a function: `mean()` with the argument `na.rm = TRUE`.
+
+. . .
+
+-   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
+
+. . .
+
+```{r}
+map_dbl(penguins_numeric, mean, na.rm = TRUE)
+```
+
+## Case study 3: Iterate over different conditions to analyze a dataframe
+
+Suppose you are working with the `penguins` dataframe:
+
+```{r}
+head(penguins)
+```
+
+. . .
+
+and you want to look at the mean `bill_length_mm` for each of the three species (Adelie, Chinstrap, Gentoo).
+
+. . .
+
+Let's practice writing out one iteration:
+
+```{r}
+species_to_analyze = c("Adelie", "Chinstrap", "Gentoo")
+#first iteration
+penguins_subset = filter(penguins, species == species_to_analyze[1])
+mean(penguins_subset$bill_length_mm, na.rm = TRUE)
+```
+
+## Case study 3: Analyze a dataframe with different parameters.
+
+To do this functionally, we think about:
+
+. . .
+
+-   Variable we need to loop through: `c("Adelie", "Chinstrap", "Gentoo")`
+
+. . .
+
+-   The repeated task as a function: a custom function that takes in a specie of interest. The function filters the rows of `penguins` to the species of interest, and compute the mean of `bill_length_mm`.
+
+. . .
+
+-   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
+
+. . .
+
+```{r}
+analysis = function(current_species) {
+  penguins_subset = filter(penguins, species == current_species)
+  result = mean(penguins_subset$bill_length_mm, na.rm=TRUE)
+  return(result)
+}
+```
+
+. . .
+
+```{r}
+map_dbl(c("Adelie", "Chinstrap", "Gentoo"), analysis)
+```
+
+## Map family of functions
+
+![](images/purrr_map.png){width="400"}
+
+More info at: https://adv-r.hadley.nz/functionals.html
+
+## For loops, briefly
+
+A `for` loop repeats a chunk of code many times, once for each element of an input vector.
+
+```         
+for (my_element in my_vector) {
+  chunk of code
+}
+```
+
+Most often, the "chunk of code" will make use of `my_element`.
+
+. . .
+
+```{r}
+my_vector = c(1, 3, 5, 7)
+for (my_element in my_vector) {
+  print(my_element)
+}
+```
+
+## Loop through the indicies of a vector
+
+```{r}
+my_vector = c(1, 3, 5, 7)
+seq_along(my_vector)
+```
+
+```{r}
+for(i in seq_along(my_vector)) {
+  print(my_vector[i])
+}
+```
+
+. . .
+
+```{r}
+my_vector = c(1, 3, 5, 7)
+result = rep(NA, length(my_vector))
+
+for(i in seq_along(my_vector)) {
+  result[i] = log(my_vector[i])
+}
+
+result
+```
+
+## 

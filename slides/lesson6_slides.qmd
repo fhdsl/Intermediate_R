@@ -1,0 +1,56 @@
+---
+title: "Final class"
+format: 
+  revealjs:
+    smaller: true
+    scrollable: true
+    echo: true
+---
+
+## In 6 weeks we have learned...
+
+-   Continue building **programming fundamentals**: *How to use complex data structures, use and create custom functions, and how to iterate repeated tasks.*
+
+. . .
+
+-   Continue exploration of **data science fundamentals**: *How to clean messy data to a Tidy form for analysis.*
+
+. . .
+
+-   Conduct a full analysis in the data science workflow (minus model).
+
+    ![Data science workflow](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width="550"}
+
+## Continuing your education
+
+-   Advanced R
+
+. . .
+
+-   [R Users Group](https://hutchdatascience.org/usergroups/)
+
+. . .
+
+-   Reference texts:
+
+    -   [Hands-on Programming with R, by Garrett Grolemund](https://rstudio-education.github.io/hopr/)
+
+    -   [R for Data Science, by Hadley Wickham](https://r4ds.hadley.nz/)
+
+    -   [R Graphics Cookbook, by Winston Chang](https://r-graphics.org/)
+
+## Connecting to rest of DaSL...
+
+![](images/dasl_outreach.png)
+
+## Please fill out survey!
+
+Our [class survey](https://forms.gle/DWH6WTe7o6nzhgHW7) makes a huge difference for us.
+
+## Last but not least...stickers!
+
+![](https://2953482177-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M38c0s4s0YCM6dGwrz1%2F-M7RetZBh2Wf7TnfLhKs%2F-M7RkjP-fqIgI8ZsDmKh%2Ftidyverse2.png?alt=media&token=73bf5842-1ae0-4ca4-8622-ec2ae9063a7a){width="350"} ![](images/Intro_To_R_2.png){width="350"}
+
+![](images/Intermediate_R_V3.png){width="350"}![](images/student_stickers.jpg){width="350"}
+
+Make your own sticker, add it to the wall of DaSL students!
