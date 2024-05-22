@@ -1,14 +1,13 @@
 # Data Cleaning, Part 2
 
 
-
 ```r
 library(tidyverse)
 ```
 
 ## Tidy Data
 
-It is important to have standard of organizing data, as it facilitates a consistent way of thinking about data organization and building tools (functions) that make use of that standard. The principles of **Tidy data**, developed by Hadley Wickham:
+It is important to have standard of organizing data, as it facilitates a consistent way of thinking about data organization and building tools (functions) that make use of that standard. The [principles of **Tidy data**](https://vita.had.co.nz/papers/tidy-data.html), developed by Hadley Wickham:
 
 1.  Each variable must have its own column.
 
@@ -221,7 +220,7 @@ ggplot(df) + aes(x = Q1_Sales, y = Q2_Sales, color = Store) + geom_point()
 
 ## Subjectivity in Tidy Data
 
-We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations.
+We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations. Consider this example, inspired by the following [blog post](https://kiwidamien.github.io/what-is-tidy-data.html) by Damien Martin.
 
 
 ```r
@@ -316,8 +315,6 @@ ggplot(kidney_long_still) + aes(x = treatment, y = recovery_rate, fill = stone_s
 
 <img src="03-Data_cleaning_2_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
-## References
+## Exercises
 
-https://vita.had.co.nz/papers/tidy-data.html
-
-https://kiwidamien.github.io/what-is-tidy-data.html
+You can find [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252), or on [GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).

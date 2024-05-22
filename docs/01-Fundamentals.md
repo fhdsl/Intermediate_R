@@ -4,11 +4,11 @@
 
 ## Goals of this course
 
--   Continue building *programming fundamentals*: how to make use of complex data structures, use custom functions built by other R users, and creating your own functions. How to iterate repeated tasks that scales naturally.
+-   Continue building *programming fundamentals*: How to use complex data structures, use and create custom functions, and how to iterate repeated tasks
 
 -   Continue exploration of *data science fundamentals*: how to clean messy data to a Tidy form for analysis.
 
--   Outcome: Conduct a full analysis in the data science workflow (minus model).
+-   At the end of the course, you will be able to: conduct a full analysis in the data science workflow (minus model).
 
     ![](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="450"}
 
@@ -428,7 +428,7 @@ l1$score
 
 Therefore, `l1$score` is the same as `l1[[4]]` and is the same as `l1[["score"]]`.
 
-A dataframe is just a named list of vectors of same length with **attributes** of (column) `names` and `row.names`.
+A dataframe is just a named list of vectors of same length with additional **attributes** of (column) `names` and `row.names`.
 
 ## Matrix
 
@@ -475,3 +475,7 @@ my_matrix[2, 3]
 ```
 ## [1] 6
 ```
+
+## Exercises
+
+You can find [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252), or on [GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).

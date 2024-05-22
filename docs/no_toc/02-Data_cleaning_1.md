@@ -158,7 +158,7 @@ grade2 = if_else(grade > 60, TRUE, FALSE)
 
 3.  If-else_if-else
 
-```         
+```
 grade3 = case_when(grade >= 90 ~ "A",
                    grade >= 80 ~ "B",
                    grade >= 70 ~ "C", 
@@ -199,7 +199,7 @@ simple_df2 = mutate(simple_df, grade = ifelse(grade > 60, TRUE, FALSE))
 
 3.  If-else_if-else
 
-```         
+```
 simple_df3 = simple_df
 
 simple_df3$grade = case_when(simple_df3$grade >= 90 ~ "A",
@@ -211,8 +211,10 @@ simple_df3$grade = case_when(simple_df3$grade >= 90 ~ "A",
 
 or
 
-```         
-simple_df3 = mutate(simple_df, grade = case_when(grade >= 90 ~ "A",
+```
+simple_df3 = simple_df
+
+simple_df3 = mutate(simple_df3, grade = case_when(grade >= 90 ~ "A",
                                                  grade >= 80 ~ "B",
                                                  grade >= 70 ~ "C", 
                                                  grade >= 60 ~ "D",
@@ -244,7 +246,7 @@ if(expression_is_TRUE) {
 3.  If-else_if-else:
 
 ```         
-if(expression_A_is_TRUE) 
+if(expression_A_is_TRUE) {
   #code goes here
 }else if(expression_B_is_TRUE) {
   #other code goes here
@@ -299,3 +301,7 @@ result
 ```
 ## [1] 5
 ```
+
+## Exercises
+
+You can find [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252), or on [GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).
