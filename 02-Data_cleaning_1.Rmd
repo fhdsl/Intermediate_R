@@ -153,7 +153,7 @@ grade2 = if_else(grade > 60, TRUE, FALSE)
 3.  If-else_if-else
 
 ```{r}
-grade3 = case_when(grade >= 90 ~ "A",
+grade3 = dplyr::case_when(grade >= 90 ~ "A",
                    grade >= 80 ~ "B",
                    grade >= 70 ~ "C", 
                    grade >= 60 ~ "D",
