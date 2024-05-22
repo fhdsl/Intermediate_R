@@ -1,6 +1,6 @@
 ---
 title: "Intermediate R, Season 3"
-date: "March, 2024"
+date: "May, 2024"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -15,11 +15,14 @@ output:
 
 # About this Course
 
-## Curriculum  
+## Curriculum
 
-The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow. 
+The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow.
 
-## Target Audience  
+## Target Audience
 
-The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our [Intro to R course](https://github.com/fhdsl/Intro_to_R). 
+The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our [Intro to R course](https://github.com/fhdsl/Intro_to_R).
 
+## Offerings
+
+This course is taught on a regular basis at Fred Hutch Cancer Center through the Data Science Lab. Announcements of course offering can be found [here](https://hutchdatascience.org/training/). If you wish to follow the course content asynchronously, you may access the course content on this website and [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252). The Posit Cloud compute space can be copied to your own workspace for personal use, or you can access the [exercises and solutions on GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).
