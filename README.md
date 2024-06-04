@@ -8,7 +8,7 @@ If you would like to contribute to this course material, take a look at the [OTT
 
 ## About this course
 
-The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow. 
+The course continues building programming [fundamentals in R programming](https://hutchdatascience.org/Intro_to_R) and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow. 
 
 ## Encountering problems?
 
