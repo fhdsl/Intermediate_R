@@ -1,4 +1,4 @@
-# Intermediate R, Season 3
+# Intermediate R
 
 This course was created from [this GitHub template](https://github.com/jhudsl/OTTR_Template).
 
