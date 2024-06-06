@@ -59,7 +59,7 @@ Or,
 
 ![](https://d33wubrfki0l68.cloudfront.net/f0494d020aa517ae7b1011cea4c4a9f21702df8b/2577b/diagrams/functionals/map.png){width="250"}
 
-We will use the `purrr` package in `tidyverse` to use functionals.
+We will use the `purrr` package in `tidyverse` to use functionals. There is another set of functionals in Base-R called the `apply` family of functions that work very similarly. You can see the comparision of both tools [here](https://purrr.tidyverse.org/articles/base.html) and [here](https://jtr13.github.io/spring19/ss5593&fq2150.html).
 
 `map()` takes in a vector or a list, and then applies the function on each element of it. The output is *always* a list.
 

@@ -4,6 +4,8 @@
 library(tidyverse)
 ```
 
+Another important data cleaning step is to make sure that the shape of the data is useful for the analysis. Today, we will learn about a data organizing standard called Tidy Data, and some common transformations of making a dataframe *longer* and *wider* to get there.
+
 ## Tidy Data
 
 It is important to have standard of organizing data, as it facilitates a consistent way of thinking about data organization and building tools (functions) that make use of that standard. The [principles of **Tidy data**](https://vita.had.co.nz/papers/tidy-data.html), developed by Hadley Wickham:
@@ -18,11 +20,11 @@ If we want to be technical about what variables and observations are, Hadley Wic
 
 > A dataset is a collection of **values**, usually either numbers (if quantitative) or strings (if qualitative). Every value belongs to a **variable** and an **observation**. A **variable** contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An **observation** contains all values measured on the same unit (like a person, or a day, or a race) across attributes.
 
-![A tidy dataframe.](https://r4ds.hadley.nz/images/tidy-1.png){width="800"}
+![A Tidy dataframe. Image source: [R for Data Science](https://r4ds.hadley.nz/data-tidy).](https://r4ds.hadley.nz/images/tidy-1.png){width="800"}
 
-Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more. These tools assumes the values of each variable fall in their own column vector.
+Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more.
 
-It seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren't Tidy, and it's easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:
+At first glance, it seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren't Tidy, and it's easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:
 
 1.  Columns contain values of variables, rather than variables
 
