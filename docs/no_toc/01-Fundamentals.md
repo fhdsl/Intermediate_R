@@ -2,15 +2,21 @@
 
 
 
+Welcome to Intermediate R! Each week, we cover a chapter, which consists of a lesson and exercise. In the first week, we go over the goals of the course, and review data structures and data types that you have seen before from [Intro to R](https://hutchdatascience.org/Intro_to_R/). We also look at some new data structures and more properties of data structures.
+
+In [Intro to R](https://hutchdatascience.org/Intro_to_R/), you learned how to do basic data analysis such as subsetting a dataframe, looking at summary statistics, and visualizing your data. This was done in the context of a clean, Tidy dataframe. In this course, we focus on working with data "from the wild", in which the data comes in a more messy, un-Tidy form. Let's see what we will learn in the next 6 weeks together:
+
 ## Goals of this course
 
--   Continue building *programming fundamentals*: How to use complex data structures, use and create custom functions, and how to iterate repeated tasks
+-   Continue building *programming fundamentals*: How to use complex data structures, use and create custom functions, and how to iterate repeated tasks.
 
 -   Continue exploration of *data science fundamentals*: how to clean messy data to a Tidy form for analysis.
 
 -   At the end of the course, you will be able to: conduct a full analysis in the data science workflow (minus model).
 
     ![](https://r4ds.hadley.nz/diagrams/data-science/base.png){width="450"}
+
+To get started, let's recall the fundamental data types in R:
 
 ## Data types in R
 
@@ -21,6 +27,8 @@
 -   Logical: TRUE, FALSE
 
 -   Missing values: `NA`
+
+And the fundamental data structures: in this course, we will learn more about a new, flexible data structure called a **List**. We also lightly introduce *Factor* and *Matrix*, but they will not be used for the rest of the course.
 
 ## Data structures
 
@@ -36,27 +44,37 @@
 
 ## Vector
 
-We know what an **(atomic) vector** is: it can contains a data type, and all elements must be the same data type.
+We know what an **(atomic) vector** is: it can contains a data type, and all elements must be the same data type. If a vector consists of only numeric data, then it is a Numeric Vector, etc. We organize vector subtypes by the following graphic:
 
-![](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="400"}
+![Organization of Vectors. Image Source: [Advanced R](https://adv-r.hadley.nz/vectors-chap.html).](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="400"}
 
 Within the Numeric type that we are familiar with, there are more specific types: *Integer* consists of whole number values, and *Double* consists of decimal values. Most of the time we only need to consider Numeric types, but once in a while we need to be more specific.
+
+Now that we have distinguished vector subtypes, it is important to examine what a vector is by inspection:
 
 -   We can test whether a vector is a certain type with `is.___()` functions, such as `is.character()`.
 
     
-    ```r
+    ``` r
     is.character(c("hello", "there"))
     ```
     
     ```
     ## [1] TRUE
     ```
+    
+    ``` r
+    is.character(c(1, 3, 5, 7))
+    ```
+    
+    ```
+    ## [1] FALSE
+    ```
 
-    For `NA`, the test will return a vector testing each element, because `NA` can be mixed into other values:
+-   We can also test for missing data `NA` for any types of vector: The test will return a vector testing each element, because `NA` can be mixed into other values:
 
     
-    ```r
+    ``` r
     is.na(c(34, NA))
     ```
     
@@ -64,45 +82,49 @@ Within the Numeric type that we are familiar with, there are more specific types
     ## [1] FALSE  TRUE
     ```
 
--   We can **coerce** vectors from one type to the other with `as.___()` functions, such as `as.numeric()`
-
-    
-    ```r
-    as.numeric(c("23", "45"))
-    ```
-    
-    ```
-    ## [1] 23 45
-    ```
-    
-    ```r
-    as.numeric(c(TRUE, FALSE))
-    ```
-    
-    ```
-    ## [1] 1 0
-    ```
-
--   It is common to have metadata **attributes,** such as **names,** attached to R data structures.
-
-    
-    ```r
-    x = c(1, 2, 3)
-    names(x) = c("a", "b", "c")
-    x
-    ```
-    
-    ```
-    ## a b c 
-    ## 1 2 3
-    ```
-
-    ![](https://d33wubrfki0l68.cloudfront.net/1140c34226b3b04438aec65c8fc6b28758d8c091/1748a/diagrams/vectors/attr-names-2.png)
-
-We can look for more general attributes via the `attributes()` function:
+We can **coerce** vectors from one type to the other with `as.___()` functions, such as `as.numeric()`.
 
 
-```r
+``` r
+as.numeric(c("23", "45"))
+```
+
+```
+## [1] 23 45
+```
+
+``` r
+as.numeric(c(TRUE, FALSE))
+```
+
+```
+## [1] 1 0
+```
+
+This is very common in data cleaning, when we load in data and they assigned to the wrong data type.
+
+Sometimes, a data structure may have metadata **attributes** associated with them. This gives us more information about the data structure, but doesn't contain the important data.
+
+For instance, a common attribute is **names,** which can attached to vectors.
+
+
+``` r
+x = c(1, 2, 3)
+names(x) = c("a", "b", "c")
+x
+```
+
+```
+## a b c 
+## 1 2 3
+```
+
+![Names as an attribute for a Vector. Image Source: [Advanced R.](https://adv-r.hadley.nz/vectors-chap.html)](https://d33wubrfki0l68.cloudfront.net/1140c34226b3b04438aec65c8fc6b28758d8c091/1748a/diagrams/vectors/attr-names-2.png)
+
+We can look for more general attributes beyond names via the `attributes()` function:
+
+
+``` r
 attributes(x)
 ```
 
@@ -111,23 +133,53 @@ attributes(x)
 ## [1] "a" "b" "c"
 ```
 
-### Ways to subset a vector
+Now, let's review the ways one can subset a vector. Here are three ways:
 
 1.  Positive numeric vector
+
+    
+    ``` r
+    data = c(2, 4, -1, -3, 2, -1, 10)
+    data[c(1, 3, 5)]
+    ```
+    
+    ```
+    ## [1]  2 -1  2
+    ```
+
 2.  Negative numeric vector performs *exclusion*
+
+
+``` r
+data[c(-1, -2)]
+```
+
+```
+## [1] -1 -3  2 -1 10
+```
+
 3.  Logical vector
 
-### Practice implicit subsetting
+
+``` r
+data[c(TRUE, FALSE, TRUE, FALSE, TRUE, FALSE, FALSE)]
+```
+
+```
+## [1]  2 -1  2
+```
+
+In practice, we often subset a vector implicitly, via some kind of criteria. Here is a [review of implicit subsetting from Intro to R](https://hutchdatascience.org/Intro_to_R/working-with-data-structures.html#subsetting-vectors-implicitly). Let's review implicit vector subsetting below:
 
 1.  How do you subset the following vector so that it only has positive values?
 
 
-```r
+``` r
 data = c(2, 4, -1, -3, 2, -1, 10)
 ```
 
 
-```r
+``` r
 data[data > 0]
 ```
 
@@ -138,12 +190,12 @@ data[data > 0]
 2.  How do you subset the following vector so that it has doesn't have the character "temp"?
 
 
-```r
+``` r
 chars = c("temp", "object", "temp", "wish", "bumblebee", "temp")
 ```
 
 
-```r
+``` r
 chars[chars != "temp"]
 ```
 
@@ -154,12 +206,12 @@ chars[chars != "temp"]
 3.  How do you subset the following vector so that it has no `NA` values?
 
 
-```r
+``` r
 vec_with_NA = c(2, 4, NA, NA, 3, NA)
 ```
 
 
-```r
+``` r
 vec_with_NA[!is.na(vec_with_NA)]
 ```
 
@@ -177,8 +229,10 @@ Factors are a type of vector that holds categorical information, such as sex, ge
 
 -   Inputs for statistical models, as factors are a special type of numerical vectors.
 
+Let's take a look at Factors in practice:
 
-```r
+
+``` r
 place = factor(c("first", "third", "third", "second", "second", "fourth"))
 place
 ```
@@ -189,17 +243,17 @@ place
 ```
 
 
-```r
+``` r
 df = data.frame(p = place)
 ggplot(df) + geom_bar(aes(x = p))
 ```
 
-<img src="01-Fundamentals_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="01-Fundamentals_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
-We can construct ordered factors:
+We can construct Ordered Factors:
 
 
-```r
+``` r
 place = ordered(c("first", "third", "third", "second","second", "fourth"), levels =  c("first", "second", "third", "fourth"))
 place
 ```
@@ -209,20 +263,34 @@ place
 ## Levels: first < second < third < fourth
 ```
 
-```r
+``` r
 df = data.frame(p = place)
 ggplot(df) + geom_bar(aes(x = p))
 ```
 
-<img src="01-Fundamentals_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="01-Fundamentals_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 ## Dataframes
 
-Usually, we load in a dataframe from a spreadsheet or a package, but we can create a new dataframe by using vectors of the same length via the `data.frame()` function:
+Usually, we load in a Dataframe from a spreadsheet or a package, but we can create a new dataframe by using vectors of the same length via the `data.frame()` function:
 
 
-```r
+``` r
 df = data.frame(x = 1:3, y = c("cup", "mug", "jar"))
+df
+```
+
+```
+##   x   y
+## 1 1 cup
+## 2 2 mug
+## 3 3 jar
+```
+
+We have attributes for Dataframes. The most important attribute is names, which correspond to the column names of a Dataframe. You have been using it for a while already!
+
+
+``` r
 attributes(df)
 ```
 
@@ -237,8 +305,21 @@ attributes(df)
 ## [1] 1 2 3
 ```
 
+We can directly access the names attribute via `names()` or `colnames()`:
 
-```r
+
+``` r
+names(df)
+```
+
+```
+## [1] "x" "y"
+```
+
+Here is another example:
+
+
+``` r
 library(palmerpenguins)
 attributes(penguins)
 ```
@@ -275,16 +356,18 @@ attributes(penguins)
 ## [7] "sex"               "year"
 ```
 
-Why are row names [undesirable](https://adv-r.hadley.nz/vectors-chap.html#rownames)?
+Some notes about the other attributes:
 
-Sometimes, data frames will be in a format called "tibble", as shown in the `penguins` class names as "tbl_df", and "tbl".
+-   Sometimes, Dataframes will be in a format called "[tibble](https://tibble.tidyverse.org/)", as shown in the `penguins` class names as "tbl_df", and "tbl".
 
-### Subsetting dataframes
+-   Row names are not commonly used. Here is a [reason](https://adv-r.hadley.nz/vectors-chap.html#rownames).
+
+Let's review how to subset Dataframes. There are many ways to do it, and here are just some opinionated ways of doing it for this class.
 
 *Getting one single column:*
 
 
-```r
+``` r
 penguins$bill_length_mm
 ```
 
@@ -317,7 +400,7 @@ penguins$bill_length_mm
 *I want to select columns `bill_length_mm`, `bill_depth_mm`, `species`, and filter for `species` that are "Gentoo":*
 
 
-```r
+``` r
 penguins_select = select(penguins, bill_length_mm, bill_depth_mm, species)
 penguins_gentoo = filter(penguins_select, species == "Gentoo")
 ```
@@ -325,7 +408,7 @@ penguins_gentoo = filter(penguins_select, species == "Gentoo")
 or
 
 
-```r
+``` r
 penguins_select_2 = penguins[, c("bill_length_mm", "bill_depth_mm", "species")]
 penguins_gentoo_2 = penguins_select_2[penguins$species == "Gentoo" ,]
 ```
@@ -333,30 +416,30 @@ penguins_gentoo_2 = penguins_select_2[penguins$species == "Gentoo" ,]
 or
 
 
-```r
+``` r
 penguins_gentoo_2 = penguins_select_2[penguins$species == "Gentoo", c("bill_length_mm", "bill_depth_mm", "species")]
 ```
 
 *I want to filter out rows that have `NA`s in the column `bill_length_mm`:*
 
 
-```r
+``` r
 penguins_clean = filter(penguins, !is.na(bill_length_mm))
 ```
 
 or
 
 
-```r
+``` r
 penguins_clean = penguins[!is.na(penguins$bill_depth_mm) ,]
 ```
 
 ## Lists
 
-Lists operate similarly as vectors as they group data into one dimension, but each element of a list can be any data type *or data structure*!
+Lists are the most flexible data structure in R, as they can contain a flexible amount and type of information. They operate similarly as vectors as they group data into one dimension, but each element of a list can be any data type *or data structure*!
 
 
-```r
+``` r
 l1 = list(
   1:3, 
   "a", 
@@ -365,35 +448,14 @@ l1 = list(
 )
 ```
 
-![](https://d33wubrfki0l68.cloudfront.net/9628eed602df6fd55d9bced4fba0a5a85d93db8a/36c16/diagrams/vectors/list.png)
+![Illustration of a List. Image Source: [Advanced R.](https://adv-r.hadley.nz/vectors-chap.html)](https://d33wubrfki0l68.cloudfront.net/9628eed602df6fd55d9bced4fba0a5a85d93db8a/36c16/diagrams/vectors/list.png)
 
-Unlike vectors, you access the elements of a list via the double bracket `[[]]`. You access a smaller list with single bracket `[]`. (More discussion on the different uses of the bracket [here](https://stackoverflow.com/questions/1169456/the-difference-between-bracket-and-double-bracket-for-accessing-the-el).)
-
-Here's a [nice metaphor](https://adv-r.hadley.nz/subsetting.html#subset-single):
-
-> If list `x` is a train carrying objects, then `x[[5]]` is the object in car 5; `x[4:6]` is a train of cars 4-6.
-
-
-```r
-l1[[1]]
-```
-
-```
-## [1] 1 2 3
-```
-
-```r
-l1[[1]][2]
-```
-
-```
-## [1] 2
-```
+Unlike vectors, you access the elements of a list via the double bracket `[[]]`. You access a smaller list with single bracket `[]`. (More discussion on the different uses of the bracket [here](https://adv-r.hadley.nz/subsetting.html#subset-single) and [here](https://stackoverflow.com/questions/1169456/the-difference-between-bracket-and-double-bracket-for-accessing-the-el).)
 
 Use `unlist()` to coerce a list into a vector. Notice all the automatic coersion that happened for the elements.
 
 
-```r
+``` r
 unlist(l1)
 ```
 
@@ -401,10 +463,10 @@ unlist(l1)
 ## [1] "1"     "2"     "3"     "a"     "TRUE"  "FALSE" "TRUE"  "2.3"   "5.9"
 ```
 
-We can give **names** to lists:
+We can give the attribute **names** to lists:
 
 
-```r
+``` r
 l1 = list(
   ranking = 1:3, 
   name = "a", 
@@ -418,7 +480,7 @@ names(l1) = c("ranking", "name", "success", "score")
 And access named elements of lists via the `$` operation:
 
 
-```r
+``` r
 l1$score
 ```
 
@@ -428,14 +490,14 @@ l1$score
 
 Therefore, `l1$score` is the same as `l1[[4]]` and is the same as `l1[["score"]]`.
 
-A dataframe is just a named list of vectors of same length with additional **attributes** of (column) `names` and `row.names`.
+Here's an interesting connection between Lists and Dataframes that we will make use of later on in this course: A Dataframe is just a named list of vectors of same length with additional **attributes** of (column) `names` and `row.names`!
 
 ## Matrix
 
 A matrix holds information of the same data type in two dimensions - it's like a two dimensional vector. Matricies are most often used in statistical computing and matrix algebra, such as creating a design matrix. They are often created by taking a vector and reshaping it with a set number of rows and columns, or converting from a dataframe with only one data type.
 
 
-```r
+``` r
 my_matrix = matrix(1:10, nrow = 2)
 my_matrix
 ```
@@ -449,7 +511,7 @@ my_matrix
 You access elements of a matrix similar to that of a dataframe's indexing:
 
 
-```r
+``` r
 #column 3
 my_matrix[, 3]
 ```
@@ -458,7 +520,7 @@ my_matrix[, 3]
 ## [1] 5 6
 ```
 
-```r
+``` r
 #row 2
 my_matrix[2 ,]
 ```
@@ -467,7 +529,7 @@ my_matrix[2 ,]
 ## [1]  2  4  6  8 10
 ```
 
-```r
+``` r
 #column 3, row 2
 my_matrix[2, 3]
 ```

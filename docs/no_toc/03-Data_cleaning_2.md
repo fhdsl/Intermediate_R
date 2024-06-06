@@ -1,9 +1,11 @@
 # Data Cleaning, Part 2
 
 
-```r
+``` r
 library(tidyverse)
 ```
+
+Another important data cleaning step is to make sure that the shape of the data is useful for the analysis. Today, we will learn about a data organizing standard called Tidy Data, and some common transformations of making a dataframe *longer* and *wider* to get there.
 
 ## Tidy Data
 
@@ -19,11 +21,11 @@ If we want to be technical about what variables and observations are, Hadley Wic
 
 > A dataset is a collection of **values**, usually either numbers (if quantitative) or strings (if qualitative). Every value belongs to a **variable** and an **observation**. A **variable** contains all values that measure the same underlying attribute (like height, temperature, duration) across units. An **observation** contains all values measured on the same unit (like a person, or a day, or a race) across attributes.
 
-![A tidy dataframe.](https://r4ds.hadley.nz/images/tidy-1.png){width="800"}
+![A Tidy dataframe. Image source: [R for Data Science](https://r4ds.hadley.nz/data-tidy).](https://r4ds.hadley.nz/images/tidy-1.png){width="800"}
 
-Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more. These tools assumes the values of each variable fall in their own column vector.
+Besides a standard, Tidy data is useful because many tools in R are most effective when your data is in a Tidy format. This includes data visualization with ggplot, regression models, databases, and more.
 
-It seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren't Tidy, and it's easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:
+At first glance, it seems hard to go wrong with these simple criteria of Tidy data! However, in reality, many dataframes we load in aren't Tidy, and it's easiest seen through counterexamples and how to fix it. Here are some common ways that data becomes un-Tidy:
 
 1.  Columns contain values of variables, rather than variables
 
@@ -36,7 +38,7 @@ After some clear examples, we emphasize that "Tidy" data is *subjective* to what
 ### 1. Columns contain values, rather than variables (Long is tidy)
 
 
-```r
+``` r
 df = data.frame(Store = c("A", "B"),
                 Year = c(2018, 2018),
                 Q1_Sales = c(55, 98),
@@ -57,7 +59,7 @@ Each observation is a store, and each observation has its own row. That looks go
 The columns "Q1_Sales", ..., "Q4_Sales" seem to be *values of a single variable "quarter"* of our observation. The values of "quarter" are not in a single column, but are instead in the columns.
 
 
-```r
+``` r
 df_long = pivot_longer(df, c("Q1_Sales", "Q2_Sales", "Q3_Sales", "Q4_Sales"), names_to = "quarter", values_to = "sales")
 df_long
 ```
@@ -87,7 +89,7 @@ We have transformed our data to a "**longer**" format, as our observation repres
 Are all tidy dataframes Tidy in a "longer" format?
 
 
-```r
+``` r
 df2 = data.frame(Sample = c("A", "B"),
                  KRAS_mutation = c(TRUE, FALSE),
                  KRAS_expression = c(2.3, 3.9))
@@ -105,7 +107,7 @@ Each observation is a sample, and each observation has its own row. Looks good. 
 What happens if we make it longer?
 
 
-```r
+``` r
 df2_long = pivot_longer(df2, c("KRAS_mutation", "KRAS_expression"), names_to = "gene", values_to = "values")
 df2_long
 ```
@@ -125,7 +127,7 @@ Here, each observation is a sample's gene...type? The observation feels awkward 
 To make this dataframe wider,
 
 
-```r
+``` r
 df2_long_wide = pivot_wider(df2_long, names_from = "gene", values_from = "values") 
 df2_long_wide$KRAS_mutation = as.logical(df2_long_wide$KRAS_mutation)
 df2_long_wide
@@ -144,14 +146,14 @@ We are back to our orignal form, and it was already Tidy.
 ### 3. Multiple variables are stored in a single column
 
 
-```r
+``` r
 table3
 ```
 
 ```
 ## # A tibble: 6 × 3
 ##   country      year rate             
-## * <chr>       <int> <chr>            
+##   <chr>       <dbl> <chr>            
 ## 1 Afghanistan  1999 745/19987071     
 ## 2 Afghanistan  2000 2666/20595360    
 ## 3 Brazil       1999 37737/172006362  
@@ -163,14 +165,14 @@ table3
 There seems to be two variables in the numerator and denominator of "rate" column. Let's separate it.
 
 
-```r
+``` r
 separate(table3, col = "rate", into = c("count", "population"), sep = "/")
 ```
 
 ```
 ## # A tibble: 6 × 4
 ##   country      year count  population
-##   <chr>       <int> <chr>  <chr>     
+##   <chr>       <dbl> <chr>  <chr>     
 ## 1 Afghanistan  1999 745    19987071  
 ## 2 Afghanistan  2000 2666   20595360  
 ## 3 Brazil       1999 37737  172006362 
@@ -184,7 +186,7 @@ separate(table3, col = "rate", into = c("count", "population"), sep = "/")
 In general, many functions for analysis and visualization in R assumes that the input dataframe is Tidy. These tools assumes the values of each variable fall in their own column vector. For instance, from our first example, we can compare sales across quarters and stores.
 
 
-```r
+``` r
 df_long
 ```
 
@@ -203,7 +205,7 @@ df_long
 ```
 
 
-```r
+``` r
 ggplot(df_long) + aes(x = quarter, y = sales, group = Store) + geom_point() + geom_line()
 ```
 
@@ -212,7 +214,7 @@ ggplot(df_long) + aes(x = quarter, y = sales, group = Store) + geom_point() + ge
 Although in its original state we can also look at sales between quarter, we can only look between two quarters at once. Tidy data encourages looking at data in the most granular scale.
 
 
-```r
+``` r
 ggplot(df) + aes(x = Q1_Sales, y = Q2_Sales, color = Store) + geom_point()
 ```
 
@@ -223,7 +225,7 @@ ggplot(df) + aes(x = Q1_Sales, y = Q2_Sales, color = Store) + geom_point()
 We have looked at clear cases of when a dataset is Tidy. In reality, the Tidy state depends on what we call variables and observations. Consider this example, inspired by the following [blog post](https://kiwidamien.github.io/what-is-tidy-data.html) by Damien Martin.
 
 
-```r
+``` r
 kidney = data.frame(stone_size = c("Small", "Large"),
                     treatment.A_recovered = c(81, 192),
                     treatment.A_failed = c(6, 71),
@@ -244,7 +246,7 @@ kidney
 Right now, the `kidney` dataframe clearly has values of a variable in the column. Let's try to make it Tidy by making it into a longer form and separating out variables that are together in a column.
 
 
-```r
+``` r
 kidney_long = pivot_longer(kidney, c("treatment.A_recovered", "treatment.A_failed", "treatment.B_recovered", "treatment.B_failed"), names_to = "treatment_outcome", values_to = "count")
 
 kidney_long = separate(kidney_long, "treatment_outcome", c("treatment", "outcome"), "_")
@@ -273,7 +275,7 @@ The column "count" describes our observation, and describes our values. This dat
 How about this?
 
 
-```r
+``` r
 kidney_long_still = pivot_wider(kidney_long, names_from = "outcome", values_from = "count")
 kidney_long_still
 ```
@@ -299,7 +301,7 @@ Ultimately, we decide which dataframe we prefer based on the analysis we want to
 For instance, when our observation is about a kidney stone's treatment's outcome type, we compare it between outcome type, treatment, and stone size.
 
 
-```r
+``` r
 ggplot(kidney_long) + aes(x = treatment, y = count, fill = outcome) + geom_bar(position="dodge", stat="identity") + facet_wrap(~stone_size)
 ```
 
@@ -308,7 +310,7 @@ ggplot(kidney_long) + aes(x = treatment, y = count, fill = outcome) + geom_bar(p
 When our observation is about a kidney stone's treatment's, we compare a new variable *recovery rate* ( = recovered / (recovered + failed)) between treatment and stone size.
 
 
-```r
+``` r
 kidney_long_still = mutate(kidney_long_still, recovery_rate = recovered / (recovered + failed))
 ggplot(kidney_long_still) + aes(x = treatment, y = recovery_rate, fill = stone_size) + geom_bar(position="dodge", stat="identity")
 ```

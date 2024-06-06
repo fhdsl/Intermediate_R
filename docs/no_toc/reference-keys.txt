@@ -7,11 +7,8 @@ goals-of-this-course
 data-types-in-r
 data-structures
 vector
-ways-to-subset-a-vector
-practice-implicit-subsetting
 factors
 dataframes
-subsetting-dataframes
 lists
 matrix
 exercises
