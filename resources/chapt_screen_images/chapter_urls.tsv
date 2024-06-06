@@ -1,14 +1,9 @@
 url	chapt_title	img_path
 https://hutchdatascience.org/Intermediate_R/no_toc/index.html	1 About this Course	resources/chapt_screen_images/index.png
 https://hutchdatascience.org/Intermediate_R/no_toc/fundamentals.html	2 Fundamentals	resources/chapt_screen_images/fundamentals.png
-https://hutchdatascience.org/Intermediate_R/no_toc/fundamentals-exercises.html	3 Fundamentals Exercises	resources/chapt_screen_images/fundamentals-exercises.png
-https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-1.html	4 Data Cleaning, Part 1	resources/chapt_screen_images/data-cleaning-part-1.png
-https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-1-exercises.html	5 Data Cleaning, Part 1 Exercises	resources/chapt_screen_images/data-cleaning-part-1-exercises.png
-https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-2.html	6 Data Cleaning, Part 2	resources/chapt_screen_images/data-cleaning-part-2.png
-https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-2-exercises.html	7 Data Cleaning, Part 2 Exercises	resources/chapt_screen_images/data-cleaning-part-2-exercises.png
-https://hutchdatascience.org/Intermediate_R/no_toc/writing-your-first-function.html	8 Writing your first function	resources/chapt_screen_images/writing-your-first-function.png
-https://hutchdatascience.org/Intermediate_R/no_toc/functions-exercises.html	9 Functions Exercises	resources/chapt_screen_images/functions-exercises.png
-https://hutchdatascience.org/Intermediate_R/no_toc/repeating-tasks.html	10 Repeating tasks	resources/chapt_screen_images/repeating-tasks.png
-https://hutchdatascience.org/Intermediate_R/no_toc/repetition-exercises.html	11 Repetition Exercises	resources/chapt_screen_images/repetition-exercises.png
+https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-1.html	3 Data Cleaning, Part 1	resources/chapt_screen_images/data-cleaning-part-1.png
+https://hutchdatascience.org/Intermediate_R/no_toc/data-cleaning-part-2.html	4 Data Cleaning, Part 2	resources/chapt_screen_images/data-cleaning-part-2.png
+https://hutchdatascience.org/Intermediate_R/no_toc/writing-your-first-function.html	5 Writing your first function	resources/chapt_screen_images/writing-your-first-function.png
+https://hutchdatascience.org/Intermediate_R/no_toc/iteration.html	6 Iteration	resources/chapt_screen_images/iteration.png
 https://hutchdatascience.org/Intermediate_R/no_toc/about-the-authors.html	About the Authors	resources/chapt_screen_images/about-the-authors.png
-https://hutchdatascience.org/Intermediate_R/no_toc/references-1.html	12 References	resources/chapt_screen_images/references-1.png
+https://hutchdatascience.org/Intermediate_R/no_toc/references.html	7 References	resources/chapt_screen_images/references.png
