@@ -25,7 +25,7 @@ Most often, the "chunk of code" will make use of `my_element`.
 The function `seq_along()` creates the indicies of a vector. It has almost the same properties as `1:length(my_vector)`, but avoids issues when the vector length is 0.
 
 
-```r
+``` r
 my_vector = c(1, 3, 5, 7)
 
 for(i in seq_along(my_vector)) {
@@ -43,7 +43,7 @@ for(i in seq_along(my_vector)) {
 #### Alternatively, we can loop through the elements of a vector
 
 
-```r
+``` r
 for(vec_i in my_vector) {
   print(vec_i)
 }
@@ -59,7 +59,7 @@ for(vec_i in my_vector) {
 #### Another example via indicies
 
 
-```r
+``` r
 result = rep(NA, length(my_vector))
 for(i in seq_along(my_vector)) {
   result[i] = log(my_vector[i])
@@ -76,14 +76,14 @@ Or,
 
 ![](https://d33wubrfki0l68.cloudfront.net/f0494d020aa517ae7b1011cea4c4a9f21702df8b/2577b/diagrams/functionals/map.png){width="250"}
 
-We will use the `purrr` package in `tidyverse` to use functionals.
+We will use the `purrr` package in `tidyverse` to use functionals. There is another set of functionals in Base-R called the `apply` family of functions that work very similarly. You can see the comparision of both tools [here](https://purrr.tidyverse.org/articles/base.html) and [here](https://jtr13.github.io/spring19/ss5593&fq2150.html).
 
 `map()` takes in a vector or a list, and then applies the function on each element of it. The output is *always* a list.
 
 
 
 
-```r
+``` r
 my_vector = c(1, 3, 5, 7)
 map(my_vector, log)
 ```
@@ -109,7 +109,7 @@ To be more specific about the output type, you can do this via the `map_*` funct
 For example, to make sure your output is a double (numeric):
 
 
-```r
+``` r
 map_dbl(my_vector, log)
 ```
 
@@ -128,7 +128,7 @@ Suppose that we want to load in a few dataframes, and store them in a list of da
 We start with the filepaths we want to load in as dataframes.
 
 
-```r
+``` r
 paths = c("classroom_data/students.csv", "classroom_data/CCLE_metadata.csv")
 ```
 
@@ -137,7 +137,7 @@ The function we want to use to load the data in will be `read_csv()`.
 Let's practice writing out one iteration:
 
 
-```r
+``` r
 result = read_csv(paths[1])
 ```
 
@@ -150,7 +150,7 @@ result = read_csv(paths[1])
 -   The looping mechanism, and its output: `map()` outputs lists.
 
 
-```r
+``` r
 loaded_dfs = map(paths, read_csv)
 ```
 
@@ -163,7 +163,7 @@ loaded_dfs = map(paths, read_csv)
 -   At each iteration, what are we doing? Use `read_csv()` on the current element, and store it in the output list.
 
 
-```r
+``` r
 paths = c("classroom_data/students.csv", "classroom_data/CCLE_metadata.csv")
 loaded_dfs = vector(mode = "list", length = length(paths))
 for(i in seq_along(paths)) {
@@ -177,7 +177,7 @@ for(i in seq_along(paths)) {
 Suppose you are working with the `penguins` dataframe:
 
 
-```r
+``` r
 library(palmerpenguins)
 head(penguins)
 ```
@@ -200,7 +200,7 @@ and you want to look at the mean `bill_length_mm` for each of the three species 
 Let's practice writing out one iteration:
 
 
-```r
+``` r
 species_to_analyze = c("Adelie", "Chinstrap", "Gentoo")
 penguins_subset = filter(penguins, species == species_to_analyze[1])
 mean(penguins_subset$bill_length_mm, na.rm = TRUE)
@@ -219,7 +219,7 @@ mean(penguins_subset$bill_length_mm, na.rm = TRUE)
 -   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
 
 
-```r
+``` r
 analysis = function(current_species) {
   penguins_subset = dplyr::filter(penguins, species == current_species)
   return(mean(penguins_subset$bill_length_mm, na.rm=TRUE))
@@ -241,7 +241,7 @@ map_dbl(c("Adelie", "Chinstrap", "Gentoo"), analysis)
 -   At each iteration, what are we doing? Filter the rows of `penguins` to the species of interest, and compute the mean of `bill_length_mm`.
 
 
-```r
+``` r
 outcome = rep(NA, length(species_to_analyze))
 for(i in seq_along(species_to_analyze)) {
   penguins_subset = filter(penguins, species == species_to_analyze[i])
@@ -259,7 +259,7 @@ outcome
 Suppose that you are interested in the numeric columns of the `penguins` dataframe.
 
 
-```r
+``` r
 penguins_numeric = penguins %>% select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
 ```
 
@@ -268,7 +268,7 @@ and you are interested to look at the mean of each column. It is very helpful to
 Let's practice writing out one iteration:
 
 
-```r
+``` r
 mean(penguins_numeric[[1]], na.rm = TRUE)
 ```
 
@@ -285,7 +285,7 @@ mean(penguins_numeric[[1]], na.rm = TRUE)
 -   The looping mechanism, and its output: `map_dbl()` outputs (double) numeric vectors.
 
 
-```r
+``` r
 map_dbl(penguins_numeric, mean, na.rm = TRUE)
 ```
 
@@ -307,7 +307,7 @@ Here, R is interpreting the dataframe `penguins_numeric` as a *list*, iterating 
 -   At each iteration, what are we doing? Compute the mean of an element of `penguins_numeric`.
 
 
-```r
+``` r
 result = rep(NA, ncol(penguins_numeric))
 for(i in seq_along(penguins_numeric)) {
   result[i] = mean(penguins_numeric[[i]], na.rm = TRUE)

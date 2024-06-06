@@ -1,8 +1,10 @@
 # Writing your first function
 
+After learning how to use other people's functions, it's time to write our own! We will look at the anatomy of how a function is constructed, and see bunch of examples in action.
+
 ![Function machine from algebra class.](https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png)
 
-We write functions for two main, often overlapping, reasons:
+First, we remind ourselves why we write functions in the first place. We write functions for two main, often overlapping, reasons:
 
 1.  Following DRY (Don't Repeat Yourself) principle: If you find yourself repeating similar patterns of code, you should write a function that executes that pattern. This saves time and the risk of mistakes.
 
@@ -86,7 +88,7 @@ The function did not work as expected because we used hard-coded variables from 
 -   Create a function, called `add_and_raise_power` in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and raised to a power determined by the 3rd argument. The function returns the resulting value. Here is a use case: `add_and_raise_power(1, 2, 3) = 27` because the function will return this expression: `(1 + 2) ^ 3`. Another use case: `add_and_raise_power(3, 1, 2) = 16` because of the expression `(3 + 1) ^ 2`. Confirm with that these use cases work. Can this function used for numeric vectors?
 
     
-    ```r
+    ``` r
     add_and_raise_power = function(x, y, z) {
       result = (x + y)^z
       return(result)
@@ -101,7 +103,7 @@ The function did not work as expected because we used hard-coded variables from 
 -   Create a function, called `my_dim` in which the function takes in one argument: a dataframe. The function returns the following: a length-2 numeric vector in which the first element is the number of rows in the dataframe, and the second element is the number of columns in the dataframe. Your result should be identical as the `dim` function. How can you leverage existing functions such as `nrow` and `ncol`? Use case: `my_dim(penguins) = c(344, 8)`
 
     
-    ```r
+    ``` r
     library(palmerpenguins)
     my_dim = function(df) {
       result = c(nrow(df), ncol(df))
@@ -117,7 +119,7 @@ The function did not work as expected because we used hard-coded variables from 
 -   Create a function, called `num_na` in which the function takes in any vector, and then return a single numeric value. This numeric value is the number of `NA`s in the vector. Use cases: `num_na(c(NA, 2, 3, 4, NA, 5)) = 2` and `num_na(c(2, 3, 4, 5)) = 0`. Hint 1: Use `is.na()` function. Hint 2: Given a logical vector, you can count the number of `TRUE` values by using `sum()`, such as `sum(c(TRUE, TRUE, FALSE)) = 2`.
 
     
-    ```r
+    ``` r
     num_na = function(x) {
       return(sum(is.na(num_na)))
     }
@@ -126,7 +128,7 @@ The function did not work as expected because we used hard-coded variables from 
 -   Create a function, called `medicaid_eligible` in which the function takes in one argument: a numeric vector called `age`. The function returns a numeric vector with the same length as `age`, in which elements are `0` for indicies that are less than 65 in `age`, and `1` for indicies 65 or higher in `age`. (Hint: This is a data recoding problem!) Use cases: `medicaid_eligible(c(30, 70)) = c(0, 1)`
 
     
-    ```r
+    ``` r
     medicaid_eligible = function(age) {
       result = age
       result[age < 65] = 0
