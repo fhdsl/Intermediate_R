@@ -1,6 +1,6 @@
 ---
-title: "Intermediate R, Season 3"
-date: "May, 2024"
+title: "Intermediate R"
+date: "June, 2024"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]
@@ -25,4 +25,4 @@ The course is intended for researchers who want to continue learning the fundame
 
 ## Offerings
 
-This course is taught on a regular basis at Fred Hutch Cancer Center through the Data Science Lab. Announcements of course offering can be found [here](https://hutchdatascience.org/training/). If you wish to follow the course content asynchronously, you may access the course content on this website and [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252). The Posit Cloud compute space can be copied to your own workspace for personal use, or you can access the [exercises and solutions on GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).
+This course is taught on a regular basis at Fred Hutch Cancer Center through the Data Science Lab. Announcements of course offering can be found [here](https://hutchdatascience.org/training/). If you wish to follow the course content asynchronously, you may access the course content on this website and [exercises and solutions on Posit Cloud](https://posit.cloud/content/8236252). The Posit Cloud compute space can be copied to your own workspace for personal use, and you can get started via this [introduction](https://hutchdatascience.org/Intro_to_R/intro-to-computing.html#posit-cloud-setup). Or, you can access the [exercises and solutions on GitHub](https://github.com/fhdsl/Intermediate_R_Exercises).

@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Fundamentals | Intermediate R, Season 3</title>
-  <meta name="description" content="Chapter 2 Fundamentals | Intermediate R, Season 3" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <title>Chapter 2 Fundamentals | Intermediate R</title>
+  <meta name="description" content="Chapter 2 Fundamentals | Intermediate R" />
+  <meta name="generator" content="bookdown 0.39.1 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Fundamentals | Intermediate R, Season 3" />
+  <meta property="og:title" content="Chapter 2 Fundamentals | Intermediate R" />
   <meta property="og:type" content="book" />
-  
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Fundamentals | Intermediate R, Season 3" />
+  <meta name="twitter:title" content="Chapter 2 Fundamentals | Intermediate R" />
   
   
   
@@ -31,7 +30,6 @@
   <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
 <link rel="prev" href="index.html"/>
 <link rel="next" href="data-cleaning-part-1.html"/>
-<script src="libs/header-attrs-2.10/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -49,8 +47,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
@@ -89,11 +88,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #c4a000; } /* Attribute */
+code span.at { color: #204a87; } /* Attribute */
 code span.bn { color: #0000cf; } /* BaseN */
 code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4e9a06; } /* Char */
-code span.cn { color: #000000; } /* Constant */
+code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #8f5902; font-style: italic; } /* Comment */
 code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
 code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
@@ -102,14 +101,14 @@ code span.dv { color: #0000cf; } /* DecVal */
 code span.er { color: #a40000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #0000cf; } /* Float */
-code span.fu { color: #000000; } /* Function */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
 code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
 code span.ot { color: #8f5902; } /* Other */
 code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
-code span.sc { color: #000000; } /* SpecialChar */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
 code span.ss { color: #4e9a06; } /* SpecialString */
 code span.st { color: #4e9a06; } /* String */
 code span.va { color: #000000; } /* Variable */
@@ -117,6 +116,10 @@ code span.vs { color: #4e9a06; } /* VerbatimString */
 code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="assets/style.css" type="text/css" />
 </head>
@@ -145,16 +148,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1" data-path="fundamentals.html"><a href="fundamentals.html#goals-of-this-course"><i class="fa fa-check"></i><b>2.1</b> Goals of this course</a></li>
 <li class="chapter" data-level="2.2" data-path="fundamentals.html"><a href="fundamentals.html#data-types-in-r"><i class="fa fa-check"></i><b>2.2</b> Data types in R</a></li>
 <li class="chapter" data-level="2.3" data-path="fundamentals.html"><a href="fundamentals.html#data-structures"><i class="fa fa-check"></i><b>2.3</b> Data structures</a></li>
-<li class="chapter" data-level="2.4" data-path="fundamentals.html"><a href="fundamentals.html#vector"><i class="fa fa-check"></i><b>2.4</b> Vector</a>
-<ul>
-<li class="chapter" data-level="2.4.1" data-path="fundamentals.html"><a href="fundamentals.html#ways-to-subset-a-vector"><i class="fa fa-check"></i><b>2.4.1</b> Ways to subset a vector</a></li>
-<li class="chapter" data-level="2.4.2" data-path="fundamentals.html"><a href="fundamentals.html#practice-implicit-subsetting"><i class="fa fa-check"></i><b>2.4.2</b> Practice implicit subsetting</a></li>
-</ul></li>
+<li class="chapter" data-level="2.4" data-path="fundamentals.html"><a href="fundamentals.html#vector"><i class="fa fa-check"></i><b>2.4</b> Vector</a></li>
 <li class="chapter" data-level="2.5" data-path="fundamentals.html"><a href="fundamentals.html#factors"><i class="fa fa-check"></i><b>2.5</b> Factors</a></li>
-<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.6</b> Dataframes</a>
-<ul>
-<li class="chapter" data-level="2.6.1" data-path="fundamentals.html"><a href="fundamentals.html#subsetting-dataframes"><i class="fa fa-check"></i><b>2.6.1</b> Subsetting dataframes</a></li>
-</ul></li>
+<li class="chapter" data-level="2.6" data-path="fundamentals.html"><a href="fundamentals.html#dataframes"><i class="fa fa-check"></i><b>2.6</b> Dataframes</a></li>
 <li class="chapter" data-level="2.7" data-path="fundamentals.html"><a href="fundamentals.html#lists"><i class="fa fa-check"></i><b>2.7</b> Lists</a></li>
 <li class="chapter" data-level="2.8" data-path="fundamentals.html"><a href="fundamentals.html#matrix"><i class="fa fa-check"></i><b>2.8</b> Matrix</a></li>
 <li class="chapter" data-level="2.9" data-path="fundamentals.html"><a href="fundamentals.html#exercises"><i class="fa fa-check"></i><b>2.9</b> Exercises</a></li>
@@ -215,7 +211,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R, Season 3</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R</a>
           </h1>
         </div>
 
@@ -235,28 +231,32 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/dasl_thin_main_image.png">
 </div>
-<div id="fundamentals" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Fundamentals</h1>
-<div id="goals-of-this-course" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Goals of this course</h2>
+<div id="fundamentals" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Fundamentals<a href="fundamentals.html#fundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Welcome to Intermediate R! Each week, we cover a chapter, which consists of a lesson and exercise. In the first week, we go over the goals of the course, and review data structures and data types that you have seen before from <a href="https://hutchdatascience.org/Intro_to_R/">Intro to R</a>. We also look at some new data structures and more properties of data structures.</p>
+<p>In <a href="https://hutchdatascience.org/Intro_to_R/">Intro to R</a>, you learned how to do basic data analysis such as subsetting a dataframe, looking at summary statistics, and visualizing your data. This was done in the context of a clean, Tidy dataframe. In this course, we focus on working with data “from the wild”, in which the data comes in a more messy, un-Tidy form. Let’s see what we will learn in the next 6 weeks together:</p>
+<div id="goals-of-this-course" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Goals of this course<a href="fundamentals.html#goals-of-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li><p>Continue building <em>programming fundamentals</em>: How to use complex data structures, use and create custom functions, and how to iterate repeated tasks</p></li>
+<li><p>Continue building <em>programming fundamentals</em>: How to use complex data structures, use and create custom functions, and how to iterate repeated tasks.</p></li>
 <li><p>Continue exploration of <em>data science fundamentals</em>: how to clean messy data to a Tidy form for analysis.</p></li>
 <li><p>At the end of the course, you will be able to: conduct a full analysis in the data science workflow (minus model).</p>
 <p><img src="https://r4ds.hadley.nz/diagrams/data-science/base.png" width="450" /></p></li>
 </ul>
+<p>To get started, let’s recall the fundamental data types in R:</p>
 </div>
-<div id="data-types-in-r" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Data types in R</h2>
+<div id="data-types-in-r" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Data types in R<a href="fundamentals.html#data-types-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Numeric: 18, -21, 65, 1.25</p></li>
 <li><p>Character: “ATCG”, “Whatever”, “948-293-0000”</p></li>
 <li><p>Logical: TRUE, FALSE</p></li>
 <li><p>Missing values: <code>NA</code></p></li>
 </ul>
+<p>And the fundamental data structures: in this course, we will learn more about a new, flexible data structure called a <strong>List</strong>. We also lightly introduce <em>Factor</em> and <em>Matrix</em>, but they will not be used for the rest of the course.</p>
 </div>
-<div id="data-structures" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Data structures</h2>
+<div id="data-structures" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Data structures<a href="fundamentals.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Vector</p></li>
 <li><p><em>Factor</em></p></li>
@@ -265,94 +265,117 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <li><p><em>Matrix</em></p></li>
 </ul>
 </div>
-<div id="vector" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Vector</h2>
-<p>We know what an <strong>(atomic) vector</strong> is: it can contains a data type, and all elements must be the same data type.</p>
-<p><img src="https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png" width="400" /></p>
+<div id="vector" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Vector<a href="fundamentals.html#vector" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We know what an <strong>(atomic) vector</strong> is: it can contains a data type, and all elements must be the same data type. If a vector consists of only numeric data, then it is a Numeric Vector, etc. We organize vector subtypes by the following graphic:</p>
+<div class="float">
+<img src="https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png" width="400" alt="Organization of Vectors. Image Source: Advanced R." />
+<div class="figcaption">Organization of Vectors. Image Source: <a href="https://adv-r.hadley.nz/vectors-chap.html">Advanced R</a>.</div>
+</div>
 <p>Within the Numeric type that we are familiar with, there are more specific types: <em>Integer</em> consists of whole number values, and <em>Double</em> consists of decimal values. Most of the time we only need to consider Numeric types, but once in a while we need to be more specific.</p>
+<p>Now that we have distinguished vector subtypes, it is important to examine what a vector is by inspection:</p>
 <ul>
 <li><p>We can test whether a vector is a certain type with <code>is.___()</code> functions, such as <code>is.character()</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fundamentals.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.character</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;there&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="fundamentals.html#cb1-1" tabindex="-1"></a><span class="fu">is.character</span>(<span class="fu">c</span>(<span class="st">&quot;hello&quot;</span>, <span class="st">&quot;there&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<p>For <code>NA</code>, the test will return a vector testing each element, because <code>NA</code> can be mixed into other values:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fundamentals.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="cn">NA</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="fundamentals.html#cb3-1" tabindex="-1"></a><span class="fu">is.character</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>))</span></code></pre></div>
+<pre><code>## [1] FALSE</code></pre></li>
+<li><p>We can also test for missing data <code>NA</code> for any types of vector: The test will return a vector testing each element, because <code>NA</code> can be mixed into other values:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fundamentals.html#cb5-1" tabindex="-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="cn">NA</span>))</span></code></pre></div>
 <pre><code>## [1] FALSE  TRUE</code></pre></li>
-<li><p>We can <strong>coerce</strong> vectors from one type to the other with <code>as.___()</code> functions, such as <code>as.numeric()</code></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="fundamentals.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">&quot;23&quot;</span>, <span class="st">&quot;45&quot;</span>))</span></code></pre></div>
+</ul>
+<p>We can <strong>coerce</strong> vectors from one type to the other with <code>as.___()</code> functions, such as <code>as.numeric()</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fundamentals.html#cb7-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">&quot;23&quot;</span>, <span class="st">&quot;45&quot;</span>))</span></code></pre></div>
 <pre><code>## [1] 23 45</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="fundamentals.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code></pre></div>
-<pre><code>## [1] 1 0</code></pre></li>
-<li><p>It is common to have metadata <strong>attributes,</strong> such as <strong>names,</strong> attached to R data structures.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fundamentals.html#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb9-2"><a href="fundamentals.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</span>
-<span id="cb9-3"><a href="fundamentals.html#cb9-3" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="fundamentals.html#cb9-1" tabindex="-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code></pre></div>
+<pre><code>## [1] 1 0</code></pre>
+<p>This is very common in data cleaning, when we load in data and they assigned to the wrong data type.</p>
+<p>Sometimes, a data structure may have metadata <strong>attributes</strong> associated with them. This gives us more information about the data structure, but doesn’t contain the important data.</p>
+<p>For instance, a common attribute is <strong>names,</strong> which can attached to vectors.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fundamentals.html#cb11-1" tabindex="-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb11-2"><a href="fundamentals.html#cb11-2" tabindex="-1"></a><span class="fu">names</span>(x) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)</span>
+<span id="cb11-3"><a href="fundamentals.html#cb11-3" tabindex="-1"></a>x</span></code></pre></div>
 <pre><code>## a b c 
 ## 1 2 3</code></pre>
-<p><img src="https://d33wubrfki0l68.cloudfront.net/1140c34226b3b04438aec65c8fc6b28758d8c091/1748a/diagrams/vectors/attr-names-2.png" /></p></li>
-</ul>
-<p>We can look for more general attributes via the <code>attributes()</code> function:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="fundamentals.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(x)</span></code></pre></div>
+<div class="float">
+<img src="https://d33wubrfki0l68.cloudfront.net/1140c34226b3b04438aec65c8fc6b28758d8c091/1748a/diagrams/vectors/attr-names-2.png" alt="Names as an attribute for a Vector. Image Source: Advanced R." />
+<div class="figcaption">Names as an attribute for a Vector. Image Source: <a href="https://adv-r.hadley.nz/vectors-chap.html">Advanced R.</a></div>
+</div>
+<p>We can look for more general attributes beyond names via the <code>attributes()</code> function:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fundamentals.html#cb13-1" tabindex="-1"></a><span class="fu">attributes</span>(x)</span></code></pre></div>
 <pre><code>## $names
 ## [1] &quot;a&quot; &quot;b&quot; &quot;c&quot;</code></pre>
-<div id="ways-to-subset-a-vector" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Ways to subset a vector</h3>
+<p>Now, let’s review the ways one can subset a vector. Here are three ways:</p>
 <ol style="list-style-type: decimal">
-<li>Positive numeric vector</li>
-<li>Negative numeric vector performs <em>exclusion</em></li>
+<li><p>Positive numeric vector</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="fundamentals.html#cb15-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="fundamentals.html#cb15-2" tabindex="-1"></a>data[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]</span></code></pre></div>
+<pre><code>## [1]  2 -1  2</code></pre></li>
+<li><p>Negative numeric vector performs <em>exclusion</em></p></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="fundamentals.html#cb17-1" tabindex="-1"></a>data[<span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] -1 -3  2 -1 10</code></pre>
+<ol start="3" style="list-style-type: decimal">
 <li>Logical vector</li>
 </ol>
-</div>
-<div id="practice-implicit-subsetting" class="section level3" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Practice implicit subsetting</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fundamentals.html#cb19-1" tabindex="-1"></a>data[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>)]</span></code></pre></div>
+<pre><code>## [1]  2 -1  2</code></pre>
+<p>In practice, we often subset a vector implicitly, via some kind of criteria. Here is a <a href="https://hutchdatascience.org/Intro_to_R/working-with-data-structures.html#subsetting-vectors-implicitly">review of implicit subsetting from Intro to R</a>. Let’s review implicit vector subsetting below:</p>
 <ol style="list-style-type: decimal">
 <li>How do you subset the following vector so that it only has positive values?</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="fundamentals.html#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="fundamentals.html#cb14-1" aria-hidden="true" tabindex="-1"></a>data[data <span class="sc">&gt;</span> <span class="dv">0</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="fundamentals.html#cb21-1" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="fundamentals.html#cb22-1" tabindex="-1"></a>data[data <span class="sc">&gt;</span> <span class="dv">0</span>]</span></code></pre></div>
 <pre><code>## [1]  2  4  2 10</code></pre>
 <ol start="2" style="list-style-type: decimal">
 <li>How do you subset the following vector so that it has doesn’t have the character “temp”?</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="fundamentals.html#cb16-1" aria-hidden="true" tabindex="-1"></a>chars <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;temp&quot;</span>, <span class="st">&quot;object&quot;</span>, <span class="st">&quot;temp&quot;</span>, <span class="st">&quot;wish&quot;</span>, <span class="st">&quot;bumblebee&quot;</span>, <span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="fundamentals.html#cb17-1" aria-hidden="true" tabindex="-1"></a>chars[chars <span class="sc">!=</span> <span class="st">&quot;temp&quot;</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals.html#cb24-1" tabindex="-1"></a>chars <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;temp&quot;</span>, <span class="st">&quot;object&quot;</span>, <span class="st">&quot;temp&quot;</span>, <span class="st">&quot;wish&quot;</span>, <span class="st">&quot;bumblebee&quot;</span>, <span class="st">&quot;temp&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals.html#cb25-1" tabindex="-1"></a>chars[chars <span class="sc">!=</span> <span class="st">&quot;temp&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;object&quot;    &quot;wish&quot;      &quot;bumblebee&quot;</code></pre>
 <ol start="3" style="list-style-type: decimal">
 <li>How do you subset the following vector so that it has no <code>NA</code> values?</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="fundamentals.html#cb19-1" aria-hidden="true" tabindex="-1"></a>vec_with_NA <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="fundamentals.html#cb20-1" aria-hidden="true" tabindex="-1"></a>vec_with_NA[<span class="sc">!</span><span class="fu">is.na</span>(vec_with_NA)]</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals.html#cb27-1" tabindex="-1"></a>vec_with_NA <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fundamentals.html#cb28-1" tabindex="-1"></a>vec_with_NA[<span class="sc">!</span><span class="fu">is.na</span>(vec_with_NA)]</span></code></pre></div>
 <pre><code>## [1] 2 4 3</code></pre>
 </div>
-</div>
-<div id="factors" class="section level2" number="2.5">
-<h2><span class="header-section-number">2.5</span> Factors</h2>
+<div id="factors" class="section level2 hasAnchor" number="2.5">
+<h2><span class="header-section-number">2.5</span> Factors<a href="fundamentals.html#factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Factors are a type of vector that holds categorical information, such as sex, gender, or cancer subtype. They are useful for:</p>
 <ul>
 <li><p>When you know you have a fixed number of categories.</p></li>
 <li><p>When you want to display character vectors in a non-alphabetical order, which is common in plotting.</p></li>
 <li><p>Inputs for statistical models, as factors are a special type of numerical vectors.</p></li>
 </ul>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="fundamentals.html#cb22-1" aria-hidden="true" tabindex="-1"></a>place <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;fourth&quot;</span>))</span>
-<span id="cb22-2"><a href="fundamentals.html#cb22-2" aria-hidden="true" tabindex="-1"></a>place</span></code></pre></div>
+<p>Let’s take a look at Factors in practice:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="fundamentals.html#cb30-1" tabindex="-1"></a>place <span class="ot">=</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;fourth&quot;</span>))</span>
+<span id="cb30-2"><a href="fundamentals.html#cb30-2" tabindex="-1"></a>place</span></code></pre></div>
 <pre><code>## [1] first  third  third  second second fourth
 ## Levels: first fourth second third</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="fundamentals.html#cb24-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">p =</span> place)</span>
-<span id="cb24-2"><a href="fundamentals.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> p))</span></code></pre></div>
-<p><img src="01-Fundamentals_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<p>We can construct ordered factors:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="fundamentals.html#cb25-1" aria-hidden="true" tabindex="-1"></a>place <span class="ot">=</span> <span class="fu">ordered</span>(<span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;second&quot;</span>,<span class="st">&quot;second&quot;</span>, <span class="st">&quot;fourth&quot;</span>), <span class="at">levels =</span>  <span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;fourth&quot;</span>))</span>
-<span id="cb25-2"><a href="fundamentals.html#cb25-2" aria-hidden="true" tabindex="-1"></a>place</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="fundamentals.html#cb32-1" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">p =</span> place)</span>
+<span id="cb32-2"><a href="fundamentals.html#cb32-2" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> p))</span></code></pre></div>
+<p><img src="01-Fundamentals_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>We can construct Ordered Factors:</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="fundamentals.html#cb33-1" tabindex="-1"></a>place <span class="ot">=</span> <span class="fu">ordered</span>(<span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;second&quot;</span>,<span class="st">&quot;second&quot;</span>, <span class="st">&quot;fourth&quot;</span>), <span class="at">levels =</span>  <span class="fu">c</span>(<span class="st">&quot;first&quot;</span>, <span class="st">&quot;second&quot;</span>, <span class="st">&quot;third&quot;</span>, <span class="st">&quot;fourth&quot;</span>))</span>
+<span id="cb33-2"><a href="fundamentals.html#cb33-2" tabindex="-1"></a>place</span></code></pre></div>
 <pre><code>## [1] first  third  third  second second fourth
 ## Levels: first &lt; second &lt; third &lt; fourth</code></pre>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="fundamentals.html#cb27-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">p =</span> place)</span>
-<span id="cb27-2"><a href="fundamentals.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> p))</span></code></pre></div>
-<p><img src="01-Fundamentals_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fundamentals.html#cb35-1" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">p =</span> place)</span>
+<span id="cb35-2"><a href="fundamentals.html#cb35-2" tabindex="-1"></a><span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> p))</span></code></pre></div>
+<p><img src="01-Fundamentals_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 </div>
-<div id="dataframes" class="section level2" number="2.6">
-<h2><span class="header-section-number">2.6</span> Dataframes</h2>
-<p>Usually, we load in a dataframe from a spreadsheet or a package, but we can create a new dataframe by using vectors of the same length via the <code>data.frame()</code> function:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="fundamentals.html#cb28-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;cup&quot;</span>, <span class="st">&quot;mug&quot;</span>, <span class="st">&quot;jar&quot;</span>))</span>
-<span id="cb28-2"><a href="fundamentals.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(df)</span></code></pre></div>
+<div id="dataframes" class="section level2 hasAnchor" number="2.6">
+<h2><span class="header-section-number">2.6</span> Dataframes<a href="fundamentals.html#dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Usually, we load in a Dataframe from a spreadsheet or a package, but we can create a new dataframe by using vectors of the same length via the <code>data.frame()</code> function:</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fundamentals.html#cb36-1" tabindex="-1"></a>df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">y =</span> <span class="fu">c</span>(<span class="st">&quot;cup&quot;</span>, <span class="st">&quot;mug&quot;</span>, <span class="st">&quot;jar&quot;</span>))</span>
+<span id="cb36-2"><a href="fundamentals.html#cb36-2" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##   x   y
+## 1 1 cup
+## 2 2 mug
+## 3 3 jar</code></pre>
+<p>We have attributes for Dataframes. The most important attribute is names, which correspond to the column names of a Dataframe. You have been using it for a while already!</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="fundamentals.html#cb38-1" tabindex="-1"></a><span class="fu">attributes</span>(df)</span></code></pre></div>
 <pre><code>## $names
 ## [1] &quot;x&quot; &quot;y&quot;
 ## 
@@ -361,8 +384,12 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## $row.names
 ## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="fundamentals.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb30-2"><a href="fundamentals.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">attributes</span>(penguins)</span></code></pre></div>
+<p>We can directly access the names attribute via <code>names()</code> or <code>colnames()</code>:</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="fundamentals.html#cb40-1" tabindex="-1"></a><span class="fu">names</span>(df)</span></code></pre></div>
+<pre><code>## [1] &quot;x&quot; &quot;y&quot;</code></pre>
+<p>Here is another example:</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="fundamentals.html#cb42-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb42-2"><a href="fundamentals.html#cb42-2" tabindex="-1"></a><span class="fu">attributes</span>(penguins)</span></code></pre></div>
 <pre><code>## $class
 ## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;
 ## 
@@ -392,12 +419,14 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;species&quot;           &quot;island&quot;            &quot;bill_length_mm&quot;   
 ## [4] &quot;bill_depth_mm&quot;     &quot;flipper_length_mm&quot; &quot;body_mass_g&quot;      
 ## [7] &quot;sex&quot;               &quot;year&quot;</code></pre>
-<p>Why are row names <a href="https://adv-r.hadley.nz/vectors-chap.html#rownames">undesirable</a>?</p>
-<p>Sometimes, data frames will be in a format called “tibble”, as shown in the <code>penguins</code> class names as “tbl_df”, and “tbl”.</p>
-<div id="subsetting-dataframes" class="section level3" number="2.6.1">
-<h3><span class="header-section-number">2.6.1</span> Subsetting dataframes</h3>
+<p>Some notes about the other attributes:</p>
+<ul>
+<li><p>Sometimes, Dataframes will be in a format called “<a href="https://tibble.tidyverse.org/">tibble</a>”, as shown in the <code>penguins</code> class names as “tbl_df”, and “tbl”.</p></li>
+<li><p>Row names are not commonly used. Here is a <a href="https://adv-r.hadley.nz/vectors-chap.html#rownames">reason</a>.</p></li>
+</ul>
+<p>Let’s review how to subset Dataframes. There are many ways to do it, and here are just some opinionated ways of doing it for this class.</p>
 <p><em>Getting one single column:</em></p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="fundamentals.html#cb32-1" aria-hidden="true" tabindex="-1"></a>penguins<span class="sc">$</span>bill_length_mm</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="fundamentals.html#cb44-1" tabindex="-1"></a>penguins<span class="sc">$</span>bill_length_mm</span></code></pre></div>
 <pre><code>##   [1] 39.1 39.5 40.3   NA 36.7 39.3 38.9 39.2 34.1 42.0 37.8 37.8 41.1 38.6 34.6
 ##  [16] 36.6 38.7 42.5 34.4 46.0 37.8 37.7 35.9 38.2 38.8 35.3 40.6 40.5 37.9 40.5
 ##  [31] 39.5 37.2 39.5 40.9 36.4 39.2 38.8 42.2 37.6 39.8 36.5 40.8 36.0 44.1 37.0
@@ -422,77 +451,71 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 ## [316] 53.5 49.0 46.2 50.9 45.5 50.9 50.8 50.1 49.0 51.5 49.8 48.1 51.4 45.7 50.7
 ## [331] 42.5 52.2 45.2 49.3 50.2 45.6 51.9 46.8 45.7 55.8 43.5 49.6 50.8 50.2</code></pre>
 <p><em>I want to select columns <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>species</code>, and filter for <code>species</code> that are “Gentoo”:</em></p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="fundamentals.html#cb34-1" aria-hidden="true" tabindex="-1"></a>penguins_select <span class="ot">=</span> <span class="fu">select</span>(penguins, bill_length_mm, bill_depth_mm, species)</span>
-<span id="cb34-2"><a href="fundamentals.html#cb34-2" aria-hidden="true" tabindex="-1"></a>penguins_gentoo <span class="ot">=</span> <span class="fu">filter</span>(penguins_select, species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fundamentals.html#cb46-1" tabindex="-1"></a>penguins_select <span class="ot">=</span> <span class="fu">select</span>(penguins, bill_length_mm, bill_depth_mm, species)</span>
+<span id="cb46-2"><a href="fundamentals.html#cb46-2" tabindex="-1"></a>penguins_gentoo <span class="ot">=</span> <span class="fu">filter</span>(penguins_select, species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>)</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="fundamentals.html#cb35-1" aria-hidden="true" tabindex="-1"></a>penguins_select_2 <span class="ot">=</span> penguins[, <span class="fu">c</span>(<span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;bill_depth_mm&quot;</span>, <span class="st">&quot;species&quot;</span>)]</span>
-<span id="cb35-2"><a href="fundamentals.html#cb35-2" aria-hidden="true" tabindex="-1"></a>penguins_gentoo_2 <span class="ot">=</span> penguins_select_2[penguins<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span> ,]</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fundamentals.html#cb47-1" tabindex="-1"></a>penguins_select_2 <span class="ot">=</span> penguins[, <span class="fu">c</span>(<span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;bill_depth_mm&quot;</span>, <span class="st">&quot;species&quot;</span>)]</span>
+<span id="cb47-2"><a href="fundamentals.html#cb47-2" tabindex="-1"></a>penguins_gentoo_2 <span class="ot">=</span> penguins_select_2[penguins<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span> ,]</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="fundamentals.html#cb36-1" aria-hidden="true" tabindex="-1"></a>penguins_gentoo_2 <span class="ot">=</span> penguins_select_2[penguins<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;bill_depth_mm&quot;</span>, <span class="st">&quot;species&quot;</span>)]</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="fundamentals.html#cb48-1" tabindex="-1"></a>penguins_gentoo_2 <span class="ot">=</span> penguins_select_2[penguins<span class="sc">$</span>species <span class="sc">==</span> <span class="st">&quot;Gentoo&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;bill_length_mm&quot;</span>, <span class="st">&quot;bill_depth_mm&quot;</span>, <span class="st">&quot;species&quot;</span>)]</span></code></pre></div>
 <p><em>I want to filter out rows that have <code>NA</code>s in the column <code>bill_length_mm</code>:</em></p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="fundamentals.html#cb37-1" aria-hidden="true" tabindex="-1"></a>penguins_clean <span class="ot">=</span> <span class="fu">filter</span>(penguins, <span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm))</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="fundamentals.html#cb49-1" tabindex="-1"></a>penguins_clean <span class="ot">=</span> <span class="fu">filter</span>(penguins, <span class="sc">!</span><span class="fu">is.na</span>(bill_length_mm))</span></code></pre></div>
 <p>or</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="fundamentals.html#cb38-1" aria-hidden="true" tabindex="-1"></a>penguins_clean <span class="ot">=</span> penguins[<span class="sc">!</span><span class="fu">is.na</span>(penguins<span class="sc">$</span>bill_depth_mm) ,]</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="fundamentals.html#cb50-1" tabindex="-1"></a>penguins_clean <span class="ot">=</span> penguins[<span class="sc">!</span><span class="fu">is.na</span>(penguins<span class="sc">$</span>bill_depth_mm) ,]</span></code></pre></div>
 </div>
+<div id="lists" class="section level2 hasAnchor" number="2.7">
+<h2><span class="header-section-number">2.7</span> Lists<a href="fundamentals.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Lists are the most flexible data structure in R, as they can contain a flexible amount and type of information. They operate similarly as vectors as they group data into one dimension, but each element of a list can be any data type <em>or data structure</em>!</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="fundamentals.html#cb51-1" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb51-2"><a href="fundamentals.html#cb51-2" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb51-3"><a href="fundamentals.html#cb51-3" tabindex="-1"></a>  <span class="st">&quot;a&quot;</span>, </span>
+<span id="cb51-4"><a href="fundamentals.html#cb51-4" tabindex="-1"></a>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb51-5"><a href="fundamentals.html#cb51-5" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
+<span id="cb51-6"><a href="fundamentals.html#cb51-6" tabindex="-1"></a>)</span></code></pre></div>
+<div class="float">
+<img src="https://d33wubrfki0l68.cloudfront.net/9628eed602df6fd55d9bced4fba0a5a85d93db8a/36c16/diagrams/vectors/list.png" alt="Illustration of a List. Image Source: Advanced R." />
+<div class="figcaption">Illustration of a List. Image Source: <a href="https://adv-r.hadley.nz/vectors-chap.html">Advanced R.</a></div>
 </div>
-<div id="lists" class="section level2" number="2.7">
-<h2><span class="header-section-number">2.7</span> Lists</h2>
-<p>Lists operate similarly as vectors as they group data into one dimension, but each element of a list can be any data type <em>or data structure</em>!</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="fundamentals.html#cb39-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb39-2"><a href="fundamentals.html#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb39-3"><a href="fundamentals.html#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;a&quot;</span>, </span>
-<span id="cb39-4"><a href="fundamentals.html#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb39-5"><a href="fundamentals.html#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
-<span id="cb39-6"><a href="fundamentals.html#cb39-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
-<p><img src="https://d33wubrfki0l68.cloudfront.net/9628eed602df6fd55d9bced4fba0a5a85d93db8a/36c16/diagrams/vectors/list.png" /></p>
-<p>Unlike vectors, you access the elements of a list via the double bracket <code>[[]]</code>. You access a smaller list with single bracket <code>[]</code>. (More discussion on the different uses of the bracket <a href="https://stackoverflow.com/questions/1169456/the-difference-between-bracket-and-double-bracket-for-accessing-the-el">here</a>.)</p>
-<p>Here’s a <a href="https://adv-r.hadley.nz/subsetting.html#subset-single">nice metaphor</a>:</p>
-<blockquote>
-<p>If list <code>x</code> is a train carrying objects, then <code>x[[5]]</code> is the object in car 5; <code>x[4:6]</code> is a train of cars 4-6.</p>
-</blockquote>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="fundamentals.html#cb40-1" aria-hidden="true" tabindex="-1"></a>l1[[<span class="dv">1</span>]]</span></code></pre></div>
-<pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="fundamentals.html#cb42-1" aria-hidden="true" tabindex="-1"></a>l1[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## [1] 2</code></pre>
+<p>Unlike vectors, you access the elements of a list via the double bracket <code>[[]]</code>. You access a smaller list with single bracket <code>[]</code>. (More discussion on the different uses of the bracket <a href="https://adv-r.hadley.nz/subsetting.html#subset-single">here</a> and <a href="https://stackoverflow.com/questions/1169456/the-difference-between-bracket-and-double-bracket-for-accessing-the-el">here</a>.)</p>
 <p>Use <code>unlist()</code> to coerce a list into a vector. Notice all the automatic coersion that happened for the elements.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="fundamentals.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>(l1)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="fundamentals.html#cb52-1" tabindex="-1"></a><span class="fu">unlist</span>(l1)</span></code></pre></div>
 <pre><code>## [1] &quot;1&quot;     &quot;2&quot;     &quot;3&quot;     &quot;a&quot;     &quot;TRUE&quot;  &quot;FALSE&quot; &quot;TRUE&quot;  &quot;2.3&quot;   &quot;5.9&quot;</code></pre>
-<p>We can give <strong>names</strong> to lists:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="fundamentals.html#cb46-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb46-2"><a href="fundamentals.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb46-3"><a href="fundamentals.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;a&quot;</span>, </span>
-<span id="cb46-4"><a href="fundamentals.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">success =</span>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb46-5"><a href="fundamentals.html#cb46-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
-<span id="cb46-6"><a href="fundamentals.html#cb46-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb46-7"><a href="fundamentals.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="co">#or</span></span>
-<span id="cb46-8"><a href="fundamentals.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(l1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;ranking&quot;</span>, <span class="st">&quot;name&quot;</span>, <span class="st">&quot;success&quot;</span>, <span class="st">&quot;score&quot;</span>)</span></code></pre></div>
+<p>We can give the attribute <strong>names</strong> to lists:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="fundamentals.html#cb54-1" tabindex="-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb54-2"><a href="fundamentals.html#cb54-2" tabindex="-1"></a>  <span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb54-3"><a href="fundamentals.html#cb54-3" tabindex="-1"></a>  <span class="at">name =</span> <span class="st">&quot;a&quot;</span>, </span>
+<span id="cb54-4"><a href="fundamentals.html#cb54-4" tabindex="-1"></a>  <span class="at">success =</span>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb54-5"><a href="fundamentals.html#cb54-5" tabindex="-1"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
+<span id="cb54-6"><a href="fundamentals.html#cb54-6" tabindex="-1"></a>)</span>
+<span id="cb54-7"><a href="fundamentals.html#cb54-7" tabindex="-1"></a><span class="co">#or</span></span>
+<span id="cb54-8"><a href="fundamentals.html#cb54-8" tabindex="-1"></a><span class="fu">names</span>(l1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;ranking&quot;</span>, <span class="st">&quot;name&quot;</span>, <span class="st">&quot;success&quot;</span>, <span class="st">&quot;score&quot;</span>)</span></code></pre></div>
 <p>And access named elements of lists via the <code>$</code> operation:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="fundamentals.html#cb47-1" aria-hidden="true" tabindex="-1"></a>l1<span class="sc">$</span>score</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="fundamentals.html#cb55-1" tabindex="-1"></a>l1<span class="sc">$</span>score</span></code></pre></div>
 <pre><code>## [1] 2.3 5.9</code></pre>
 <p>Therefore, <code>l1$score</code> is the same as <code>l1[[4]]</code> and is the same as <code>l1[["score"]]</code>.</p>
-<p>A dataframe is just a named list of vectors of same length with additional <strong>attributes</strong> of (column) <code>names</code> and <code>row.names</code>.</p>
+<p>Here’s an interesting connection between Lists and Dataframes that we will make use of later on in this course: A Dataframe is just a named list of vectors of same length with additional <strong>attributes</strong> of (column) <code>names</code> and <code>row.names</code>!</p>
 </div>
-<div id="matrix" class="section level2" number="2.8">
-<h2><span class="header-section-number">2.8</span> Matrix</h2>
+<div id="matrix" class="section level2 hasAnchor" number="2.8">
+<h2><span class="header-section-number">2.8</span> Matrix<a href="fundamentals.html#matrix" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A matrix holds information of the same data type in two dimensions - it’s like a two dimensional vector. Matricies are most often used in statistical computing and matrix algebra, such as creating a design matrix. They are often created by taking a vector and reshaping it with a set number of rows and columns, or converting from a dataframe with only one data type.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="fundamentals.html#cb49-1" aria-hidden="true" tabindex="-1"></a>my_matrix <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
-<span id="cb49-2"><a href="fundamentals.html#cb49-2" aria-hidden="true" tabindex="-1"></a>my_matrix</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="fundamentals.html#cb57-1" tabindex="-1"></a>my_matrix <span class="ot">=</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">nrow =</span> <span class="dv">2</span>)</span>
+<span id="cb57-2"><a href="fundamentals.html#cb57-2" tabindex="-1"></a>my_matrix</span></code></pre></div>
 <pre><code>##      [,1] [,2] [,3] [,4] [,5]
 ## [1,]    1    3    5    7    9
 ## [2,]    2    4    6    8   10</code></pre>
 <p>You access elements of a matrix similar to that of a dataframe’s indexing:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="fundamentals.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co">#column 3</span></span>
-<span id="cb51-2"><a href="fundamentals.html#cb51-2" aria-hidden="true" tabindex="-1"></a>my_matrix[, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="fundamentals.html#cb59-1" tabindex="-1"></a><span class="co">#column 3</span></span>
+<span id="cb59-2"><a href="fundamentals.html#cb59-2" tabindex="-1"></a>my_matrix[, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 5 6</code></pre>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="fundamentals.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#row 2</span></span>
-<span id="cb53-2"><a href="fundamentals.html#cb53-2" aria-hidden="true" tabindex="-1"></a>my_matrix[<span class="dv">2</span> ,]</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="fundamentals.html#cb61-1" tabindex="-1"></a><span class="co">#row 2</span></span>
+<span id="cb61-2"><a href="fundamentals.html#cb61-2" tabindex="-1"></a>my_matrix[<span class="dv">2</span> ,]</span></code></pre></div>
 <pre><code>## [1]  2  4  6  8 10</code></pre>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="fundamentals.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co">#column 3, row 2</span></span>
-<span id="cb55-2"><a href="fundamentals.html#cb55-2" aria-hidden="true" tabindex="-1"></a>my_matrix[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="fundamentals.html#cb63-1" tabindex="-1"></a><span class="co">#column 3, row 2</span></span>
+<span id="cb63-2"><a href="fundamentals.html#cb63-2" tabindex="-1"></a>my_matrix[<span class="dv">2</span>, <span class="dv">3</span>]</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 </div>
-<div id="exercises" class="section level2" number="2.9">
-<h2><span class="header-section-number">2.9</span> Exercises</h2>
+<div id="exercises" class="section level2 hasAnchor" number="2.9">
+<h2><span class="header-section-number">2.9</span> Exercises<a href="fundamentals.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You can find <a href="https://posit.cloud/content/8236252">exercises and solutions on Posit Cloud</a>, or on <a href="https://github.com/fhdsl/Intermediate_R_Exercises">GitHub</a>.</p>
 
 </div>
