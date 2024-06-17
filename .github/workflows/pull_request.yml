@@ -33,8 +33,8 @@ jobs:
       - name: Make the branch fresh
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git config --global user.email "itcrtrainingnetwork@gmail.com"
-          git config --global user.name "jhudsl-robot"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           branch_name='preview-${{ github.event.pull_request.number }}'
           echo branch doesnt exist
@@ -130,8 +130,8 @@ jobs:
       - name: Set up git checkout
         run: |
           git config --global --add safe.directory $GITHUB_WORKSPACE
-          git config --global user.email "itcrtrainingnetwork@gmail.com"
-          git config --global user.name "jhudsl-robot"
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
           branch_name='preview-${{ github.event.pull_request.number }}'
           git fetch --all
@@ -172,7 +172,7 @@ jobs:
           echo "changes=$changes" >> $GITHUB_OUTPUT
           git add . --force
           git commit -m 'Render preview' || echo "No changes to commit"
-          git pull --set-upstream origin $branch_name --allow-unrelated-histories --strategy-option=ours
+          git pull --rebase --set-upstream origin $branch_name --allow-unrelated-histories --strategy-option=ours
           git push --force || echo "No changes to commit"
         shell: bash
 
