@@ -1,6 +1,6 @@
 # Data Cleaning, Part 2
 
-```{r, message=FALSE, warning=FALSE}
+```{r, echo=F, message=FALSE, warning=FALSE}
 library(tidyverse)
 ```
 
