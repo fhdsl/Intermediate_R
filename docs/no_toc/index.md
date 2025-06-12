@@ -1,6 +1,6 @@
 ---
-title: "Intermediate R, Season 3"
-date: "June, 2024"
+title: "Intermediate R"
+date: "June, 2025"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

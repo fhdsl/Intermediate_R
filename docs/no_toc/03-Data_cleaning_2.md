@@ -1,9 +1,6 @@
 # Data Cleaning, Part 2
 
 
-``` r
-library(tidyverse)
-```
 
 Another important data cleaning step is to make sure that the shape of the data is useful for the analysis. Today, we will learn about a data organizing standard called Tidy Data, and some common transformations of making a dataframe *longer* and *wider* to get there.
 

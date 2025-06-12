@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 5 Writing your first function | Intermediate R, Season 3</title>
-  <meta name="description" content="Chapter 5 Writing your first function | Intermediate R, Season 3" />
-  <meta name="generator" content="bookdown 0.39.1 and GitBook 2.6.7" />
+  <title>Chapter 5 Writing your first function | Intermediate R</title>
+  <meta name="description" content="Chapter 5 Writing your first function | Intermediate R" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 5 Writing your first function | Intermediate R, Season 3" />
+  <meta property="og:title" content="Chapter 5 Writing your first function | Intermediate R" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 5 Writing your first function | Intermediate R, Season 3" />
+  <meta name="twitter:title" content="Chapter 5 Writing your first function | Intermediate R" />
   
   
   
@@ -211,7 +211,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R, Season 3</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Intermediate R</a>
           </h1>
         </div>
 
@@ -234,10 +234,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div id="writing-your-first-function" class="section level1 hasAnchor" number="5">
 <h1><span class="header-section-number">Chapter 5</span> Writing your first function<a href="writing-your-first-function.html#writing-your-first-function" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>After learning how to use other people’s functions, it’s time to write our own! We will look at the anatomy of how a function is constructed, and see bunch of examples in action.</p>
-<div class="float">
-<img src="https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png" alt="Function machine from algebra class." />
-<div class="figcaption">Function machine from algebra class.</div>
-</div>
 <p>First, we remind ourselves why we write functions in the first place. We write functions for two main, often overlapping, reasons:</p>
 <ol style="list-style-type: decimal">
 <li><p>Following DRY (Don’t Repeat Yourself) principle: If you find yourself repeating similar patterns of code, you should write a function that executes that pattern. This saves time and the risk of mistakes.</p></li>
@@ -321,32 +317,32 @@ w = addFunction(10, -5)</code></pre>
 <h2><span class="header-section-number">5.5</span> Examples<a href="writing-your-first-function.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
 <li><p>Create a function, called <code>add_and_raise_power</code> in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and raised to a power determined by the 3rd argument. The function returns the resulting value. Here is a use case: <code>add_and_raise_power(1, 2, 3) = 27</code> because the function will return this expression: <code>(1 + 2) ^ 3</code>. Another use case: <code>add_and_raise_power(3, 1, 2) = 16</code> because of the expression <code>(3 + 1) ^ 2</code>. Confirm with that these use cases work. Can this function used for numeric vectors?</p>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="writing-your-first-function.html#cb119-1" tabindex="-1"></a>add_and_raise_power <span class="ot">=</span> <span class="cf">function</span>(x, y, z) {</span>
-<span id="cb119-2"><a href="writing-your-first-function.html#cb119-2" tabindex="-1"></a>  result <span class="ot">=</span> (x <span class="sc">+</span> y)<span class="sc">^</span>z</span>
-<span id="cb119-3"><a href="writing-your-first-function.html#cb119-3" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb119-4"><a href="writing-your-first-function.html#cb119-4" tabindex="-1"></a>}</span>
-<span id="cb119-5"><a href="writing-your-first-function.html#cb119-5" tabindex="-1"></a><span class="fu">add_and_raise_power</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="writing-your-first-function.html#cb118-1" tabindex="-1"></a>add_and_raise_power <span class="ot">=</span> <span class="cf">function</span>(x, y, z) {</span>
+<span id="cb118-2"><a href="writing-your-first-function.html#cb118-2" tabindex="-1"></a>  result <span class="ot">=</span> (x <span class="sc">+</span> y)<span class="sc">^</span>z</span>
+<span id="cb118-3"><a href="writing-your-first-function.html#cb118-3" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb118-4"><a href="writing-your-first-function.html#cb118-4" tabindex="-1"></a>}</span>
+<span id="cb118-5"><a href="writing-your-first-function.html#cb118-5" tabindex="-1"></a><span class="fu">add_and_raise_power</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## [1] 27</code></pre></li>
 <li><p>Create a function, called <code>my_dim</code> in which the function takes in one argument: a dataframe. The function returns the following: a length-2 numeric vector in which the first element is the number of rows in the dataframe, and the second element is the number of columns in the dataframe. Your result should be identical as the <code>dim</code> function. How can you leverage existing functions such as <code>nrow</code> and <code>ncol</code>? Use case: <code>my_dim(penguins) = c(344, 8)</code></p>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="writing-your-first-function.html#cb121-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb121-2"><a href="writing-your-first-function.html#cb121-2" tabindex="-1"></a>my_dim <span class="ot">=</span> <span class="cf">function</span>(df) {</span>
-<span id="cb121-3"><a href="writing-your-first-function.html#cb121-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">nrow</span>(df), <span class="fu">ncol</span>(df))</span>
-<span id="cb121-4"><a href="writing-your-first-function.html#cb121-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb121-5"><a href="writing-your-first-function.html#cb121-5" tabindex="-1"></a>}</span>
-<span id="cb121-6"><a href="writing-your-first-function.html#cb121-6" tabindex="-1"></a><span class="fu">my_dim</span>(penguins)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="writing-your-first-function.html#cb120-1" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb120-2"><a href="writing-your-first-function.html#cb120-2" tabindex="-1"></a>my_dim <span class="ot">=</span> <span class="cf">function</span>(df) {</span>
+<span id="cb120-3"><a href="writing-your-first-function.html#cb120-3" tabindex="-1"></a>  result <span class="ot">=</span> <span class="fu">c</span>(<span class="fu">nrow</span>(df), <span class="fu">ncol</span>(df))</span>
+<span id="cb120-4"><a href="writing-your-first-function.html#cb120-4" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb120-5"><a href="writing-your-first-function.html#cb120-5" tabindex="-1"></a>}</span>
+<span id="cb120-6"><a href="writing-your-first-function.html#cb120-6" tabindex="-1"></a><span class="fu">my_dim</span>(penguins)</span></code></pre></div>
 <pre><code>## [1] 344   8</code></pre></li>
 <li><p>Create a function, called <code>num_na</code> in which the function takes in any vector, and then return a single numeric value. This numeric value is the number of <code>NA</code>s in the vector. Use cases: <code>num_na(c(NA, 2, 3, 4, NA, 5)) = 2</code> and <code>num_na(c(2, 3, 4, 5)) = 0</code>. Hint 1: Use <code>is.na()</code> function. Hint 2: Given a logical vector, you can count the number of <code>TRUE</code> values by using <code>sum()</code>, such as <code>sum(c(TRUE, TRUE, FALSE)) = 2</code>.</p>
-<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="writing-your-first-function.html#cb123-1" tabindex="-1"></a>num_na <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
-<span id="cb123-2"><a href="writing-your-first-function.html#cb123-2" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(num_na)))</span>
-<span id="cb123-3"><a href="writing-your-first-function.html#cb123-3" tabindex="-1"></a>}</span></code></pre></div></li>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="writing-your-first-function.html#cb122-1" tabindex="-1"></a>num_na <span class="ot">=</span> <span class="cf">function</span>(x) {</span>
+<span id="cb122-2"><a href="writing-your-first-function.html#cb122-2" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="fu">is.na</span>(num_na)))</span>
+<span id="cb122-3"><a href="writing-your-first-function.html#cb122-3" tabindex="-1"></a>}</span></code></pre></div></li>
 <li><p>Create a function, called <code>medicaid_eligible</code> in which the function takes in one argument: a numeric vector called <code>age</code>. The function returns a numeric vector with the same length as <code>age</code>, in which elements are <code>0</code> for indicies that are less than 65 in <code>age</code>, and <code>1</code> for indicies 65 or higher in <code>age</code>. (Hint: This is a data recoding problem!) Use cases: <code>medicaid_eligible(c(30, 70)) = c(0, 1)</code></p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="writing-your-first-function.html#cb124-1" tabindex="-1"></a>medicaid_eligible <span class="ot">=</span> <span class="cf">function</span>(age) {</span>
-<span id="cb124-2"><a href="writing-your-first-function.html#cb124-2" tabindex="-1"></a>  result <span class="ot">=</span> age</span>
-<span id="cb124-3"><a href="writing-your-first-function.html#cb124-3" tabindex="-1"></a>  result[age <span class="sc">&lt;</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb124-4"><a href="writing-your-first-function.html#cb124-4" tabindex="-1"></a>  result[age <span class="sc">&gt;=</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb124-5"><a href="writing-your-first-function.html#cb124-5" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb124-6"><a href="writing-your-first-function.html#cb124-6" tabindex="-1"></a>}</span>
-<span id="cb124-7"><a href="writing-your-first-function.html#cb124-7" tabindex="-1"></a><span class="fu">medicaid_eligible</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">70</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="writing-your-first-function.html#cb123-1" tabindex="-1"></a>medicaid_eligible <span class="ot">=</span> <span class="cf">function</span>(age) {</span>
+<span id="cb123-2"><a href="writing-your-first-function.html#cb123-2" tabindex="-1"></a>  result <span class="ot">=</span> age</span>
+<span id="cb123-3"><a href="writing-your-first-function.html#cb123-3" tabindex="-1"></a>  result[age <span class="sc">&lt;</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">0</span></span>
+<span id="cb123-4"><a href="writing-your-first-function.html#cb123-4" tabindex="-1"></a>  result[age <span class="sc">&gt;=</span> <span class="dv">65</span>] <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb123-5"><a href="writing-your-first-function.html#cb123-5" tabindex="-1"></a>  <span class="fu">return</span>(result)</span>
+<span id="cb123-6"><a href="writing-your-first-function.html#cb123-6" tabindex="-1"></a>}</span>
+<span id="cb123-7"><a href="writing-your-first-function.html#cb123-7" tabindex="-1"></a><span class="fu">medicaid_eligible</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">70</span>))</span></code></pre></div>
 <pre><code>## [1] 0 1</code></pre></li>
 </ul>
 </div>
