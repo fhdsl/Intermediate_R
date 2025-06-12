@@ -1,0 +1,57 @@
+County,FIPS,Age Adjusted Incidence Rate,Lower 95% CI,Upper 95% CI,CI Rank,Lower CI Rank,Upper CI Rank,Annual Average Count,Recent Trend,Recent 5 Year Trend,Trend Lower 95% CI,Trend Upper 95% CI,NA
+Jefferson County,30043,Urban,45 ,30.9, 64.1,1 , 1 , 12,8,*,*,*,*
+Stillwater County,30095,Urban,44.8 ,28.3, 68.3,2 , 1 , 13,5,*,*,*,*
+Gallatin County,30031,Urban,41.7 ,36.5, 47.6,3 , 1 , 8,48,rising,5.5 ,3.3, 8.5
+Lewis and Clark County,30049,Urban,40.8 ,34.7, 47.7,4 , 1 , 9,36,rising,7.3 ,4.3, 11.9
+Carbon County,30009,Urban,40.7 ,26.1, 61.2,5 , 1 , 14,6,stable,-0.1 ,-4.6, 5.0
+Musselshell County,30065,Rural,39.4 ,21.2, 70.3,6 , 1 , 18,3,*,*,*,*
+Flathead County,30029,Rural,38.6 ,33.8, 43.9,7 , 2 , 9,53,stable,-8.5 ,-18.0, 1.6
+Madison County,30057,Rural,33.6 ,21.9, 51.8,8 , 1 , 17,6,*,*,*,*
+Silver Bow County,30093,Rural,32.1 ,24.2, 41.8,9 , 3 , 14,12,stable,1.9 ,-0.8, 4.7
+Lincoln County,30053,Rural,29.2 ,20.2, 41.3,10 , 3 , 17,9,*,*,*,*
+Yellowstone County,30111,Urban,29 ,25.7, 32.7,11 , 7 , 13,58,stable,0.7 ,-1.7, 3.4
+Park County,30067,Rural,27.3 ,18.9, 38.9,12 , 5 , 18,8,stable,4.7 ,0.0, 11.5
+Ravalli County,30081,Rural,23.8 ,18.3, 30.7,13 , 8 , 18,16,stable,0.8 ,-3.1, 5.4
+Custer County,30017,Rural,22.3 ,13, 36.5,14 , 6 , 18,4,*,*,*,*
+Missoula County,30063,Urban,19.2 ,15.9, 23,15 , 12 , 18,25,stable,-0.7 ,-2.8, 1.6
+Lake County,30047,Rural,19.1 ,13.5, 26.5,16 , 11 , 18,9,rising,11.5 ,1.0, 26.4
+Cascade County,30013,Urban,19 ,15.3, 23.3,17 , 12 , 18,20,stable,2.4 ,-0.8, 6.4
+Sanders County,30089,Rural,18.1 ,9.4, 32.4,18 , 8 , 18,4,*,*,*,*
+Beaverhead County,30001,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Big Horn County,30003,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Blaine County,30005,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Broadwater County,30007,Urban,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Carter County,30011,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Chouteau County,30015,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Daniels County,30019,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Dawson County,30021,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Deer Lodge County,30023,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Fallon County,30025,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Fergus County,30027,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Garfield County,30033,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Glacier County,30035,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Golden Valley County,30037,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Granite County,30039,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Hill County,30041,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Judith Basin County,30045,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Liberty County,30051,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+McCone County,30055,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Meagher County,30059,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Mineral County,30061,Urban,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Petroleum County,30069,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Phillips County,30071,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Pondera County,30073,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Powder River County,30075,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Powell County,30077,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Prairie County,30079,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Richland County,30083,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Roosevelt County,30085,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Rosebud County,30087,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Sheridan County,30091,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Sweet Grass County,30097,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Teton County,30099,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Toole County,30101,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Treasure County,30103,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Valley County,30105,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Wheatland County,30107,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Wibaux County,30109,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*

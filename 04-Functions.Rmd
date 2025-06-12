@@ -2,8 +2,6 @@
 
 After learning how to use other people's functions, it's time to write our own! We will look at the anatomy of how a function is constructed, and see bunch of examples in action.
 
-![Function machine from algebra class.](https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png)
-
 First, we remind ourselves why we write functions in the first place. We write functions for two main, often overlapping, reasons:
 
 1.  Following DRY (Don't Repeat Yourself) principle: If you find yourself repeating similar patterns of code, you should write a function that executes that pattern. This saves time and the risk of mistakes.
