@@ -1,0 +1,37 @@
+County,FIPS,Age Adjusted Incidence Rate,Lower 95% CI,Upper 95% CI,CI Rank,Lower CI Rank,Upper CI Rank,Annual Average Count,Recent Trend,Recent 5 Year Trend,Trend Lower 95% CI,Trend Upper 95% CI,NA
+Clackamas County,41005,Urban,30.7 ,28.5, 33,1 , 1 , 7,162,falling,-4.5 ,-15.0, -0.1
+Columbia County,41009,Urban,30.2 ,24.6, 36.9,2 , 1 , 14,22,stable,2.0 ,-0.1, 4.6
+Douglas County,41019,Rural,29 ,25, 33.5,3 , 1 , 13,47,falling,-2.2 ,-3.6, -0.8
+Deschutes County,41017,Urban,28.6 ,25.7, 31.8,4 , 1 , 11,75,falling,-11.7 ,-24.8, -3.5
+Washington County,41067,Urban,28.2 ,26.4, 30.2,5 , 1 , 10,180,stable,-4.5 ,-12.9, 0.3
+Multnomah County,41051,Urban,27.4 ,25.9, 29.1,6 , 2 , 11,243,stable,-3.8 ,-12.0, 0.6
+Polk County,41053,Urban,26.7 ,22.3, 31.7,7 , 1 , 16,28,stable,-0.2 ,-2.9, 2.7
+Yamhill County,41071,Urban,25.5 ,21.7, 29.8,8 , 1 , 16,34,stable,1.5 ,-0.6, 4.0
+Clatsop County,41007,Rural,25.4 ,19.6, 32.6,9 , 1 , 19,15,stable,-16.5 ,-30.5, 0.8
+Tillamook County,41057,Rural,24 ,17.5, 32.4,10 , 1 , 22,11,stable,0.2 ,-4.3, 5.2
+Wasco County,41065,Rural,23.5 ,16.8, 32.2,11 , 1 , 23,9,stable,-1.0 ,-4.9, 3.2
+Klamath County,41035,Rural,23.4 ,18.8, 28.8,12 , 2 , 19,21,falling,-17.5 ,-33.0, -7.4
+Josephine County,41033,Urban,23.1 ,19.3, 27.4,13 , 3 , 18,32,stable,-1.0 ,-3.7, 1.7
+Marion County,41047,Urban,22.9 ,20.8, 25.2,14 , 8 , 17,91,stable,-0.2 ,-1.8, 1.6
+Crook County,41013,Urban,21.1 ,14.5, 30,15 , 1 , 25,8,stable,-0.6 ,-6.7, 5.8
+Curry County,41015,Rural,18.4 ,11.5, 28.4,16 , 1 , 27,7,stable,0.0 ,-5.4, 6.4
+Linn County,41043,Urban,17.9 ,15, 21.3,17 , 13 , 24,28,stable,-1.0 ,-3.3, 1.3
+Hood River County,41027,Rural,17.9 ,11.6, 26.7,18 , 5 , 27,5,stable,-1.8 ,-5.9, 2.5
+Jackson County,41029,Urban,17.4 ,15.3, 19.8,19 , 14 , 23,55,falling,-3.8 ,-6.1, -1.7
+Union County,41061,Rural,16.1 ,10.4, 23.8,20 , 8 , 28,6,stable,-0.9 ,-5.8, 4.3
+Lane County,41039,Urban,14.9 ,13.4, 16.6,21 , 17 , 25,76,stable,-2.2 ,-4.6, 0.2
+Baker County,41001,Rural,14.6 ,8.2, 24.7,22 , 8 , 28,4,stable,-1.0 ,-7.2, 5.4
+Benton County,41003,Urban,14.2 ,11.1, 18,23 , 16 , 27,15,falling,-16.5 ,-34.1, -8.8
+Lincoln County,41041,Rural,13.8 ,10.1, 18.6,24 , 15 , 28,12,falling,-8.7 ,-37.4, -2.4
+Jefferson County,41031,Urban,12.6 ,7.5, 20.1,25 , 14 , 28,4,falling,-15.1 ,-53.1, -1.9
+Malheur County,41045,Rural,11.1 ,6.6, 17.3,26 , 16 , 28,4,*,*,*,*
+Coos County,41011,Rural,10.6 ,7.9, 14,27 , 21 , 28,13,falling,-4.4 ,-7.6, -1.4
+Umatilla County,41059,Rural,8.3 ,5.9, 11.5,28 , 24 , 28,8,falling,-28.3 ,-51.7, -10.4
+Gilliam County,41021,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Grant County,41023,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Harney County,41025,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Lake County,41037,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Morrow County,41049,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Sherman County,41055,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Wallowa County,41063,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Wheeler County,41069,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*

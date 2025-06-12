@@ -1,0 +1,45 @@
+County,FIPS,Age Adjusted Incidence Rate,Lower 95% CI,Upper 95% CI,CI Rank,Lower CI Rank,Upper CI Rank,Annual Average Count,Recent Trend,Recent 5 Year Trend,Trend Lower 95% CI,Trend Upper 95% CI,NA
+Teton County,16081,Rural,56.7 ,37.9, 81.5,1 , 1 , 17,7,rising,3.4 ,0.4, 7.7
+Blaine County,16013,Rural,54.8 ,43.8, 67.9,2 , 1 , 6,19,rising,3.7 ,0.2, 8.8
+Valley County,16085,Rural,41.1 ,27.8, 59.6,3 , 1 , 28,8,*,*,*,*
+Jerome County,16053,Urban,37.7 ,27.3, 50.7,4 , 1 , 27,9,*,*,*,*
+Jefferson County,16051,Urban,35.9 ,26.2, 48,5 , 2 , 27,9,stable,-0.2 ,-3.0, 3.1
+Ada County,16001,Urban,35.9 ,33.6, 38.3,6 , 3 , 14,193,rising,1.9 ,0.9, 3.2
+Caribou County,16029,Rural,35.9 ,20, 60.2,7 , 1 , 32,3,*,*,*,*
+Boundary County,16021,Rural,35.6 ,23.4, 52.5,8 , 1 , 30,6,*,*,*,*
+Boise County,16015,Urban,34.5 ,18.2, 60.4,9 , 1 , 32,4,*,*,*,*
+Bonner County,16017,Rural,34.2 ,27.3, 42.5,10 , 3 , 24,21,rising,24.8 ,9.7, 44.9
+Bonneville County,16019,Urban,34.1 ,29.5, 39.2,11 , 3 , 20,40,rising,3.4 ,1.7, 5.6
+Cassia County,16031,Rural,33.9 ,24.4, 45.9,12 , 2 , 29,9,rising,4.6 ,2.3, 7.7
+Bannock County,16005,Urban,32.3 ,27.1, 38.2,13 , 4 , 24,29,stable,2.4 ,-0.4, 5.8
+Gem County,16045,Urban,31.1 ,22.2, 42.9,14 , 3 , 31,9,stable,1.0 ,-1.9, 4.5
+Twin Falls County,16083,Urban,31 ,26.2, 36.5,15 , 5 , 25,30,stable,1.7 ,0.0, 3.7
+Idaho County,16049,Rural,30.3 ,20.2, 44,16 , 2 , 32,8,stable,3.2 ,-1.3, 8.7
+Franklin County,16041,Urban,29.2 ,17.9, 45,17 , 2 , 32,4,*,*,*,*
+Kootenai County,16055,Urban,28.4 ,25.2, 32,18 , 10 , 26,61,stable,-0.7 ,-2.5, 1.4
+Canyon County,16027,Urban,27 ,24.1, 30.2,19 , 12 , 27,63,stable,10.8 ,-0.2, 19.2
+Owyhee County,16073,Urban,26.8 ,15.2, 43.6,20 , 3 , 32,3,*,*,*,*
+Madison County,16065,Rural,26.5 ,17.7, 37.8,21 , 4 , 32,6,*,*,*,*
+Latah County,16057,Rural,25.6 ,18.6, 34.4,22 , 6 , 32,9,stable,1.0 ,-2.2, 4.8
+Clearwater County,16035,Rural,25.5 ,13.7, 44.7,23 , 3 , 32,3,stable,1.8 ,-4.1, 8.4
+Fremont County,16043,Rural,24.4 ,14.6, 38.6,24 , 3 , 32,4,stable,1.4 ,-2.2, 5.6
+Elmore County,16039,Rural,24.1 ,16.5, 34,25 , 6 , 32,7,stable,1.7 ,-1.3, 5.5
+Lemhi County,16059,Rural,23.1 ,12.3, 41.8,26 , 3 , 32,4,*,*,*,*
+Nez Perce County,16069,Urban,22.7 ,17.3, 29.4,27 , 13 , 32,13,stable,1.6 ,-0.6, 4.3
+Bingham County,16011,Rural,22.6 ,16.9, 29.6,28 , 12 , 32,11,stable,2.6 ,-0.4, 6.6
+Shoshone County,16079,Rural,21.8 ,12.1, 36.4,29 , 5 , 32,4,*,*,*,*
+Gooding County,16047,Rural,20.6 ,12.1, 33.1,30 , 8 , 32,4,stable,25.7 ,-5.4, 54.1
+Minidoka County,16067,Rural,19.4 ,12.3, 29.2,31 , 13 , 32,5,*,*,*,*
+Payette County,16075,Rural,17.5 ,11.3, 26,32 , 18 , 32,5,*,*,*,*
+Adams County,16003,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Bear Lake County,16007,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Benewah County,16009,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Butte County,16023,Urban,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Camas County,16025,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Clark County,16033,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Custer County,16037,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Lewis County,16061,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Lincoln County,16063,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Oneida County,16071,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Power County,16077,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
+Washington County,16087,Rural,* ,*, *,* , * , *,3 or fewer,*,*,*,*
