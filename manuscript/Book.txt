@@ -1,0 +1,8 @@
+1-About-this-Course.md
+2-Fundamentals.md
+3-Data-Cleaning,-Part-1.md
+4-Data-Cleaning,-Part-2.md
+5-Writing-your-first-function.md
+6-Iteration.md
+7-References.md
+About-the-Authors.md
