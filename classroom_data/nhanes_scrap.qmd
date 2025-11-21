@@ -1,0 +1,56 @@
+---
+title: "Untitled"
+format: html
+editor: visual
+---
+
+## Part 2: Tidying data in NHANES data
+
+The [**N**ational **H**ealth **A**nd **N**utrition **E**xamination **S**urvey](https://www.cdc.gov/nchs/nhanes/index.html), or NHANES, assess health/nutritional status of adults/children in the United States. It surveys the following types of questions:
+
+-   Demographic (Age, Race, Gender, many more...)
+
+-   Socioeconomic (Marriage Status, Household Income, Education)
+
+-   Dietary (Foods consumed, dietary supplements)
+
+-   Health (Body Mass Index, Sleep Trouble, Depression)
+
+Let's load the data in and take a look.
+
+```{r}
+nhanes = read.csv("NHANES.csv")
+```
+
+```{r}
+Vieww(nhanes)
+```
+
+We would like to answer the following question: What is the relationship between pulse and BMI categories for \_\_\_ vs \_\_\_\_?
+
+```{r}
+
+```
+
+First, some data cleaning:
+
+If you looko at the `ID` column of `nhanes` Dataframe, you will see that it is numeric value, but we won't be using it as a number value - they are categorical information representing each patient. Use the `as.character()` function to convert the `ID` column to be character type.
+
+```{r}
+
+```
+
+Take a look at the `Pulse` column. Notice that it has a lot of missing value as `NA`. Remove all rows of `nhanes` with `NA` in the `Pulse` column.
+
+```{r}
+
+```
+
+BMI categorizations are only useful for adults. Remove all rows of `nhanes` with `Age` less than 20.
+
+```{r}
+
+```
+
+```         
+```
