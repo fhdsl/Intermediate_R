@@ -8,7 +8,7 @@
 <link href="lesson5_slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="lesson5_slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="lesson5_slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>W5: Iterating tasks</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -396,6 +397,16 @@
 </div>
 
 </section>
+<section id="last-class-next-week" class="slide level2">
+<h2>Last class next week!</h2>
+<p>Wanna have lunch together? <a href="https://forms.gle/Hki6HWszyk7Kq6nm9" class="uri">https://forms.gle/Hki6HWszyk7Kq6nm9</a></p>
+<h3 id="topics-for-last-final-class">Topics for last final class?</h3>
+<ul>
+<li><p>More practice?</p></li>
+<li><p>Write a <a href="https://hutchdatascience.org/Intro_to_R/cheatsheet.html">cheatsheet</a> together?</p></li>
+<li><p>New topics?</p></li>
+</ul>
+</section>
 <section id="iterating-tasks" class="slide level2">
 <h2>Iterating tasks</h2>
 <p>Suppose that you want to repeat a chunk of code many times, but changing one variable’s value each time you do it: This could be modifying each element of a vector in the same way, or analyzing a dataframe multiple times with different parameters.</p>
@@ -404,7 +415,7 @@
 <p><img data-src="https://d33wubrfki0l68.cloudfront.net/f0494d020aa517ae7b1011cea4c4a9f21702df8b/2577b/diagrams/functionals/map.png" width="250"></p>
 </div>
 </section>
-<section id="iterating-tasks-solutions" class="slide level2">
+<section id="iterating-tasks-solutions" class="slide level2 scrollable">
 <h2>Iterating tasks: solutions</h2>
 <ol type="1">
 <li>Copy and paste the code chunk, and change that variable’s value. Repeat. <em>This can be a starting point in your analysis, but will lead to errors easily.</em></li>
@@ -441,12 +452,9 @@
 <h2>Functionals via <code>map()</code></h2>
 <p><code>map()</code> takes in a vector or a list, and then applies the function on each element of it. The output is <em>always</em> a list.</p>
 <div class="cell">
-
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb1-2"><a href="#cb1-2"></a>result <span class="ot">=</span> <span class="fu">map</span>(my_vector, log)</span>
-<span id="cb1-3"><a href="#cb1-3"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb1-2"><a href=""></a>result <span class="ot">=</span> <span class="fu">map</span>(my_vector, log)</span>
+<span id="cb1-3"><a href=""></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -465,7 +473,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>result[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>result[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -473,14 +481,25 @@
 </div>
 </div>
 </div>
+<div class="fragment">
+<p>Unlist it?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">unlist</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.000000 1.098612 1.609438 1.945910</code></pre>
+</div>
+</div>
+</div>
 </section>
 <section id="variations-of-map" class="slide level2">
 <h2>Variations of <code>map()</code></h2>
-<p>To be more specific about the output type, you can do this via the <code>map_*</code> function, where <code>*</code> specifies the output type: <code>map_lgl()</code>, <code>map_chr()</code>, and <code>map_dbl()</code> functions return vectors of logical values, strings, or numbers respectively.</p>
+<p>To be more specific about the output type, you can do this via the <code>map_*</code> function, where <code>*</code> specifies the output type: <code>map_lgl()</code>, <code>map_int()</code>, and <code>map_dbl()</code>, <code>map_chr()</code>functions return vectors of logical values, integer, double, or character, respectively.</p>
 
 <img data-src="https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png" width="300" class="r-stretch"><div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">map_dbl</span>(my_vector, log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">map_dbl</span>(my_vector, log)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -492,14 +511,14 @@
 <section id="case-study-1-iterate-over-filepaths-to-load-them-in" class="slide level2">
 <h2>Case study 1: Iterate over filepaths to load them in</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>paths <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"../classroom_data/students.csv"</span>, <span class="st">"../classroom_data/CCLE_metadata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>paths <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"../classroom_data/students.csv"</span>, <span class="st">"../classroom_data/CCLE_metadata.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
 <p>Practice writing out the first iteration:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>result <span class="ot">=</span> <span class="fu">read_csv</span>(paths[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>result <span class="ot">=</span> <span class="fu">read_csv</span>(paths[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -525,7 +544,51 @@
 <div class="fragment">
 <p>Here it is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>result <span class="ot">=</span> <span class="fu">map</span>(paths, read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>result <span class="ot">=</span> <span class="fu">map</span>(paths, read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
+</section>
+<section id="case-study-1-iterate-over-filepaths-to-load-them-in-1" class="slide level2">
+<h2>Case study 1: Iterate over filepaths to load them in</h2>
+<p>What if we want to do more than just <code>read_csv()</code> to load in the data? Perhaps we want to also remove all rows with missing values.</p>
+<div class="fragment">
+<p>Practice writing out the first iteration:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>read_df <span class="ot">=</span> <span class="fu">read_csv</span>(paths[<span class="dv">1</span>])</span>
+<span id="cb12-2"><a href=""></a>clean_df <span class="ot">=</span> <span class="fu">drop_na</span>(read_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
+<div class="fragment">
+<p>We don’t have a single function that can do both of these steps, so we have to write our own!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a>load_and_remove_na <span class="ot">=</span> <span class="cf">function</span>(path) {</span>
+<span id="cb13-2"><a href=""></a>  read_df <span class="ot">=</span> <span class="fu">read_csv</span>(path)</span>
+<span id="cb13-3"><a href=""></a>  clean_df <span class="ot">=</span> <span class="fu">drop_na</span>(read_df)</span>
+<span id="cb13-4"><a href=""></a>  <span class="fu">return</span>(clean_df)</span>
+<span id="cb13-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>result <span class="ot">=</span> <span class="fu">map</span>(paths, load_and_remove_na)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+</div>
+<div class="fragment">
+<p>Alternatively, when the function is very short, we can write an in-line function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>result <span class="ot">=</span> <span class="fu">map</span>(paths, <span class="cf">function</span>(path) <span class="fu">drop_na</span>(<span class="fu">read_csv</span>(path)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -537,8 +600,8 @@
 <p>Suppose that you are interested in the numeric columns of the <code>penguins</code> dataframe, and you are interested to look at the mean of each column.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>penguins_numeric <span class="ot">=</span> penguins <span class="sc">%&gt;%</span> <span class="fu">select</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">head</span>(penguins_numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>penguins_numeric <span class="ot">=</span> penguins <span class="sc">%&gt;%</span> <span class="fu">select</span>(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)</span>
+<span id="cb16-2"><a href=""></a><span class="fu">head</span>(penguins_numeric)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -561,7 +624,7 @@
 <div class="fragment">
 <p>Let’s practice writing out one iteration:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">mean</span>(penguins_numeric[[<span class="dv">1</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a><span class="fu">mean</span>(penguins_numeric[[<span class="dv">1</span>]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -570,8 +633,8 @@
 </div>
 </div>
 </section>
-<section id="case-study-2-iterate-over-columns-of-a-dataframe-to-get-metrics-1" class="slide level2">
-<h2>Case Study 2: Iterate over columns of a dataframe to get metrics</h2>
+<section id="case-study-2-iterate-over-columns-of-a-dataframe-to-get-summary-statistics" class="slide level2">
+<h2>Case Study 2: Iterate over columns of a dataframe to get summary statistics</h2>
 <p>To do this functionally, we think about:</p>
 <div class="fragment">
 <ul>
@@ -590,7 +653,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">map_dbl</span>(penguins_numeric, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a><span class="fu">map_dbl</span>(penguins_numeric, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -604,7 +667,7 @@
 <h2>Case study 3: Iterate over different conditions to analyze a dataframe</h2>
 <p>Suppose you are working with the <code>penguins</code> dataframe:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -626,10 +689,10 @@
 <div class="fragment">
 <p>Let’s practice writing out one iteration:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>species_to_analyze <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="co">#first iteration</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a>penguins_subset <span class="ot">=</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> species_to_analyze[<span class="dv">1</span>])</span>
-<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">mean</span>(penguins_subset<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>species_to_analyze <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>)</span>
+<span id="cb24-2"><a href=""></a><span class="co">#first iteration</span></span>
+<span id="cb24-3"><a href=""></a>penguins_subset <span class="ot">=</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> species_to_analyze[<span class="dv">1</span>])</span>
+<span id="cb24-4"><a href=""></a><span class="fu">mean</span>(penguins_subset<span class="sc">$</span>bill_length_mm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -658,11 +721,11 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>analysis <span class="ot">=</span> <span class="cf">function</span>(current_species) {</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  penguins_subset <span class="ot">=</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> current_species)</span>
-<span id="cb20-3"><a href="#cb20-3"></a>  result <span class="ot">=</span> <span class="fu">mean</span>(penguins_subset<span class="sc">$</span>bill_length_mm, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
-<span id="cb20-4"><a href="#cb20-4"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb20-5"><a href="#cb20-5"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>penguins_analysis <span class="ot">=</span> <span class="cf">function</span>(current_species) {</span>
+<span id="cb26-2"><a href=""></a>  penguins_subset <span class="ot">=</span> <span class="fu">filter</span>(penguins, species <span class="sc">==</span> current_species)</span>
+<span id="cb26-3"><a href=""></a>  result <span class="ot">=</span> <span class="fu">mean</span>(penguins_subset<span class="sc">$</span>bill_length_mm, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span>
+<span id="cb26-4"><a href=""></a>  <span class="fu">return</span>(result)</span>
+<span id="cb26-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -670,7 +733,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">map_dbl</span>(<span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>), analysis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a><span class="fu">map_dbl</span>(<span class="fu">c</span>(<span class="st">"Adelie"</span>, <span class="st">"Chinstrap"</span>, <span class="st">"Gentoo"</span>), penguins_analysis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -678,6 +741,42 @@
 </div>
 </div>
 </div>
+<div class="fragment">
+<ul>
+<li><p>Notice that our <code>penguins_analysis()</code> function reference a global variable <code>penguins</code> in its body! That’s okay for the purpose of this function, but <code>penguins</code> will need to be defined for this function to be used.</p></li>
+<li><p>Also notice that this analysis can be done using the <code>group_by()</code> <code>summarize()</code> functions. But this general pattern of analyzing your Dataframe using different parameters is useful for Functionals.</p></li>
+</ul>
+</div>
+</section>
+<section id="summary-of-case-studies" class="slide level2">
+<h2>Summary of case studies:</h2>
+<ul>
+<li><p>Case study 0:</p>
+<ul>
+<li><p>Input: Vector of numerics</p></li>
+<li><p>Function: numeric transformation</p></li>
+<li><p>Output: Vector of numerics</p></li>
+</ul></li>
+<li><p>Case study 1:</p>
+<ul>
+<li><p>Input: Vector of parameters pointing to data</p></li>
+<li><p>Function: Load in data (&amp; any other processing!)</p></li>
+<li><p>Output: List of Dataframes</p></li>
+</ul></li>
+<li><p>Case study 2:</p>
+<ul>
+<li><p>Input: Columns of a Dataframe as a List of vectors,</p></li>
+<li><p>Function: Compute summary statistics</p></li>
+<li><p>Output: Vector of numerics</p></li>
+</ul></li>
+<li><p>Case study 3:</p>
+<ul>
+<li><p>Input: Vector of parameters, dataframe of interest</p></li>
+<li><p>Function: Analysis on subset of the data</p></li>
+<li><p>Output: Vector of numerics</p></li>
+</ul></li>
+<li></li>
+</ul>
 </section>
 <section id="map-family-of-functions" class="slide level2">
 <h2>Map family of functions</h2>
@@ -693,10 +792,10 @@
 <p>Most often, the “chunk of code” will make use of <code>my_element</code>.</p>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a><span class="cf">for</span> (my_element <span class="cf">in</span> my_vector) {</span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">print</span>(my_element)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb30-2"><a href=""></a><span class="cf">for</span> (my_element <span class="cf">in</span> my_vector) {</span>
+<span id="cb30-3"><a href=""></a>  <span class="fu">print</span>(my_element)</span>
+<span id="cb30-4"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -711,8 +810,8 @@
 <section id="loop-through-the-indicies-of-a-vector" class="slide level2">
 <h2>Loop through the indicies of a vector</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb26-2"><a href="#cb26-2"></a><span class="fu">seq_along</span>(my_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb32-2"><a href=""></a><span class="fu">seq_along</span>(my_vector)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -720,9 +819,9 @@
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_vector)) {</span>
-<span id="cb28-2"><a href="#cb28-2"></a>  <span class="fu">print</span>(my_vector[i])</span>
-<span id="cb28-3"><a href="#cb28-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_vector)) {</span>
+<span id="cb34-2"><a href=""></a>  <span class="fu">print</span>(my_vector[i])</span>
+<span id="cb34-3"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -734,14 +833,14 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
-<span id="cb30-2"><a href="#cb30-2"></a>result <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(my_vector))</span>
-<span id="cb30-3"><a href="#cb30-3"></a></span>
-<span id="cb30-4"><a href="#cb30-4"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_vector)) {</span>
-<span id="cb30-5"><a href="#cb30-5"></a>  result[i] <span class="ot">=</span> <span class="fu">log</span>(my_vector[i])</span>
-<span id="cb30-6"><a href="#cb30-6"></a>}</span>
-<span id="cb30-7"><a href="#cb30-7"></a></span>
-<span id="cb30-8"><a href="#cb30-8"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>my_vector <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>)</span>
+<span id="cb36-2"><a href=""></a>result <span class="ot">=</span> <span class="fu">rep</span>(<span class="cn">NA</span>, <span class="fu">length</span>(my_vector))</span>
+<span id="cb36-3"><a href=""></a></span>
+<span id="cb36-4"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="fu">seq_along</span>(my_vector)) {</span>
+<span id="cb36-5"><a href=""></a>  result[i] <span class="ot">=</span> <span class="fu">log</span>(my_vector[i])</span>
+<span id="cb36-6"><a href=""></a>}</span>
+<span id="cb36-7"><a href=""></a></span>
+<span id="cb36-8"><a href=""></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -750,10 +849,26 @@
 </div>
 </div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<section id="some-suggestions" class="slide level2">
+<h2>Some suggestions</h2>
+<ul>
+<li><p>If there is a function that will do the entire iteration job, use that first. It will probably be much faster!</p>
+<ul>
+<li>ie. <code>log()</code> can be used on vectors already. No need to <code>map(x, log)</code>.</li>
+</ul></li>
+<li><p>The speed performance of Functionals vs.&nbsp;Loops are generally similar. However, it is easy to write Loops that do not adhere to best practices, which slows them down.</p>
+<ul>
+<li><p>If you modify an <em>entire</em> data structure within the Loop, each modification may generate multiple copies of the data structure, which slows down the Loop.</p></li>
+<li><p>Similarly, you should avoid growing a data structure with Loops.</p></li>
+</ul></li>
+</ul>
+<p>More details here: <a href="https://github.com/fhdsl/R_Users_Group/blob/main/3_12_24_Loops_Vectorization/3_12_24_Loops_Vectorization.qmd" class="uri">https://github.com/fhdsl/R_Users_Group/blob/main/3_12_24_Loops_Vectorization/3_12_24_Loops_Vectorization.qmd</a></p>
+<p>More on functionals: <a href="https://adv-r.hadley.nz/functionals.html" class="uri">https://adv-r.hadley.nz/functionals.html</a></p>
+<p>More on iteration techniques in R: <a href="https://r4ds.hadley.nz/iteration.html" class="uri">https://r4ds.hadley.nz/iteration.html</a></p>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -782,7 +897,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1037,18 +1151,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1080,11 +1183,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1094,8 +1236,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1109,7 +1260,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -8,7 +8,7 @@
 <link href="lesson2_slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="lesson2_slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="lesson2_slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>W2: Data Cleaning 1</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -396,14 +397,26 @@
 </div>
 
 </section>
-<section class="slide level2">
+<section id="review-when-do-you-refer-columns-with-a" class="slide level2">
+<h2>Review: When do you refer columns with a <code>$</code>?</h2>
+<div class="fragment">
+<p>Tidyverse Dataframe functions, such as <code>select()</code>, <code>filter()</code>, <code>mutate()</code>, <code>group_by()</code>, <code>summarize()</code> allows you to refer columns without <code>$</code>:</p>
+<pre><code>select(penguins, species, island)
 
-<div class="cell">
+filter(penguins, species == "Adelie")
 
+mutate(penguins, new_col = log(body_mass_g))
+
+penguins |&gt; group_by(island) |&gt; summarize(avg_body_mass_g = mean(body_mass_g))</code></pre>
 </div>
-</section>
-<section id="location-change-next-week-m4-a805" class="slide level2">
-<h2>Location change next week: M4-A805</h2>
+<div class="fragment">
+<p>All other functions and operations require <code>$</code> as a reference:</p>
+<pre><code>mean(penguins$body_mass_g, na.rm = TRUE)
+
+table(penguins$island)
+
+penguins$island[penguins$island == "Torgersen"]</code></pre>
+</div>
 </section>
 <section id="recoding-data-conditionals" class="slide level2">
 <h2>Recoding Data / Conditionals</h2>
@@ -412,9 +425,9 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>simple_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>),</span>
-<span id="cb1-2"><a href="#cb1-2"></a>                       <span class="at">status =</span> <span class="fu">c</span>(<span class="st">"case"</span>, <span class="st">" "</span>, <span class="st">"Control"</span>, <span class="st">"control"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"case"</span>))</span>
-<span id="cb1-3"><a href="#cb1-3"></a>simple_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>simple_df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>),</span>
+<span id="cb3-2"><a href=""></a>                       <span class="at">status =</span> <span class="fu">c</span>(<span class="st">"case"</span>, <span class="st">" "</span>, <span class="st">"Control"</span>, <span class="st">"control"</span>, <span class="st">"Control"</span>, <span class="st">"Case"</span>, <span class="st">"case"</span>))</span>
+<span id="cb3-3"><a href=""></a>simple_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -433,7 +446,7 @@
 <p>Since a dataframe’s column, when selected via <code>$</code>, is a vector, let’s start talking about <strong>recoding vectors</strong>.</p>
 </div>
 </section>
-<section id="common-recoding-scenarios" class="slide level2">
+<section id="common-recoding-scenarios" class="slide level2 scrollable">
 <h2>Common recoding scenarios:</h2>
 <ol type="1">
 <li><strong>If</strong>: “If elements of the vector meets <em>condition</em>, then they are assigned <em>value</em>.”</li>
@@ -449,10 +462,10 @@
 </ol>
 </div>
 </section>
-<section id="recoding-a-vector" class="slide level2">
+<section id="recoding-a-vector" class="slide level2 scrollable">
 <h2>Recoding a vector</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>grade <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">95</span>, <span class="dv">74</span>, <span class="dv">56</span>, <span class="dv">81</span>, <span class="dv">102</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -464,9 +477,10 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>grade1 <span class="ot">=</span> grade</span>
-<span id="cb4-2"><a href="#cb4-2"></a>grade1[grade1 <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb4-3"><a href="#cb4-3"></a>grade1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>grade1 <span class="ot">=</span> grade</span>
+<span id="cb6-2"><a href=""></a></span>
+<span id="cb6-3"><a href=""></a>grade1[grade1 <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb6-4"><a href=""></a>grade1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -481,8 +495,8 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>grade2 <span class="ot">=</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>grade2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>grade2 <span class="ot">=</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>)</span>
+<span id="cb8-2"><a href=""></a>grade2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -490,30 +504,31 @@
 </div>
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="recoding-a-vector-1" class="slide level2 scrollable">
+<h2>Recoding a vector</h2>
 <ol start="3" type="1">
 <li>If <code>grade</code> is greater than 90, then it is assigned to <code>"A"</code>. Else, if <code>grade</code> is greater than 80, then it is assigned to <code>"B"</code>. etc.<br>
 Otherwise, they are assigned to <code>"F"</code>.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>grade3 <span class="ot">=</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
-<span id="cb8-2"><a href="#cb8-2"></a>                   grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3"></a>                   grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
-<span id="cb8-4"><a href="#cb8-4"></a>                   grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5"></a>                   <span class="at">.default =</span> <span class="st">"F"</span>)</span>
-<span id="cb8-6"><a href="#cb8-6"></a>grade3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>grade3 <span class="ot">=</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb10-2"><a href=""></a>                   grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
+<span id="cb10-3"><a href=""></a>                   grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
+<span id="cb10-4"><a href=""></a>                   grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb10-5"><a href=""></a>                   <span class="at">.default =</span> <span class="st">"F"</span>)</span>
+<span id="cb10-6"><a href=""></a>grade3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "A" "C" "A" "C" "F" "B" "A"</code></pre>
 </div>
 </div>
-</div>
 </section>
-<section id="recoding-a-dataframe-column" class="slide level2">
+<section id="recoding-a-dataframe-column" class="slide level2 scrollable">
 <h2>Recoding a dataframe column</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>simple_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>simple_df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -531,9 +546,10 @@ Otherwise, they are assigned to <code>"F"</code>.</li>
 <ol type="1">
 <li><p>If</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>simple_df1 <span class="ot">=</span> simple_df</span>
-<span id="cb12-2"><a href="#cb12-2"></a>simple_df1<span class="sc">$</span>grade[simple_df1<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>simple_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a>simple_df1 <span class="ot">=</span> simple_df</span>
+<span id="cb14-2"><a href=""></a></span>
+<span id="cb14-3"><a href=""></a>simple_df1<span class="sc">$</span>grade[simple_df1<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">100</span>] <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb14-4"><a href=""></a>simple_df1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -554,9 +570,9 @@ Otherwise, they are assigned to <code>"F"</code>.</li>
 <li>If-else</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>simple_df2 <span class="ot">=</span> simple_df</span>
-<span id="cb14-2"><a href="#cb14-2"></a>simple_df2<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">ifelse</span>(simple_df2<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a>simple_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>simple_df2 <span class="ot">=</span> simple_df</span>
+<span id="cb16-2"><a href=""></a>simple_df2<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">if_else</span>(simple_df2<span class="sc">$</span>grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>)</span>
+<span id="cb16-3"><a href=""></a>simple_df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -574,25 +590,27 @@ Otherwise, they are assigned to <code>"F"</code>.</li>
 <div class="fragment">
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>simple_df2 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">ifelse</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>simple_df2 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">if_else</span>(grade <span class="sc">&gt;</span> <span class="dv">60</span>, <span class="st">"Pass"</span>, <span class="st">"Fail"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
 </div>
-<div class="fragment">
+</section>
+<section id="recoding-a-dataframe-column-1" class="slide level2 scrollable">
+<h2>Recoding a dataframe column</h2>
 <ol start="3" type="1">
 <li>If-else_if-else</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>simple_df3 <span class="ot">=</span> simple_df</span>
-<span id="cb17-2"><a href="#cb17-2"></a></span>
-<span id="cb17-3"><a href="#cb17-3"></a>simple_df3<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">case_when</span>(simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
-<span id="cb17-4"><a href="#cb17-4"></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
-<span id="cb17-5"><a href="#cb17-5"></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
-<span id="cb17-6"><a href="#cb17-6"></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7"></a>                             <span class="at">.default =</span> <span class="st">"F"</span>)</span>
-<span id="cb17-8"><a href="#cb17-8"></a>simple_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href=""></a>simple_df3 <span class="ot">=</span> simple_df</span>
+<span id="cb19-2"><a href=""></a></span>
+<span id="cb19-3"><a href=""></a>simple_df3<span class="sc">$</span>grade <span class="ot">=</span> <span class="fu">case_when</span>(simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb19-4"><a href=""></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
+<span id="cb19-5"><a href=""></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
+<span id="cb19-6"><a href=""></a>                             simple_df3<span class="sc">$</span>grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb19-7"><a href=""></a>                             <span class="at">.default =</span> <span class="st">"F"</span>)</span>
+<span id="cb19-8"><a href=""></a>simple_df3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -606,26 +624,45 @@ Otherwise, they are assigned to <code>"F"</code>.</li>
 7     A    case</code></pre>
 </div>
 </div>
-</div>
 <div class="fragment">
 <p>or</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>simple_df3 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
-<span id="cb19-2"><a href="#cb19-2"></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
-<span id="cb19-3"><a href="#cb19-3"></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
-<span id="cb19-4"><a href="#cb19-4"></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
-<span id="cb19-5"><a href="#cb19-5"></a>                                                 <span class="at">.default =</span> <span class="st">"F"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href=""></a>simple_df3 <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">grade =</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb21-2"><a href=""></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
+<span id="cb21-3"><a href=""></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>, </span>
+<span id="cb21-4"><a href=""></a>                                                 grade <span class="sc">&gt;=</span> <span class="dv">60</span> <span class="sc">~</span> <span class="st">"D"</span>,</span>
+<span id="cb21-5"><a href=""></a>                                                 <span class="at">.default =</span> <span class="st">"F"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
 </div>
 </section>
+<section id="more-alternatives-of-a-simple-if-statement" class="slide level2">
+<h2>More Alternatives of a simple “if” statement</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>simple_df<span class="sc">$</span>status<span class="ot">=</span> <span class="fu">if_else</span>(simple_df<span class="sc">$</span>status <span class="sc">==</span> <span class="st">"case"</span>, <span class="st">"Case"</span>, simple_df<span class="sc">$</span>status)</span>
+<span id="cb22-2"><a href=""></a></span>
+<span id="cb22-3"><a href=""></a>simple_df <span class="ot">=</span> <span class="fu">mutate</span>(simple_df, <span class="at">status =</span> <span class="fu">if_else</span>(status <span class="sc">==</span> <span class="st">"case"</span>, <span class="st">"Case"</span>, status))</span>
+<span id="cb22-4"><a href=""></a></span>
+<span id="cb22-5"><a href=""></a>simple_df<span class="sc">$</span>status<span class="ot">=</span> <span class="fu">case_when</span>(simple_df<span class="sc">$</span>status <span class="sc">==</span> <span class="st">"case"</span><span class="sc">~</span> <span class="st">"Case"</span>, </span>
+<span id="cb22-6"><a href=""></a>                            <span class="at">.default =</span> simple_df<span class="sc">$</span>status) </span>
+<span id="cb22-7"><a href=""></a></span>
+<span id="cb22-8"><a href=""></a>simple_df<span class="sc">$</span>status<span class="ot">=</span> <span class="fu">case_match</span>(simple_df<span class="sc">$</span>status,</span>
+<span id="cb22-9"><a href=""></a>                             <span class="st">"case"</span> <span class="sc">~</span> <span class="st">"Case"</span>, </span>
+<span id="cb22-10"><a href=""></a>                             <span class="at">.default =</span> simple_df<span class="sc">$</span>status) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+
+</div>
+<p><a href="https://dplyr.tidyverse.org/reference/case_match.html#connection-to-case-when-" class="uri">https://dplyr.tidyverse.org/reference/case_match.html#connection-to-case-when-</a></p>
+</section>
 <section id="conditionals" class="slide level2">
 <h2>Conditionals</h2>
 <p>The 3 common scenarios we looked at for recoding data is closely tied to the concept of <strong>conditionals</strong> in programming: <em>given certain conditions, you run a specific code chunk.</em></p>
 <div class="fragment">
-<p>Given a vector’s value, assign it a different value. Or, given a value, run the following hundred lines of code.</p>
+<p>A conditional statement checks whether an expression has a value of <code>TRUE</code>. If so, then it runs an indented code check enclosed by brackets.</p>
+<p>Notice that this expression is a single logical value, <em>not</em> a logical vector.</p>
 </div>
 <div class="fragment">
 <pre><code>if(expression_is_TRUE) {
@@ -643,207 +680,95 @@ Otherwise, they are assigned to <code>"F"</code>.</li>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>nuc <span class="ot">=</span> <span class="st">"A"</span></span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">"A"</span>) {</span>
-<span id="cb22-4"><a href="#cb22-4"></a>  nuc <span class="ot">=</span> <span class="st">"T"</span></span>
-<span id="cb22-5"><a href="#cb22-5"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">"T"</span>) {</span>
-<span id="cb22-6"><a href="#cb22-6"></a>  nuc <span class="ot">=</span> <span class="st">"A"</span></span>
-<span id="cb22-7"><a href="#cb22-7"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">"C"</span>) {</span>
-<span id="cb22-8"><a href="#cb22-8"></a>  nuc <span class="ot">=</span> <span class="st">"C"</span></span>
-<span id="cb22-9"><a href="#cb22-9"></a>}<span class="cf">else</span> <span class="cf">if</span>(nuc <span class="sc">==</span> <span class="st">"G"</span>) {</span>
-<span id="cb22-10"><a href="#cb22-10"></a>  nuc <span class="ot">=</span> <span class="st">"C"</span></span>
-<span id="cb22-11"><a href="#cb22-11"></a>}<span class="cf">else</span> {</span>
-<span id="cb22-12"><a href="#cb22-12"></a>  nuc <span class="ot">=</span> <span class="cn">NA</span></span>
-<span id="cb22-13"><a href="#cb22-13"></a>}</span>
-<span id="cb22-14"><a href="#cb22-14"></a></span>
-<span id="cb22-15"><a href="#cb22-15"></a>nuc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href=""></a>subtype <span class="ot">=</span> <span class="st">"lung"</span></span>
+<span id="cb25-2"><a href=""></a></span>
+<span id="cb25-3"><a href=""></a><span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"lung"</span>) {</span>
+<span id="cb25-4"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="dv">123</span></span>
+<span id="cb25-5"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"prostate"</span>) {</span>
+<span id="cb25-6"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="dv">234</span></span>
+<span id="cb25-7"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"kidney"</span>) {</span>
+<span id="cb25-8"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="st">"345"</span></span>
+<span id="cb25-9"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"bone"</span>) {</span>
+<span id="cb25-10"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="st">"4757"</span></span>
+<span id="cb25-11"><a href=""></a>}<span class="cf">else</span> {</span>
+<span id="cb25-12"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb25-13"><a href=""></a>}</span>
+<span id="cb25-14"><a href=""></a></span>
+<span id="cb25-15"><a href=""></a>treatment_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "T"</code></pre>
+<pre><code>[1] 123</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="interpreting-functions-carefully" class="slide level2">
-<h2>Interpreting Functions, carefully</h2>
-
-<img data-src="https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png" alt="Function machine from algebra class." width="300" class="r-stretch"><div class="fragment">
-<p>We write functions for two main, often overlapping, reasons:</p>
-</div>
-<div class="fragment">
-<ol type="1">
-<li>Following DRY (Don’t Repeat Yourself) principle</li>
-</ol>
-</div>
-<div class="fragment">
-<ol start="2" type="1">
-<li>Creates modular structure and abstraction</li>
-</ol>
-</div>
-<div class="fragment">
-<p>Even if you are not writing functions (yet!), it is helpful to know how they are constructed to use them.</p>
-</div>
-</section>
-<section id="how-functions-are-created" class="slide level2">
-<h2>How functions are created</h2>
+<section id="more-examples" class="slide level2">
+<h2>More examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>addFunction <span class="ot">=</span> <span class="cf">function</span>(num1, num2) {</span>
-<span id="cb24-2"><a href="#cb24-2"></a>  result <span class="ot">=</span> num1 <span class="sc">+</span> num2 </span>
-<span id="cb24-3"><a href="#cb24-3"></a>  <span class="fu">return</span>(result)</span>
-<span id="cb24-4"><a href="#cb24-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>year <span class="ot">=</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean=</span><span class="dv">1990</span>, <span class="at">sd=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
-<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">addFunction</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a><span class="cf">if</span>(<span class="fu">is.numeric</span>(year)) {</span>
+<span id="cb28-2"><a href=""></a>  df <span class="ot">=</span> <span class="fu">data.frame</span>(<span class="at">year =</span> year)</span>
+<span id="cb28-3"><a href=""></a>  <span class="fu">ggplot</span>(df) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> year) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span>
+<span id="cb28-4"><a href=""></a>}<span class="cf">else</span> {</span>
+<span id="cb28-5"><a href=""></a>  <span class="fu">warning</span>(<span class="st">"year is not numeric for plotting!"</span>)</span>
+<span id="cb28-6"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>When the function is called, the variables for the arguments are reassigned to function arguments to be used within the function. This ensures modularity.</p>
-</div>
-</section>
-<section id="is-this-function-modular" class="slide level2">
-<h2>Is this function modular?</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>x <span class="ot">=</span> <span class="dv">3</span></span>
-<span id="cb27-2"><a href="#cb27-2"></a>y <span class="ot">=</span> <span class="dv">4</span></span>
-<span id="cb27-3"><a href="#cb27-3"></a>addFunction <span class="ot">=</span> <span class="cf">function</span>(num1, num2) {</span>
-<span id="cb27-4"><a href="#cb27-4"></a>    result <span class="ot">=</span> x <span class="sc">+</span> y </span>
-<span id="cb27-5"><a href="#cb27-5"></a>    <span class="fu">return</span>(result)</span>
-<span id="cb27-6"><a href="#cb27-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">addFunction</span>(<span class="dv">10</span>, <span class="sc">-</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="lesson2_slides_files/figure-revealjs/unnamed-chunk-16-1.png" width="960"></p>
+</figure>
 </div>
 </div>
 </div>
 </section>
-<section id="ways-to-call-the-function" class="slide level2">
-<h2>Ways to call the function</h2>
+<section id="more-examples-1" class="slide level2">
+<h2>More examples</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>addFunction <span class="ot">=</span> <span class="cf">function</span>(num1, num2) {</span>
-<span id="cb30-2"><a href="#cb30-2"></a>    result <span class="ot">=</span> x <span class="sc">+</span> y </span>
-<span id="cb30-3"><a href="#cb30-3"></a>    <span class="fu">return</span>(result)</span>
-<span id="cb30-4"><a href="#cb30-4"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a>important_data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
-<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">addFunction</span>(<span class="dv">3</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href=""></a><span class="fu">is.na</span>(important_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<pre><code>[1] FALSE FALSE FALSE FALSE FALSE</code></pre>
 </div>
 </div>
-</div>
-<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="fu">addFunction</span>(<span class="at">num1 =</span> <span class="dv">3</span>, <span class="at">num2 =</span> <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href=""></a><span class="fu">any</span>(<span class="fu">is.na</span>(important_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<pre><code>[1] FALSE</code></pre>
 </div>
 </div>
-</div>
-<div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">addFunction</span>(<span class="at">num2 =</span> <span class="dv">4</span>, <span class="at">num1 =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href=""></a><span class="cf">if</span>(<span class="fu">any</span>(<span class="fu">is.na</span>(important_data))) {</span>
+<span id="cb34-2"><a href=""></a>  <span class="fu">stop</span>(<span class="st">"missing value found, cannot proceed"</span>)</span>
+<span id="cb34-3"><a href=""></a>}<span class="cf">else</span> {</span>
+<span id="cb34-4"><a href=""></a>  <span class="fu">mean</span>(important_data)</span>
+<span id="cb34-5"><a href=""></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
+<pre><code>[1] 5</code></pre>
 </div>
 </div>
-</div>
-<div class="fragment">
-<p>But this <em>could</em> give a different result:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">addFunction</span>(<span class="dv">4</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 7</code></pre>
-</div>
-</div>
-</div>
-</section>
-<section id="interpreting-functions" class="slide level2">
-<h2>Interpreting functions</h2>
-<pre><code>?mean
-
-Arithmetic Mean
-
-Description:
-
-     Generic function for the (trimmed) arithmetic mean.
-
-Usage:
-
-     mean(x, ...)
-     
-     ## Default S3 method:
-     mean(x, trim = 0, na.rm = FALSE, ...)
-     
-Arguments:
-
-       x: An R object.  Currently there are methods for numeric/logical
-          vectors and date, date-time and time interval objects.
-          Complex vectors are allowed for ‘trim = 0’, only.
-
-    trim: the fraction (0 to 0.5) of observations to be trimmed from
-          each end of ‘x’ before the mean is computed.  Values of trim
-          outside that range are taken as the nearest endpoint.
-
-   na.rm: a logical evaluating to ‘TRUE’ or ‘FALSE’ indicating whether
-          ‘NA’ values should be stripped before the computation
-          proceeds.
-
-     ...: further arguments passed to or from other methods.</code></pre>
-</section>
-<section id="interpreting-functions-1" class="slide level2">
-<h2>Interpreting functions</h2>
-<p>Notice that the arguments <code>trim = 0</code>, <code>na.rm = FALSE</code> have default values. This means that these arguments are <em>optional</em> - you should provide it only if you want to. With this understanding, you can use <code>mean()</code> in a new way:</p>
-<div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>numbers <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>)</span>
-<span id="cb40-2"><a href="#cb40-2"></a><span class="fu">mean</span>(<span class="at">x =</span> numbers, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.333333</code></pre>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>The use of <code>. . .</code> (dot-dot-dot): This is a special argument that allows a function to <em>take any number of arguments</em>. This isn’t very useful for the <code>mean()</code> function, but it makes sense for function such as <code>select()</code> and <code>filter()</code>, and <code>mutate()</code>. For instance, in <code>select()</code>, once you provide your dataframe for the argument <code>.data</code>, you can pile on as many columns to select in the rest of the argument.</p>
-</div>
-</section>
-<section id="thats-all" class="slide level2">
-<h2>That’s all!</h2>
-<p>Maybe see you Friday Noon - 1pm PT to practice together!</p>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -872,7 +797,6 @@ Arguments:
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1127,18 +1051,7 @@ Arguments:
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1170,11 +1083,50 @@ Arguments:
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1184,8 +1136,17 @@ Arguments:
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1199,7 +1160,11 @@ Arguments:
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

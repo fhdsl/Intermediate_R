@@ -8,6 +8,18 @@ format:
 output-location: fragment
 ---
 
+## Last class next week!
+
+Wanna have lunch together? <https://forms.gle/Hki6HWszyk7Kq6nm9>
+
+### Topics for last final class?
+
+-   More practice?
+
+-   Write a [cheatsheet](https://hutchdatascience.org/Intro_to_R/cheatsheet.html) together?
+
+-   New topics?
+
 ## Iterating tasks
 
 Suppose that you want to repeat a chunk of code many times, but changing one variable's value each time you do it: This could be modifying each element of a vector in the same way, or analyzing a dataframe multiple times with different parameters.
@@ -71,9 +83,17 @@ result
 result[[1]]
 ```
 
+. . .
+
+Unlist it?
+
+```{r}
+unlist(result)
+```
+
 ## Variations of `map()`
 
-To be more specific about the output type, you can do this via the `map_*` function, where `*` specifies the output type: `map_lgl()`, `map_chr()`, and `map_dbl()` functions return vectors of logical values, strings, or numbers respectively.
+To be more specific about the output type, you can do this via the `map_*` function, where `*` specifies the output type: `map_lgl()`, `map_int()`, and `map_dbl()`, `map_chr()`functions return vectors of logical values, integer, double, or character, respectively.
 
 ![](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="300"}
 
@@ -119,6 +139,45 @@ Here it is:
 result = map(paths, read_csv)
 ```
 
+## Case study 1: Iterate over filepaths to load them in
+
+What if we want to do more than just `read_csv()` to load in the data? Perhaps we want to also remove all rows with missing values.
+
+. . .
+
+Practice writing out the first iteration:
+
+```{r, warning=FALSE, message=FALSE}
+read_df = read_csv(paths[1])
+clean_df = drop_na(read_df)
+```
+
+. . .
+
+We don't have a single function that can do both of these steps, so we have to write our own!
+
+```{r}
+load_and_remove_na = function(path) {
+  read_df = read_csv(path)
+  clean_df = drop_na(read_df)
+  return(clean_df)
+}
+```
+
+. . .
+
+```{r}
+result = map(paths, load_and_remove_na)
+```
+
+. . .
+
+Alternatively, when the function is very short, we can write an in-line function:
+
+```{r}
+result = map(paths, function(path) drop_na(read_csv(path)))
+```
+
 ## Case Study 2: Iterate over columns of a dataframe to get metrics
 
 Suppose that you are interested in the numeric columns of the `penguins` dataframe, and you are interested to look at the mean of each column.
@@ -144,7 +203,7 @@ Let's practice writing out one iteration:
 mean(penguins_numeric[[1]], na.rm = TRUE)
 ```
 
-## Case Study 2: Iterate over columns of a dataframe to get metrics
+## Case Study 2: Iterate over columns of a dataframe to get summary statistics
 
 To do this functionally, we think about:
 
@@ -208,7 +267,7 @@ To do this functionally, we think about:
 . . .
 
 ```{r}
-analysis = function(current_species) {
+penguins_analysis = function(current_species) {
   penguins_subset = filter(penguins, species == current_species)
   result = mean(penguins_subset$bill_length_mm, na.rm=TRUE)
   return(result)
@@ -218,8 +277,50 @@ analysis = function(current_species) {
 . . .
 
 ```{r}
-map_dbl(c("Adelie", "Chinstrap", "Gentoo"), analysis)
+map_dbl(c("Adelie", "Chinstrap", "Gentoo"), penguins_analysis)
 ```
+
+. . .
+
+-   Notice that our `penguins_analysis()` function reference a global variable `penguins` in its body! That's okay for the purpose of this function, but `penguins` will need to be defined for this function to be used.
+
+-   Also notice that this analysis can be done using the `group_by()` `summarize()` functions. But this general pattern of analyzing your Dataframe using different parameters is useful for Functionals.
+
+## Summary of case studies:
+
+-   Case study 0:
+
+    -   Input: Vector of numerics
+
+    -   Function: numeric transformation
+
+    -   Output: Vector of numerics
+
+-   Case study 1:
+
+    -   Input: Vector of parameters pointing to data
+
+    -   Function: Load in data (& any other processing!)
+
+    -   Output: List of Dataframes
+
+-   Case study 2:
+
+    -   Input: Columns of a Dataframe as a List of vectors,
+
+    -   Function: Compute summary statistics
+
+    -   Output: Vector of numerics
+
+-   Case study 3:
+
+    -   Input: Vector of parameters, dataframe of interest
+
+    -   Function: Analysis on subset of the data
+
+    -   Output: Vector of numerics
+
+-   
 
 ## Map family of functions
 
@@ -274,4 +375,20 @@ for(i in seq_along(my_vector)) {
 result
 ```
 
-## 
+## Some suggestions
+
+-   If there is a function that will do the entire iteration job, use that first. It will probably be much faster!
+
+    -   ie. `log()` can be used on vectors already. No need to `map(x, log)`.
+
+-   The speed performance of Functionals vs. Loops are generally similar. However, it is easy to write Loops that do not adhere to best practices, which slows them down.
+
+    -   If you modify an *entire* data structure within the Loop, each modification may generate multiple copies of the data structure, which slows down the Loop.
+
+    -   Similarly, you should avoid growing a data structure with Loops.
+
+More details here: <https://github.com/fhdsl/R_Users_Group/blob/main/3_12_24_Loops_Vectorization/3_12_24_Loops_Vectorization.qmd>
+
+More on functionals: <https://adv-r.hadley.nz/functionals.html>
+
+More on iteration techniques in R: <https://r4ds.hadley.nz/iteration.html>

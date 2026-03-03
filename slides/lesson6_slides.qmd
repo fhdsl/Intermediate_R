@@ -21,16 +21,15 @@ format:
 
     ![Data science workflow](https://d33wubrfki0l68.cloudfront.net/571b056757d68e6df81a3e3853f54d3c76ad6efc/32d37/diagrams/data-science.png){width="550"}
 
+## Cheatsheet
+
 ## Continuing your education
 
--   Advanced R
+-   [Bioconductor for Genomics course in the Spring](https://ocdo.fredhutch.org/dasl/courses/bioconductor/)
 
-. . .
-
--   [R Users Group](https://hutchdatascience.org/usergroups/)
-
-. . .
-
+```{=html}
+<!-- -->
+```
 -   Reference texts:
 
     -   [Hands-on Programming with R, by Garrett Grolemund](https://rstudio-education.github.io/hopr/)
@@ -41,16 +40,12 @@ format:
 
 ## Connecting to rest of DaSL...
 
-![](images/dasl_outreach.png)
+-   [Data House Calls](https://ocdo.fredhutch.org/programs/dhc.html)
+
+-   [Building Computational Workflows Workshop, March 11 at noon](https://forms.office.com/r/YPxrxaw421)
 
 ## Please fill out survey!
 
-Our [class survey](https://forms.gle/DWH6WTe7o6nzhgHW7) makes a huge difference for us.
+Our [class survey](https://forms.gle/Hc82MVnswsisXqot5) makes a huge difference for us.
 
-## Last but not least...stickers!
-
-![](https://2953482177-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-M38c0s4s0YCM6dGwrz1%2F-M7RetZBh2Wf7TnfLhKs%2F-M7RkjP-fqIgI8ZsDmKh%2Ftidyverse2.png?alt=media&token=73bf5842-1ae0-4ca4-8622-ec2ae9063a7a){width="350"} ![](images/Intro_To_R_2.png){width="350"}
-
-![](images/Intermediate_R_V3.png){width="350"}![](images/student_stickers.jpg){width="350"}
-
-Make your own sticker, add it to the wall of DaSL students!
+## 

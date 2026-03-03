@@ -8,15 +8,19 @@ format:
 output-location: fragment
 ---
 
-## Advice on writing functions
-
-![](https://cs.wellesley.edu/~cs110/lectures/L16/images/function.png){width="100"}
+## Why functions?
 
 . . .
 
-Code that has a well-defined set of inputs and outputs make a good function.
+We write functions for two main, often overlapping, reasons:
 
-A function should do only one, well-defined task.
+. . .
+
+1.  Following DRY (Don't Repeat Yourself) principle
+
+. . .
+
+2.  Creates modular structure and abstraction
 
 ## Anatomy of a function definition
 
@@ -30,6 +34,7 @@ addFunction = function(argument1, argument2) {
   return(result)
 }
 z = addFunction(3, 4)
+z
 ```
 
 . . .
@@ -52,30 +57,99 @@ This "privacy" in the local environment is to make functions modular - they are 
 
 Using the `addFunction` function, let's see step-by-step how the R interpreter understands our code:
 
-![We define the function in the global environment.](../images/func1.png)
+![We define the function in the global environment.](images/func1.png)
 
-. . .
+## Step-by-step example
 
-![We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function's local environment.](../images/func2.png)
+![We call the function, and the function arguments 3, 4 are assigned to argument1 and argument2, respectively in the function's local environment.](images/func2.png)
 
-. . .
+## Step-by-step example
 
-![We run the first line of code in the function body. The new variable "result" is stored in the local environment because it is within { }.](../images/func3.png)
+![We run the first line of code in the function body. The new variable "result" is stored in the local environment because it is within { }.](images/func3.png)
 
-. . .
+## Step-by-step example
 
-![We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.](../images/func4.png)
+![We run the second line of code in the function body to return a value. The return value from the function is assigned to the variable z in the global environment. All local variables for the function are erased now that the function call is over.](images/func4.png)
+
+## Some function types we will consider
+
+-   Inputs are single data types, output is a single data type
+
+-   Inputs are vectors, outputs is a vector. Easy to use on a Dataframe.
+
+-   Inputs are vectors, output is a single data type. Can be a summary statistic.
+
+-   Inputs is a Dataframe, output is some metrics about it.
+
+-   Inputs are filenames, or data processing settings, output is a Dataframe.
+
+    -   Usually a pretty large function to process a Dataframe in a particular way.
 
 ## Your turn!
 
-Create a function, called `add_and_raise_power` in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and raised to a power determined by the 3rd argument. The function returns the resulting value.
+Create a function, called `add_and_multiply` in which the function takes in 3 numeric arguments. The function computes the following: the first two arguments are added together and multiplied by the 3rd argument. The function returns the resulting value.
 
-Here is a use case: `add_and_raise_power(1, 2, 3) = 27` because the function will return this expression: `(1 + 2) ^ 3`.
+Here is a use case: `add_and_multiply(1, 2, 3) = 9` because the function will return this expression: `(1 + 2) * 3`.
 
-Another use case: `add_and_raise_power(3, 1, 2) = 16` because of the expression `(3 + 1) ^ 2`. Confirm with that these use cases work.
+Another use case: `add_and_multiply(3, 1, 2) = 8` because of the expression `(3 + 1) * 2`. Confirm with that these use cases work.
+
+What happens if you use it on the columns `bill_length_mm`, `bill_depth_mm`, and `body_mass_g` of `penguins` Dataframe? Can you store the result as a new column of `penguins`?
 
 ## Another exercise
 
 Create a function, called `my_dim` in which the function takes in one argument: a dataframe. The function returns the following: a length-2 numeric vector in which the first element is the number of rows in the dataframe, and the second element is the number of columns in the dataframe. Your result should be identical as the `dim` function. How can you leverage existing functions such as `nrow` and `ncol`?
 
 Use case: `my_dim(penguins) = c(344, 8)`
+
+## If we have time
+
+Create a function, called `num_na` in which the function takes in any vector, and then return a single numeric value. This numeric value is the number of `NA`s in the vector.
+
+Use cases: `num_na(c(NA, 2, 3, 4, NA, 5)) = 2` and `num_na(c(2, 3, 4, 5)) = 0`.
+
+Hint 1: Use `is.na()` function.
+
+Hint 2: Given a logical vector, you can count the number of `TRUE` values by using `sum()`, such as `sum(c(TRUE, TRUE, FALSE)) = 2`.
+
+This is an interesting use case of the function:
+
+```         
+penguins |> group_by(species) |> summarize(n_na_bill_length_mm = num_na(bill_length_mm))
+```
+
+## Appendix: Ways to call a function
+
+```{r}
+addFunction = function(num1, num2) {
+    result = num1 + num2
+    return(result)
+}
+```
+
+. . .
+
+```{r}
+addFunction(3, 4)
+```
+
+. . .
+
+```{r}
+addFunction(num1 = 3, num2 = 4)
+```
+
+. . .
+
+```{r}
+addFunction(num2 = 4, num1 = 3)
+```
+
+. . .
+
+But this *could* give a different result:
+
+```{r}
+addFunction(4, 3)
+```
+
+## 

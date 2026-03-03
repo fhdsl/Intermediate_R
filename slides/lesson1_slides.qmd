@@ -10,7 +10,9 @@ output-location: fragment
 
 ## Welcome!
 
-![](images/Intro_To_R_2.png){width="300"} ![](images/Intermediate_R_draft.png){width="375"}
+![](images/Intro_To_R_2.png){width="300"} ![](images/Intermediate_R.png){width="300"}
+
+Please [sign-up for an account at Posit Cloud](https://login.posit.cloud/register) and accept our classroom invitation here: <https://posit.cloud/spaces/730482/join?access_code=IlSlAQYQvHY9ctbpACHT_aZgULxpskOcZTDzuan0>. 
 
 ## Introductions
 
@@ -18,7 +20,7 @@ output-location: fragment
 
 . . .
 
--   What is DaSL?
+-   What is [DaSL](https://ocdo.fredhutch.org/dasl/) / [OCDO](https://ocdo.fredhutch.org/) ?
 
 . . .
 
@@ -26,9 +28,13 @@ output-location: fragment
 
     -   Name, pronouns, group you work in
 
-    -   What you want to get out of the class
+    -   What brings you to this class?
 
-    -   Favorite spring activity
+    -   What has brought you joy lately?
+
+. . .
+
+-   Our wonderful TA!
 
 ## Goals of the course
 
@@ -50,41 +56,47 @@ output-location: fragment
 
 . . .
 
--   Learning on the job is challenging
-    -   I will move at learner's pace; we are learning together.
-    -   Teach not for mastery, but teach for empowerment to learn effectively.
+-   Challenge: We are learning a new language, but you already have a full-time job.
 
 . . .
 
--   Various personal goals and applications: curate applications based on your interest!
+-   *Teach not for mastery, but teach for empowerment to learn effectively.*
 
 . . .
 
--   This curriculum is a pilot!
+-   *Teach at learner's pace.*
+
+## Culture of the course
+
+-   Challenge: We sometimes struggle with our data science problems in isolation, unaware that other folks are working on similar things.
 
 . . .
 
--   Respect Code of Conduct
-
-## Format of the course
+-   *We learn and work better with our peers.*
 
 . . .
 
--   6 classes: April 15, 22, 29, May 6, 13, 20.
+-   *We encourage discussion and questions, as others often have similar questions also.*
+
+## Badge of completion
+
+![](images/Intermediate_R_Square.png){width="400"}
+
+We offer a [badge of completion](https://www.credly.com/org/fred-hutch/badge/intermediate-r) when you finish the course!
+
+What it is:
+
+-   A display of what you accomplished in the course, shareable in your professional networks such as LinkedIn, similar to online education services such as Coursera.
+
+What it isn't:
+
+-   Accreditation through an university or degree-granting program.
 
 . . .
 
--   Streamed online, recordings will be available.
+Requirements:
 
-. . .
-
--   1-2 hour exercises after each session are strongly encouraged as they provide practice.
-
--   Optional time to work on exercises together on Fridays Noon - 1pm PT.
-
-. . .
-
--   Online discussion via Slack.
+-   Complete badge-required sections of the exercises for 4 out of 5 assignments.
 
 ## Content of the course
 
@@ -112,11 +124,7 @@ output-location: fragment
 
 ## Set up Posit Cloud and look at our workspace!
 
-## Break
-
-A pre-course survey:
-
-https://forms.gle/aLXyQor4WS5mTKMV6
+Please [sign-up for an account at Posit Cloud](#0 "https://login.posit.cloud/register") and accept our classroom invitation here: [https://posit.cloud/spaces/730482/join?access_code=IlSlAQYQvHY9ctbpACHT_aZgULxpskOcZTDzuan0](#0). 
 
 ## Data types in R
 
@@ -150,17 +158,9 @@ https://forms.gle/aLXyQor4WS5mTKMV6
 
 A **vector** contains a data type, and all elements must be the same data type. We can have **logical vectors, numerical vectors**, etc.
 
-![](https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png){width="300"}
-
 . . .
 
 Within the Numeric type that we are familiar with, there are more specific types: **Integer vectors** consists of whole number values, and **Double vectors** consists of decimal values.
-
-. . .
-
-```{r}
-fib = c(0, 1, 1, NA, 5)
-```
 
 ## Testing and Coercing
 
@@ -192,7 +192,7 @@ as.numeric(c("23", "45"))
 as.numeric(c(TRUE, FALSE))
 ```
 
-## Attributes of data strctures
+## Attributes of data structures
 
 It is common to have metadata **attributes**, such as **names**, attached to R data structures.
 
@@ -288,6 +288,10 @@ chars = c("temp", "object", "temp", "wish", "bumblebee", "temp")
 vec_with_NA = c(2, 4, NA, NA, 3, NA)
 ```
 
+## Break
+
+A pre-course survey: <https://forms.gle/xHW3vqv9gMvzCZh6A>
+
 ## Dataframes
 
 Usually, we load in a dataframe from a spreadsheet or a package.
@@ -316,7 +320,7 @@ names(penguins)
 
 ## Review: Subsetting dataframes
 
-*Subset to the single column `bill_length_mm`:*
+*Subset to the single column `bill_length_mm`* *and compute its mean.*
 
 . . .
 
@@ -391,7 +395,11 @@ What data structure does this remind you of?
 
 ## Dataframes as Lists
 
-A dataframe is just a named list of vectors of same length with **attributes** of (column) `names` and `row.names`.
+A dataframe is just a named list:
+
+-   Each element is a vector of same length
+
+-   **Attributes** of (column) `names`
 
 . . .
 
@@ -407,6 +415,14 @@ head(penguins$bill_length_mm)
 head(penguins[["bill_length_mm"]])
 ```
 
-## That's all!
+## How do you know what kind of data type a variable is?
 
-Maybe see you Friday Noon - 1pm PT to practice together!
+```{r}
+class(l1)
+```
+
+. . .
+
+```{r}
+class(penguins)
+```
