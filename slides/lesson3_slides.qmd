@@ -30,11 +30,55 @@ untidy3 = table3
 
 ## Agenda:
 
--   Introduce State Cancer Profiles project
+-   Conditional Statements recap
 
--   Review W2 Exercises
+-   Practice! W2 Exercise / W2 Exercise Continued
+
+-   Introduce Tidycensus project
 
 -   Data Cleaning 2: Tidy Data
+
+## Conditional Statements Recap
+
+. . .
+
+```         
+if(expression_is_TRUE) {
+  #code goes here
+}
+```
+
+. . .
+
+```         
+if(expression_A_is_TRUE) {
+  #code goes here
+}else if(expression_B_is_TRUE) {
+  #other code goes here
+}else {
+  #some other code goes here
+}
+```
+
+. . .
+
+```{r}
+subtype = "brain"
+
+if(subtype == "lung") {
+  treatment_code = 123
+}else if(subtype == "prostate") {
+  treatment_code = 234
+}else if(subtype == "kidney") {
+  treatment_code = "345"
+}else if(subtype == "bone") {
+  treatment_code = "4757"
+}else {
+  treatment_code = NA
+}
+
+treatment_code
+```
 
 ## Tidy Data
 
@@ -56,7 +100,7 @@ Many tools in R, such as plotting, are most effective when your data is in a Tid
 
 Easier to understand by looking at common un-Tidy data situations.
 
-## Columns contain values of variables, rather than variables
+## Column name contains values of variables
 
 ```{r}
 untidy1
@@ -64,11 +108,11 @@ untidy1
 
 . . .
 
-Want to look at the relationship between sales numbers and quarters for each store type.
+For each store type, want to look at the relationship between quarters and sales numbers.
 
 . . .
 
-Need variables: Quarter, Sales numbers, Store type
+Need variables: Store type, Quarter, Sales numbers
 
 . . .
 
@@ -76,7 +120,7 @@ Need variables: Quarter, Sales numbers, Store type
 
 . . .
 
-😩 The columns "Q1_Sales", ..., "Q4_Sales" seem to be *values of a single variable "quarter"* of our observation.
+😩 The column names "Q1_Sales", ..., "Q4_Sales" seem to be *values of a single variable "quarter"* of our observation.
 
 . . .
 
@@ -105,7 +149,7 @@ ggplot(tidy1) + aes(x = Quarter, y = Sales, group = Store) + geom_line() + theme
 
 This is a common transformation, as it is easier to do data entry via a wider format, but the tools we use in programming often requires it in a longer format.
 
-## Variables are stored in rows
+## Variables are stored in column values
 
 ```{r}
 untidy2
@@ -117,11 +161,15 @@ What's the relationship between KRAS mutation and KRAS expression?
 
 . . .
 
-😩 Observation is a sample's gene type?
+Need variables: Sample name, KRAS Mutation, KRAS Expression
 
 . . .
 
-😩 The variables we want, KRAS_mutation and KRAS_expression, are in rows. The current columns contain multiple types of info: `gene` contains both mutations and expression, and `value` contains both gene expression and mutational status.
+😩 Observation is a sample's gene information?
+
+. . .
+
+😩 The variables we want, KRAS_mutation and KRAS_expression, are in column value of `gene`. Data is mixed together: `value` contains both gene expression and mutational status.
 
 . . .
 
@@ -139,12 +187,6 @@ tidy2
 . . .
 
 👌 The new columns are appropriate variables for our analysis.
-
-. . .
-
-```{r}
-ggplot(tidy2) + aes(x = as.logical(KRAS_mutation), y = KRAS_expression) + geom_point() + theme_bw()
-```
 
 . . .
 
@@ -189,3 +231,11 @@ What analysis would you want to do with this dataset, and what kind of transform
 relig_income_sm = select(relig_income, religion, `<$10k`, `$10-20k`, `$20-30k`)
 relig_income_sm
 ```
+
+Question: "For each religion, what is the distribution of income bracket?"
+
+Variables of interest: religion, income_bracket, count
+
+## How's the pace for you?
+
+<https://forms.gle/R2muBHmdrb1qFh3g6>

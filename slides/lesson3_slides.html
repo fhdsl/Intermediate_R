@@ -8,7 +8,7 @@
 <link href="lesson3_slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="lesson3_slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="lesson3_slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>W3: Data Cleaning 2</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -396,21 +397,57 @@
 </div>
 
 </section>
-<section class="slide level2">
-
-<div class="cell">
-
-</div>
-</section>
 <section id="agenda" class="slide level2">
 <h2>Agenda:</h2>
 <ul>
-<li><p>Introduce State Cancer Profiles project</p></li>
-<li><p>Review W2 Exercises</p></li>
+<li><p>Conditional Statements recap</p></li>
+<li><p>Practice! W2 Exercise / W2 Exercise Continued</p></li>
+<li><p>Introduce Tidycensus project</p></li>
 <li><p>Data Cleaning 2: Tidy Data</p></li>
 </ul>
 </section>
-<section id="tidy-data" class="slide level2">
+<section id="conditional-statements-recap" class="slide level2">
+<h2>Conditional Statements Recap</h2>
+<div class="fragment">
+<pre><code>if(expression_is_TRUE) {
+  #code goes here
+}</code></pre>
+</div>
+<div class="fragment">
+<pre><code>if(expression_A_is_TRUE) {
+  #code goes here
+}else if(expression_B_is_TRUE) {
+  #other code goes here
+}else {
+  #some other code goes here
+}</code></pre>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>subtype <span class="ot">=</span> <span class="st">"brain"</span></span>
+<span id="cb3-2"><a href=""></a></span>
+<span id="cb3-3"><a href=""></a><span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"lung"</span>) {</span>
+<span id="cb3-4"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="dv">123</span></span>
+<span id="cb3-5"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"prostate"</span>) {</span>
+<span id="cb3-6"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="dv">234</span></span>
+<span id="cb3-7"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"kidney"</span>) {</span>
+<span id="cb3-8"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="st">"345"</span></span>
+<span id="cb3-9"><a href=""></a>}<span class="cf">else</span> <span class="cf">if</span>(subtype <span class="sc">==</span> <span class="st">"bone"</span>) {</span>
+<span id="cb3-10"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="st">"4757"</span></span>
+<span id="cb3-11"><a href=""></a>}<span class="cf">else</span> {</span>
+<span id="cb3-12"><a href=""></a>  treatment_code <span class="ot">=</span> <span class="cn">NA</span></span>
+<span id="cb3-13"><a href=""></a>}</span>
+<span id="cb3-14"><a href=""></a></span>
+<span id="cb3-15"><a href=""></a>treatment_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] NA</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="tidy-data" class="slide level2 scrollable">
 <h2>Tidy Data</h2>
 <p>A standard of organizing data ready for analysis: Tidy data.</p>
 <p>Many tools in R, such as plotting, are most effective when your data is in a Tidy format.</p>
@@ -426,10 +463,10 @@
 <p>Easier to understand by looking at common un-Tidy data situations.</p>
 </div>
 </section>
-<section id="columns-contain-values-of-variables-rather-than-variables" class="slide level2">
-<h2>Columns contain values of variables, rather than variables</h2>
+<section id="column-name-contains-values-of-variables" class="slide level2">
+<h2>Column name contains values of variables</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>untidy1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>untidy1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -439,22 +476,22 @@
 </div>
 </div>
 <div class="fragment">
-<p>Want to look at the relationship between sales numbers and quarters for each store type.</p>
+<p>For each store type, want to look at the relationship between quarters and sales numbers.</p>
 </div>
 <div class="fragment">
-<p>Need variables: Quarter, Sales numbers, Store type</p>
+<p>Need variables: Store type, Quarter, Sales numbers</p>
 </div>
 <div class="fragment">
 <p>👌 Observation is a store, and each observation has its own row.</p>
 </div>
 <div class="fragment">
-<p>😩 The columns “Q1_Sales”, …, “Q4_Sales” seem to be <em>values of a single variable “quarter”</em> of our observation.</p>
+<p>😩 The column names “Q1_Sales”, …, “Q4_Sales” seem to be <em>values of a single variable “quarter”</em> of our observation.</p>
 </div>
 <div class="fragment">
 <p>Solution: make the data into a <strong>longer</strong> format.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>tidy1 <span class="ot">=</span> <span class="fu">pivot_longer</span>(untidy1, <span class="fu">c</span>(<span class="st">"Q1_Sales"</span>, <span class="st">"Q2_Sales"</span>, <span class="st">"Q3_Sales"</span>, <span class="st">"Q4_Sales"</span>), <span class="at">names_to =</span> <span class="st">"Quarter"</span>, <span class="at">values_to =</span> <span class="st">"Sales"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a>tidy1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a>tidy1 <span class="ot">=</span> <span class="fu">pivot_longer</span>(untidy1, <span class="fu">c</span>(<span class="st">"Q1_Sales"</span>, <span class="st">"Q2_Sales"</span>, <span class="st">"Q3_Sales"</span>, <span class="st">"Q4_Sales"</span>), <span class="at">names_to =</span> <span class="st">"Quarter"</span>, <span class="at">values_to =</span> <span class="st">"Sales"</span>)</span>
+<span id="cb7-2"><a href=""></a>tidy1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -480,11 +517,15 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">ggplot</span>(tidy1) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> Quarter, <span class="at">y =</span> Sales, <span class="at">group =</span> Store) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">ggplot</span>(tidy1) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> Quarter, <span class="at">y =</span> Sales, <span class="at">group =</span> Store) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output-display">
-<p><img data-src="lesson3_slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
+<div>
+<figure>
+<p><img data-src="lesson3_slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="960"></p>
+</figure>
+</div>
 </div>
 </div>
 </div>
@@ -492,10 +533,10 @@
 <p>This is a common transformation, as it is easier to do data entry via a wider format, but the tools we use in programming often requires it in a longer format.</p>
 </div>
 </section>
-<section id="variables-are-stored-in-rows" class="slide level2">
-<h2>Variables are stored in rows</h2>
+<section id="variables-are-stored-in-column-values" class="slide level2">
+<h2>Variables are stored in column values</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>untidy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a>untidy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -512,16 +553,19 @@
 <p>What’s the relationship between KRAS mutation and KRAS expression?</p>
 </div>
 <div class="fragment">
-<p>😩 Observation is a sample’s gene type?</p>
+<p>Need variables: Sample name, KRAS Mutation, KRAS Expression</p>
 </div>
 <div class="fragment">
-<p>😩 The variables we want, KRAS_mutation and KRAS_expression, are in rows. The current columns contain multiple types of info: <code>gene</code> contains both mutations and expression, and <code>value</code> contains both gene expression and mutational status.</p>
+<p>😩 Observation is a sample’s gene information?</p>
+</div>
+<div class="fragment">
+<p>😩 The variables we want, KRAS_mutation and KRAS_expression, are in column value of <code>gene</code>. Data is mixed together: <code>value</code> contains both gene expression and mutational status.</p>
 </div>
 <div class="fragment">
 <p>Solution: make the data into a <strong>wider</strong> format.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>tidy2 <span class="ot">=</span> <span class="fu">pivot_wider</span>(untidy2, <span class="at">names_from =</span> <span class="st">"gene"</span>, <span class="at">values_from =</span> <span class="st">"values"</span>) </span>
-<span id="cb8-2"><a href="#cb8-2"></a>tidy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href=""></a>tidy2 <span class="ot">=</span> <span class="fu">pivot_wider</span>(untidy2, <span class="at">names_from =</span> <span class="st">"gene"</span>, <span class="at">values_from =</span> <span class="st">"values"</span>) </span>
+<span id="cb12-2"><a href=""></a>tidy2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -540,21 +584,11 @@
 <p>👌 The new columns are appropriate variables for our analysis.</p>
 </div>
 <div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">ggplot</span>(tidy2) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.logical</span>(KRAS_mutation), <span class="at">y =</span> KRAS_expression) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-<div class="cell-output-display">
-<p><img data-src="lesson3_slides_files/figure-revealjs/unnamed-chunk-7-1.png" width="960"></p>
-</div>
-</div>
-</div>
-<div class="fragment">
 <p><code>pivot_longer()</code> can undo what we did in <code>pivot_wider()</code>, and vice versa.</p>
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">pivot_longer</span>(tidy2, <span class="fu">c</span>(<span class="st">"KRAS_mutation"</span>, <span class="st">"KRAS_expression"</span>), <span class="at">names_to =</span> <span class="st">"gene"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href=""></a><span class="fu">pivot_longer</span>(tidy2, <span class="fu">c</span>(<span class="st">"KRAS_mutation"</span>, <span class="st">"KRAS_expression"</span>), <span class="at">names_to =</span> <span class="st">"gene"</span>, <span class="at">values_to =</span> <span class="st">"values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -572,7 +606,7 @@
 <section id="multiple-variables-are-stored-in-a-single-column" class="slide level2">
 <h2>Multiple variables are stored in a single column</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>untidy3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>untidy3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -593,8 +627,8 @@
 <div class="fragment">
 <p>Solution: Let’s separate it:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>tidy3 <span class="ot">=</span> <span class="fu">separate</span>(untidy3, <span class="at">col =</span> <span class="st">"rate"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"count"</span>, <span class="st">"population"</span>), <span class="at">sep =</span> <span class="st">"/"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2"></a>tidy3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>tidy3 <span class="ot">=</span> <span class="fu">separate</span>(untidy3, <span class="at">col =</span> <span class="st">"rate"</span>, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"count"</span>, <span class="st">"population"</span>), <span class="at">sep =</span> <span class="st">"/"</span>)</span>
+<span id="cb18-2"><a href=""></a>tidy3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -620,8 +654,8 @@
 <h2>Your turn!</h2>
 <p>What analysis would you want to do with this dataset, and what kind of transformation would you do to get it Tidy?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>relig_income_sm <span class="ot">=</span> <span class="fu">select</span>(relig_income, religion, <span class="st">`</span><span class="at">&lt;$10k</span><span class="st">`</span>, <span class="st">`</span><span class="at">$10-20k</span><span class="st">`</span>, <span class="st">`</span><span class="at">$20-30k</span><span class="st">`</span>)</span>
-<span id="cb17-2"><a href="#cb17-2"></a>relig_income_sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>relig_income_sm <span class="ot">=</span> <span class="fu">select</span>(relig_income, religion, <span class="st">`</span><span class="at">&lt;$10k</span><span class="st">`</span>, <span class="st">`</span><span class="at">$10-20k</span><span class="st">`</span>, <span class="st">`</span><span class="at">$20-30k</span><span class="st">`</span>)</span>
+<span id="cb20-2"><a href=""></a>relig_income_sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -648,8 +682,16 @@
 18 Unaffiliated                217       299       374</code></pre>
 </div>
 </div>
+<p>Question: “For each religion, what is the distribution of income bracket?”</p>
+<p>Variables of interest: religion, income_bracket, count</p>
+</section>
+<section id="hows-the-pace-for-you" class="slide level2">
+<h2>How’s the pace for you?</h2>
+<p><a href="https://forms.gle/R2muBHmdrb1qFh3g6" class="uri">https://forms.gle/R2muBHmdrb1qFh3g6</a></p>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
 </div>
 </section>
     </div>
@@ -678,7 +720,6 @@
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -933,18 +974,7 @@
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -976,11 +1006,50 @@
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -990,8 +1059,17 @@
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1005,7 +1083,11 @@
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

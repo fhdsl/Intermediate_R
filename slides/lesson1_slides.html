@@ -8,7 +8,7 @@
 <link href="lesson1_slides_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="lesson1_slides_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="lesson1_slides_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.3.353">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>W1: Fundamentals</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,7 +30,7 @@
     }
     /* CSS for syntax highlighting */
     pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span { line-height: 1.25; }
     pre > code.sourceCode > span:empty { height: 1.2em; }
     .sourceCode { overflow: visible; }
     code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -41,7 +41,7 @@
     }
     @media print {
     pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
     }
     pre.numberSource code
       { counter-reset: source-line 0; }
@@ -69,7 +69,7 @@
     code span.at { color: #657422; } /* Attribute */
     code span.bn { color: #ad0000; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
     code span.ch { color: #20794d; } /* Char */
     code span.cn { color: #8f5902; } /* Constant */
     code span.co { color: #5e5e5e; } /* Comment */
@@ -83,7 +83,7 @@
     code span.fu { color: #4758ab; } /* Function */
     code span.im { color: #00769e; } /* Import */
     code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
     code span.op { color: #5e5e5e; } /* Operator */
     code span.ot { color: #003b4f; } /* Other */
     code span.pp { color: #ad0000; } /* Preprocessor */
@@ -220,7 +220,8 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -398,7 +399,8 @@
 </section>
 <section id="welcome" class="slide level2">
 <h2>Welcome!</h2>
-<p><img data-src="images/Intro_To_R_2.png" width="300"> <img data-src="images/Intermediate_R_draft.png" width="375"></p>
+<p><img data-src="images/Intro_To_R_2.png" width="300"> <img data-src="images/Intermediate_R.png" width="300"></p>
+<p>Please <a href="https://login.posit.cloud/register">sign-up for an account at Posit Cloud</a> and accept our classroom invitation here: <a href="https://posit.cloud/spaces/730482/join?access_code=IlSlAQYQvHY9ctbpACHT_aZgULxpskOcZTDzuan0" class="uri">https://posit.cloud/spaces/730482/join?access_code=IlSlAQYQvHY9ctbpACHT_aZgULxpskOcZTDzuan0</a>.&nbsp;</p>
 </section>
 <section id="introductions" class="slide level2">
 <h2>Introductions</h2>
@@ -407,7 +409,7 @@
 </ul>
 <div class="fragment">
 <ul>
-<li>What is DaSL?</li>
+<li>What is <a href="https://ocdo.fredhutch.org/dasl/">DaSL</a> / <a href="https://ocdo.fredhutch.org/">OCDO</a> ?</li>
 </ul>
 </div>
 <div class="fragment">
@@ -415,9 +417,14 @@
 <li><p>Who are you?</p>
 <ul>
 <li><p>Name, pronouns, group you work in</p></li>
-<li><p>What you want to get out of the class</p></li>
-<li><p>Favorite spring activity</p></li>
+<li><p>What brings you to this class?</p></li>
+<li><p>What has brought you joy lately?</p></li>
 </ul></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>Our wonderful TA!</li>
 </ul>
 </div>
 </section>
@@ -449,54 +456,56 @@
 <h2>Culture of the course</h2>
 <div class="fragment">
 <ul>
-<li>Learning on the job is challenging
-<ul>
-<li>I will move at learner’s pace; we are learning together.</li>
-<li>Teach not for mastery, but teach for empowerment to learn effectively.</li>
-</ul></li>
+<li>Challenge: We are learning a new language, but you already have a full-time job.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Various personal goals and applications: curate applications based on your interest!</li>
+<li><em>Teach not for mastery, but teach for empowerment to learn effectively.</em></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>This curriculum is a pilot!</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Respect Code of Conduct</li>
+<li><em>Teach at learner’s pace.</em></li>
 </ul>
 </div>
 </section>
-<section id="format-of-the-course" class="slide level2">
-<h2>Format of the course</h2>
+<section id="culture-of-the-course-1" class="slide level2">
+<h2>Culture of the course</h2>
+<ul>
+<li>Challenge: We sometimes struggle with our data science problems in isolation, unaware that other folks are working on similar things.</li>
+</ul>
 <div class="fragment">
 <ul>
-<li>6 classes: April 15, 22, 29, May 6, 13, 20.</li>
+<li><em>We learn and work better with our peers.</em></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>Streamed online, recordings will be available.</li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li><p>1-2 hour exercises after each session are strongly encouraged as they provide practice.</p></li>
-<li><p>Optional time to work on exercises together on Fridays Noon - 1pm PT.</p></li>
-</ul>
-</div>
-<div class="fragment">
-<ul>
-<li>Online discussion via Slack.</li>
+<li><em>We encourage discussion and questions, as others often have similar questions also.</em></li>
 </ul>
 </div>
 </section>
-<section id="content-of-the-course" class="slide level2">
+<section id="badge-of-completion" class="slide level2">
+<h2>Badge of completion</h2>
+
+<img data-src="images/Intermediate_R_Square.png" width="400" class="r-stretch"><p>We offer a <a href="https://www.credly.com/org/fred-hutch/badge/intermediate-r">badge of completion</a> when you finish the course!</p>
+<p>What it is:</p>
+<ul>
+<li>A display of what you accomplished in the course, shareable in your professional networks such as LinkedIn, similar to online education services such as Coursera.</li>
+</ul>
+<p>What it isn’t:</p>
+<ul>
+<li>Accreditation through an university or degree-granting program.</li>
+</ul>
+<div class="fragment">
+<p>Requirements:</p>
+<ul>
+<li>Complete badge-required sections of the exercises for 4 out of 5 assignments.</li>
+</ul>
+</div>
+</section>
+<section id="content-of-the-course" class="slide level2 scrollable">
 <h2>Content of the course</h2>
 <ol type="1">
 <li>Fundamentals</li>
@@ -529,11 +538,7 @@
 </section>
 <section id="set-up-posit-cloud-and-look-at-our-workspace" class="slide level2">
 <h2>Set up Posit Cloud and look at our workspace!</h2>
-</section>
-<section id="break" class="slide level2">
-<h2>Break</h2>
-<p>A pre-course survey:</p>
-<p>https://forms.gle/aLXyQor4WS5mTKMV6</p>
+<p>Please <a href="#/0" title="https://login.posit.cloud/register">sign-up for an account at Posit Cloud</a> and accept our classroom invitation here: <a href="#/0">https://posit.cloud/spaces/730482/join?access_code=IlSlAQYQvHY9ctbpACHT_aZgULxpskOcZTDzuan0</a>.&nbsp;</p>
 </section>
 <section id="data-types-in-r" class="slide level2">
 <h2>Data types in R</h2>
@@ -575,24 +580,15 @@
 <section id="vectors" class="slide level2">
 <h2>Vectors</h2>
 <p>A <strong>vector</strong> contains a data type, and all elements must be the same data type. We can have <strong>logical vectors, numerical vectors</strong>, etc.</p>
-
-<img data-src="https://d33wubrfki0l68.cloudfront.net/eb6730b841e32292d9ff36b33a590e24b6221f43/57192/diagrams/vectors/summary-tree-atomic.png" width="300" class="r-stretch"><div class="fragment">
-<p>Within the Numeric type that we are familiar with, there are more specific types: <strong>Integer vectors</strong> consists of whole number values, and <strong>Double vectors</strong> consists of decimal values.</p>
-</div>
 <div class="fragment">
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>fib <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="cn">NA</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell fragment">
-
-</div>
+<p>Within the Numeric type that we are familiar with, there are more specific types: <strong>Integer vectors</strong> consists of whole number values, and <strong>Double vectors</strong> consists of decimal values.</p>
 </div>
 </section>
 <section id="testing-and-coercing" class="slide level2">
 <h2>Testing and Coercing</h2>
 <p>We can test whether a vector is a certain type with <code>is.___()</code> functions, such as <code>is.character()</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">is.character</span>(<span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"there"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a><span class="fu">is.character</span>(<span class="fu">c</span>(<span class="st">"hello"</span>, <span class="st">"there"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -602,7 +598,7 @@
 <div class="fragment">
 <p>For <code>NA</code>, the test will return a vector testing each element, because <code>NA</code> can be mixed into other values:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a><span class="fu">is.na</span>(<span class="fu">c</span>(<span class="dv">34</span>, <span class="cn">NA</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -613,7 +609,7 @@
 <div class="fragment">
 <p>We can <strong>coerce</strong> vectors from one type to the other with <code>as.___()</code> functions, such as <code>as.numeric()</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"23"</span>, <span class="st">"45"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="st">"23"</span>, <span class="st">"45"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -623,7 +619,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">as.numeric</span>(<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -632,13 +628,13 @@
 </div>
 </div>
 </section>
-<section id="attributes-of-data-strctures" class="slide level2">
-<h2>Attributes of data strctures</h2>
+<section id="attributes-of-data-strictures" class="slide level2">
+<h2>Attributes of data strictures</h2>
 <p>It is common to have metadata <strong>attributes</strong>, such as <strong>names</strong>, attached to R data structures.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">names</span>(x) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
-<span id="cb10-3"><a href="#cb10-3"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a>x <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb9-2"><a href=""></a><span class="fu">names</span>(x) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)</span>
+<span id="cb9-3"><a href=""></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -651,7 +647,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>x[<span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href=""></a>x[<span class="st">"a"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -663,7 +659,7 @@
 <div class="fragment">
 <p>We can look for more general attributes via the <code>attributes()</code> function:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">attributes</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href=""></a><span class="fu">attributes</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -673,10 +669,10 @@
 </div>
 </div>
 </section>
-<section id="ways-to-subset-a-vector" class="slide level2">
+<section id="ways-to-subset-a-vector" class="slide level2 scrollable">
 <h2>Ways to subset a vector</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href=""></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -685,7 +681,7 @@
 <ol type="1">
 <li><p>Positive numeric vector</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>data[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href=""></a>data[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">7</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -698,7 +694,7 @@
 <ol start="2" type="1">
 <li><p>Negative numeric vector performs <em>exclusion</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>data[<span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href=""></a>data[<span class="sc">-</span><span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -712,7 +708,7 @@
 <li>Logical vector</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>data[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href=""></a>data[<span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -723,7 +719,7 @@
 <div class="fragment">
 <p>Comparison operators, such as <code>&gt;</code>, <code>&lt;=</code>, <code>==</code>, <code>!=</code>, create logical vectors for subsetting.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>data <span class="sc">&lt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href=""></a>data <span class="sc">&lt;</span> <span class="dv">0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -733,7 +729,7 @@
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>data[data <span class="sc">&lt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href=""></a>data[data <span class="sc">&lt;</span> <span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -742,13 +738,13 @@
 </div>
 </div>
 </section>
-<section id="review-implicit-subsetting" class="slide level2">
+<section id="review-implicit-subsetting" class="slide level2 scrollable">
 <h2>Review: Implicit Subsetting</h2>
 <ol type="1">
 <li>How do you subset the following vector so that it only has positive values?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href=""></a>data <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="dv">3</span>, <span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -758,7 +754,7 @@
 <li>How do you subset the following vector so that it has doesn’t have the character “temp”?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a>chars <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"temp"</span>, <span class="st">"object"</span>, <span class="st">"temp"</span>, <span class="st">"wish"</span>, <span class="st">"bumblebee"</span>, <span class="st">"temp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href=""></a>chars <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"temp"</span>, <span class="st">"object"</span>, <span class="st">"temp"</span>, <span class="st">"wish"</span>, <span class="st">"bumblebee"</span>, <span class="st">"temp"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -769,20 +765,24 @@
 <li>Challenge: How do you subset the following vector so that it has no <code>NA</code> values?</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>vec_with_NA <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href=""></a>vec_with_NA <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="cn">NA</span>, <span class="cn">NA</span>, <span class="dv">3</span>, <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
 </div>
 </div>
 </section>
+<section id="break" class="slide level2">
+<h2>Break</h2>
+<p>A pre-course survey: <a href="https://forms.gle/xHW3vqv9gMvzCZh6A" class="uri">https://forms.gle/xHW3vqv9gMvzCZh6A</a></p>
+</section>
 <section id="dataframes" class="slide level2">
 <h2>Dataframes</h2>
 <p>Usually, we load in a dataframe from a spreadsheet or a package.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb30-3"><a href="#cb30-3"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href=""></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-2"><a href=""></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb29-3"><a href=""></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -801,7 +801,7 @@
 <div class="fragment">
 <p>Let’s take a look at a dataframe’s <strong>attributes</strong>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">attributes</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href=""></a><span class="fu">attributes</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -840,7 +840,7 @@ $names
 <div class="fragment">
 <p>So, we can access the column names of the dataframe via <code>names()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">names</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href=""></a><span class="fu">names</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -853,7 +853,7 @@ $names
 </section>
 <section id="review-subsetting-dataframes" class="slide level2">
 <h2>Review: Subsetting dataframes</h2>
-<p><em>Subset to the single column <code>bill_length_mm</code>:</em></p>
+<p><em>Subset to the single column <code>bill_length_mm</code></em> <em>and compute its mean.</em></p>
 <div class="fragment">
 <p><em>I want to select columns <code>bill_length_mm</code>, <code>bill_depth_mm</code>, <code>species</code>, and filter the rows so that <code>species</code> only has “Gentoo”:</em></p>
 </div>
@@ -865,12 +865,12 @@ $names
 <h2>Lists</h2>
 <p>Lists operate similarly as vectors as they group data into one dimension, but each element of a list can be any data type <em>or data structure</em>!</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb36-2"><a href="#cb36-2"></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb36-3"><a href="#cb36-3"></a>  <span class="st">"a"</span>, </span>
-<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb36-5"><a href="#cb36-5"></a>  <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
-<span id="cb36-6"><a href="#cb36-6"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href=""></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb35-2"><a href=""></a>  <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb35-3"><a href=""></a>  <span class="st">"a"</span>, </span>
+<span id="cb35-4"><a href=""></a>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb35-5"><a href=""></a>  <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
+<span id="cb35-6"><a href=""></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -881,7 +881,7 @@ $names
 <div class="fragment">
 <p>Unlike vectors, you access the elements of a list via the double bracket <code>[[]]</code>. (You will access a smaller list with single bracket <code>[]</code>.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>l1[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href=""></a>l1[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -891,7 +891,7 @@ $names
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>l1[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href=""></a>l1[[<span class="dv">1</span>]][<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -904,14 +904,14 @@ $names
 <h2>List names</h2>
 <p>We can give <strong>names</strong> to lists:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb41-2"><a href="#cb41-2"></a>  <span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
-<span id="cb41-3"><a href="#cb41-3"></a>  <span class="at">name =</span> <span class="st">"a"</span>, </span>
-<span id="cb41-4"><a href="#cb41-4"></a>  <span class="at">success =</span>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
-<span id="cb41-5"><a href="#cb41-5"></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
-<span id="cb41-6"><a href="#cb41-6"></a>)</span>
-<span id="cb41-7"><a href="#cb41-7"></a><span class="co">#or</span></span>
-<span id="cb41-8"><a href="#cb41-8"></a><span class="fu">names</span>(l1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ranking"</span>, <span class="st">"name"</span>, <span class="st">"success"</span>, <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href=""></a>l1 <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb40-2"><a href=""></a>  <span class="at">ranking =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, </span>
+<span id="cb40-3"><a href=""></a>  <span class="at">name =</span> <span class="st">"a"</span>, </span>
+<span id="cb40-4"><a href=""></a>  <span class="at">success =</span>  <span class="fu">c</span>(<span class="cn">TRUE</span>, <span class="cn">FALSE</span>, <span class="cn">TRUE</span>), </span>
+<span id="cb40-5"><a href=""></a>  <span class="at">score =</span> <span class="fu">c</span>(<span class="fl">2.3</span>, <span class="fl">5.9</span>)</span>
+<span id="cb40-6"><a href=""></a>)</span>
+<span id="cb40-7"><a href=""></a><span class="co">#or</span></span>
+<span id="cb40-8"><a href=""></a><span class="fu">names</span>(l1) <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"ranking"</span>, <span class="st">"name"</span>, <span class="st">"success"</span>, <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 
@@ -919,13 +919,13 @@ $names
 <div class="fragment">
 <p>And access named elements of lists via the <code>[[]]</code> or <code>$</code> operation:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>l1[[<span class="st">"score"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href=""></a>l1[[<span class="st">"score"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.3 5.9</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>l1<span class="sc">$</span>score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href=""></a>l1<span class="sc">$</span>score</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.3 5.9</code></pre>
 </div>
@@ -940,10 +940,14 @@ $names
 </section>
 <section id="dataframes-as-lists" class="slide level2">
 <h2>Dataframes as Lists</h2>
-<p>A dataframe is just a named list of vectors of same length with <strong>attributes</strong> of (column) <code>names</code> and <code>row.names</code>.</p>
+<p>A dataframe is just a named list:</p>
+<ul>
+<li><p>Each element is a vector of same length</p></li>
+<li><p><strong>Attributes</strong> of (column) <code>names</code></p></li>
+</ul>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href=""></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
@@ -962,28 +966,47 @@ $names
 </div>
 <div class="fragment">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">head</span>(penguins[[<span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href=""></a><span class="fu">head</span>(penguins[[<span class="dv">3</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell fragment">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39.1 39.5 40.3   NA 36.7 39.3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">head</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href=""></a><span class="fu">head</span>(penguins<span class="sc">$</span>bill_length_mm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39.1 39.5 40.3   NA 36.7 39.3</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">head</span>(penguins[[<span class="st">"bill_length_mm"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href=""></a><span class="fu">head</span>(penguins[[<span class="st">"bill_length_mm"</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 39.1 39.5 40.3   NA 36.7 39.3</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="thats-all" class="slide level2">
-<h2>That’s all!</h2>
-<p>Maybe see you Friday Noon - 1pm PT to practice together!</p>
+<section id="how-do-you-know-what-kind-of-data-type-a-variable-is" class="slide level2">
+<h2>How do you know what kind of data type a variable is?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href=""></a><span class="fu">class</span>(l1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href=""></a><span class="fu">class</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
+</div>
+</div>
 </div>
 </section>
     </div>
@@ -1012,7 +1035,6 @@ $names
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
-'smaller': true,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -1267,18 +1289,7 @@ $names
         }
         return false;
       }
-      const clipboard = new window.ClipboardJS('.code-copy-button', {
-        text: function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-        }
-      });
-      clipboard.on('success', function(e) {
+      const onCopySuccess = function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -1310,11 +1321,50 @@ $names
         }, 1000);
         // clear code selection
         e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
       });
-      function tippyHover(el, contentFn) {
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        // For code content inside modals, clipBoardJS needs to be initialized with a container option
+        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
         const config = {
           allowHTML: true,
-          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -1324,8 +1374,17 @@ $names
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start'
+          placement: 'bottom-start',
         };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -1339,7 +1398,11 @@ $names
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          return note.innerHTML;
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
         });
       }
       const findCites = (el) => {

@@ -7,6 +7,7 @@ rmd_files: ["index.Rmd",
             "03-Data_cleaning_2.Rmd",
             "04-Functions.Rmd",
             "05-Iteration.Rmd",
+            "06-cheatsheet.Rmd",
             "About.Rmd",
             "References.Rmd"]
 new_session: yes
