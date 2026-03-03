@@ -23,6 +23,8 @@ format:
 
 ## Cheatsheet
 
+<https://hutchdatascience.org/Intermediate_R/cheatsheet.html>
+
 ## Continuing your education
 
 -   [Bioconductor for Genomics course in the Spring](https://ocdo.fredhutch.org/dasl/courses/bioconductor/)
@@ -43,6 +45,10 @@ format:
 -   [Data House Calls](https://ocdo.fredhutch.org/programs/dhc.html)
 
 -   [Building Computational Workflows Workshop, March 11 at noon](https://forms.office.com/r/YPxrxaw421)
+
+## Certification
+
+You need to complete 4 out of 5 exercises - I'll been keeping track [here](https://docs.google.com/spreadsheets/d/1v2eMrqTt6aiXurwklSODzrMqagziAcU8TEeeJauYryU/edit?gid=0#gid=0).
 
 ## Please fill out survey!
 
