@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Intermediate R</title>
-  <meta name="description" content="Intermediate R" />
+  <title>Chapter 7 Cheatsheet | Intermediate R</title>
+  <meta name="description" content="Chapter 7 Cheatsheet | Intermediate R" />
   <meta name="generator" content="bookdown 0.46 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Intermediate R" />
+  <meta property="og:title" content="Chapter 7 Cheatsheet | Intermediate R" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Intermediate R" />
+  <meta name="twitter:title" content="Chapter 7 Cheatsheet | Intermediate R" />
   
   
   
@@ -28,8 +28,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   <link rel="shortcut icon" href="assets/dasl_favicon.ico" type="image/x-icon" />
-
-<link rel="next" href="fundamentals.html"/>
+<link rel="prev" href="iteration.html"/>
+<link rel="next" href="about-the-authors.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -243,23 +243,437 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <div class="hero-image-container"> 
   <img class= "hero-image" src="assets/dasl_thin_main_image.png">
 </div>
-<div id="header">
-<h1 class="title">Intermediate R</h1>
-<p class="date"><em>March, 2026</em></p>
+<div id="cheatsheet" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Cheatsheet<a href="cheatsheet.html#cheatsheet" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Many of the functions we learned require the “Tidyverse” library to run.</p>
+<div id="lists-1" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Lists<a href="cheatsheet.html#lists-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The one-size-fits-all data structure…</p>
+<table style="width:99%;">
+<colgroup>
+<col width="30%" />
+<col width="54%" />
+<col width="13%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+<th>Output type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Creating a List</td>
+<td><code>my_list = list("hamburger", 1:100, c(TRUE, TRUE))</code></td>
+<td>List</td>
+</tr>
+<tr class="even">
+<td>Creating a List with names</td>
+<td><code>my_list_named = list(l1 = "hamburger", l2 = 1:100, l3 = c(TRUE, TRUE))</code></td>
+<td>List</td>
+</tr>
+<tr class="odd">
+<td>Names of a List</td>
+<td><code>names(my_list_named)</code></td>
+<td>String vector</td>
+</tr>
+<tr class="even">
+<td>Accessing elements of a List</td>
+<td><p><code>my_list[[1]]</code></p>
+<p><code>my_list[[2]][3]</code></p></td>
+<td><p><code>"hamburger"</code></p>
+<p><code>3</code></p></td>
+</tr>
+<tr class="odd">
+<td>Accessing elements of a List using names</td>
+<td><p><code>my_list$l1</code> or <code>my_list[["l1"]]</code></p>
+<p><code>my_list$l2[3]</code> or <code>my_list[["l2"]][3]</code></p></td>
+<td><p><code>"hamburger"</code></p>
+<p><code>3</code></p></td>
+</tr>
+<tr class="even">
+<td>Treating a Dataframe <code>df</code> as a List</td>
+<td><code>my_df$col1</code>, <code>my_df[["col1"]]</code></td>
+<td>Vector</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="about-this-course" class="section level1 hasAnchor" number="1">
-<h1><span class="header-section-number">Chapter 1</span> About this Course<a href="index.html#about-this-course" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="curriculum" class="section level2 hasAnchor" number="1.1">
-<h2><span class="header-section-number">1.1</span> Curriculum<a href="index.html#curriculum" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The course continues building programming fundamentals in R programming and data analysis. You will learn how to make use of complex data structures, use custom functions built by other R users, creating your own functions, and how to iterate repeated tasks that scales naturally. You will also learn how to clean messy data to a Tidy form for analysis, and conduct an end-to-end data science workflow.</p>
+<div id="exploring-new-data-structures" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Exploring new data structures<a href="cheatsheet.html#exploring-new-data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>If you encounter an unknown data structure, such as the result of a <code>t.test()</code>, how do you explore it?</p>
+<table style="width:99%;">
+<colgroup>
+<col width="55%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>What data structure is this?</td>
+<td><code>class(x)</code></td>
+</tr>
+<tr class="even">
+<td>What are its attributes?</td>
+<td><code>attributes(x)</code></td>
+</tr>
+<tr class="odd">
+<td>What are its names, if any?</td>
+<td><code>names(x)</code></td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="target-audience" class="section level2 hasAnchor" number="1.2">
-<h2><span class="header-section-number">1.2</span> Target Audience<a href="index.html#target-audience" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The course is intended for researchers who want to continue learning the fundamentals of R programming and how to deal with messy datasets. The audience should know how to subset dataframes and vectors and conduct basic analysis, and/or have taken our <a href="https://github.com/fhdsl/Intro_to_R">Intro to R course</a>.</p>
+<div id="data-type-checking-and-coercing" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> Data type checking and coercing<a href="cheatsheet.html#data-type-checking-and-coercing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>You loaded in the data, now what?</p>
+<table style="width:100%;">
+<colgroup>
+<col width="43%" />
+<col width="44%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+<th>Output type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Is this vector a ___ type of vector?</td>
+<td><code>is.numeric(vec)</code>, <code>is.double(vec)</code>, <code>is.integer(vec)</code>, <code>is.character(vec)</code> <code>is.logical(vec)</code></td>
+<td>Logical value</td>
+</tr>
+<tr class="even">
+<td><p>Convert ___ type of vector to ____ type of vector.</p>
+<p>Order of coercing that is allowed: Logical vector -&gt; Numeric vector -&gt; Character vector</p></td>
+<td><code>as.numeric(vec)</code>, <code>as.double(vec)</code>, <code>as.integer(vec)</code>, <code>as.character(vec)</code></td>
+<td>Vector of desired form</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="offerings" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Offerings<a href="index.html#offerings" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This course is taught on a regular basis at Fred Hutch Cancer Center through the Data Science Lab. Announcements of course offering can be found <a href="https://hutchdatascience.org/training/">here</a>. If you wish to follow the course content asynchronously, you may access the course content on this website and <a href="https://posit.cloud/content/8236252">exercises and solutions on Posit Cloud</a>. The Posit Cloud compute space can be copied to your own workspace for personal use, and you can get started via this <a href="https://hutchdatascience.org/Intro_to_R/intro-to-computing.html#posit-cloud-setup">introduction</a>. Or, you can access the <a href="https://github.com/fhdsl/Intermediate_R_Exercises">exercises and solutions on GitHub</a>.</p>
+<div id="subsetting-and-removing-missing-values" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Subsetting and removing missing values<a href="cheatsheet.html#subsetting-and-removing-missing-values" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table style="width:99%;">
+<colgroup>
+<col width="51%" />
+<col width="19%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+<th>Output type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Subset <code>vec</code> to be greater than 0</td>
+<td><code>vec[vec &gt; 0]</code></td>
+<td>Vector</td>
+</tr>
+<tr class="even">
+<td>Subset <code>vec</code> to have “chris” or “bob”</td>
+<td><code>vec[vec == "chris" | vec == "bob"]</code></td>
+<td>Vector</td>
+</tr>
+<tr class="odd">
+<td>Where are the missing values in this vector?</td>
+<td><code>is.na(vec)</code></td>
+<td>Logical vector indicating where the missing value is</td>
+</tr>
+<tr class="even">
+<td>Given vector <code>vec</code>, subset to non-missing values</td>
+<td><code>vec[!is.na(vec)]</code></td>
+<td>Vector</td>
+</tr>
+<tr class="odd">
+<td>Given a dataframe <code>df</code>, subset the rows so that the column <code>col1</code> does not have any missing values</td>
+<td><code>filter(df, !is.na(col1))</code></td>
+<td>Dataframe</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="data-recoding" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Data recoding<a href="cheatsheet.html#data-recoding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table>
+<colgroup>
+<col width="71%" />
+<col width="28%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>If vector <code>vec</code> has the value “x”, recode it as “a”</td>
+<td><p><code>vec[vec == "x"] = "a"</code></p>
+<p>or</p>
+<p><code>if_else(vec == "x", "a", vec)</code></p></td>
+</tr>
+<tr class="even">
+<td>If vector <code>vec</code> has the value “x”, recode it as “a”, anything else recode as “b”</td>
+<td><code>if_else(vec == "x", "a", "b")</code></td>
+</tr>
+<tr class="odd">
+<td>If vector <code>vec</code> has the value “x”, recode it as “a”, else if <code>vec</code> has value “y”, recode it as “b”, anything else recode as “z”.</td>
+<td><pre><code>case_when(vec == &quot;x&quot; ~ &quot;a&quot;,
+vec == &quot;y&quot; ~ &quot;b&quot;,
+.default = &quot;z&quot;)</code></pre></td>
+</tr>
+<tr class="even">
+<td>If vector <code>vec</code> has the value “x”, recode it as “a”, else if <code>vec</code> has value “y”, recode it as “b”, anything else leave it as is.</td>
+<td><pre><code>case_when(vec == &quot;x&quot; ~ &quot;a&quot;,
+vec == &quot;y&quot; ~ &quot;b&quot;,
+.default = vec)</code></pre></td>
+</tr>
+<tr class="odd">
+<td>If dataframe <code>df</code> column <code>col</code> has the value “x”, recode it as “a”</td>
+<td><p><code>df$col[df$col == "x"] = "a"</code></p>
+<p>or</p>
+<p><code>df$col = if_else(df$col == "x", "a", df$col)</code></p></td>
+</tr>
+<tr class="even">
+<td>If dataframe <code>df</code> column <code>col</code> has the value “x”, recode it as “a”, anything else recode as “b”</td>
+<td><p><code>df$col = if_else(df$col == "x", "a", "b")</code></p>
+<p>or</p>
+<p><code>df$col = mutate(df, col = if_else(col == "x", "a", "b"))</code></p></td>
+</tr>
+<tr class="odd">
+<td>If dataframe <code>df</code> column <code>col</code> has the value “x”, recode it as “a”, else if column <code>col</code> has value “y”, recode it as “b”, anything else recode as “z”.</td>
+<td><pre><code>df$col = case_when(df$col == &quot;x&quot; ~ &quot;a&quot;,
+df$col == &quot;y&quot; ~ &quot;b&quot;,
+.default = &quot;z&quot;)</code></pre>
+<p>or</p>
+<pre><code>df$col = mutate(df, col = case_when(col == &quot;x&quot; ~ &quot;a&quot;,
+col == &quot;y&quot; ~ &quot;b&quot;,
+.default = &quot;z&quot;))</code></pre></td>
+</tr>
+<tr class="even">
+<td>If dataframe <code>df</code> column <code>col</code> has the value “x”, recode it as “a”, else if column <code>col</code> has value “y”, recode it as “b”, anything else leave it as is.</td>
+<td><pre><code>df$col = case_when(df$col == &quot;x&quot; ~ &quot;a&quot;,
+df$col == &quot;y&quot; ~ &quot;b&quot;,
+.default = df$col)</code></pre>
+<p>or</p>
+<pre><code>df$col = mutate(df, col = case_when(col == &quot;x&quot; ~ &quot;a&quot;,
+col == &quot;y&quot; ~ &quot;b&quot;,
+.default = col))</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="conditional-statements" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Conditional statements<a href="cheatsheet.html#conditional-statements" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table style="width:99%;">
+<colgroup>
+<col width="50%" />
+<col width="48%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>If statement</td>
+<td><pre><code>if(condition) {
+
+}</code></pre></td>
+</tr>
+<tr class="even">
+<td>If-else if statement</td>
+<td><pre><code>if(condition1) {
+
+}else if(condition2) {
+
+}</code></pre></td>
+</tr>
+<tr class="odd">
+<td>If-else statement</td>
+<td><pre><code>if(condition1) {
+
+}else {
+
+}</code></pre></td>
+</tr>
+<tr class="even">
+<td>If-else if-else statement</td>
+<td><pre><code>if(condition1) {
+
+}else if(condition2) {
+
+}else {
+
+}</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="dataframe-transformations" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Dataframe Transformations<a href="cheatsheet.html#dataframe-transformations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<table style="width:100%;">
+<colgroup>
+<col width="60%" />
+<col width="33%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+<th>Output type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>Pivot longer on Dataframe <code>df</code> with columns names <code>q1</code>, <code>q2</code>, <code>q3</code> to be put into its own vector “quarter” and corresponding values to its own column “sales”</p>
+<p>More notes on <a href="https://tidyselect.r-lib.org/reference/starts_with.html">specifying patterns for columns here</a>.</p></td>
+<td><p><code>pivot_longer(df, c("q1", "q2", "q3"), names_to = "quarter", values_to = "sales")</code></p>
+<p>or</p>
+<p><code>pivot_longer(df, starts_with("q"), names_to = "quarter", values_to = "sales")</code></p></td>
+<td>Dataframe</td>
+</tr>
+<tr class="even">
+<td>Pivot wider on Dataframe <code>df</code> to take the values of column <code>measurement_type</code> to be column names and the corresponding column <code>values</code>.</td>
+<td><code>pivot_wider(df, names_from = "measurement_type", values_from = "values")</code></td>
+<td>Dataframe</td>
+</tr>
+<tr class="odd">
+<td>Separate Dataframe <code>df</code>’s column <code>patient_id_type</code> into two columns <code>patient_id</code> and <code>patient_type</code> by the separator <code>-</code></td>
+<td><code>separate(df, col = "patient_id_type", into = c("patient_id", "patient_type", sep="-")</code></td>
+<td>Dataframe</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="writing-functions" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Writing functions<a href="cheatsheet.html#writing-functions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Some examples.</p>
+<table>
+<colgroup>
+<col width="59%" />
+<col width="40%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Langauge</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Write a function that takes in a vector and returns a vector of the same length, such as a z-score transformation</td>
+<td><pre><code>z_score = function(vec) {
+  result = (vec - mean(vec)) / sd(vec)
+  return(result)
+}</code></pre>
+<p>then, to use it:</p>
+<pre><code>df$biomarker_standardized = z_score(df$biomarker)</code></pre></td>
+</tr>
+<tr class="even">
+<td>Write a function that takes in a vector and returns a summary statistic, such as the difference in highest and lowest value</td>
+<td><pre><code>max_diff = function(vec) {
+  result = max(vec) - min(vec)
+  return(result)
+}</code></pre>
+<p>then, to use it:</p>
+<pre><code>max_diff(df$biomarker)</code></pre></td>
+</tr>
+<tr class="odd">
+<td>Write a function that takes in a Dataframe and returns some summary information about it, such as its dimension</td>
+<td><pre><code>my_dim = function(df) {
+  result = c(nrow(df), ncol(df))
+  return(result)
+}</code></pre>
+<p>then, to use it:</p>
+<pre><code>my_dim(penguins)</code></pre></td>
+</tr>
+<tr class="even">
+<td>Write a function that takes in a character data type, and returns a Dataframe, such as loading and preprocessing the Dataframe.</td>
+<td><pre><code>load_and_process = function(filepath) {
+  df = read_csv(filepath)
+  df = pivot_longer(df, c(&quot;q1&quot;, &quot;q2&quot;, &quot;q3&quot;), names_to = &quot;quarter&quot;, values_to = &quot;sales&quot;)
+  return(df)
+}</code></pre>
+<p>then, to use it:</p>
+<pre><code>sales_df = load_and_process(&quot;sales_data.csv&quot;)</code></pre></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="iteration-1" class="section level2 hasAnchor" number="7.9">
+<h2><span class="header-section-number">7.9</span> Iteration<a href="cheatsheet.html#iteration-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Some examples</p>
+<table style="width:100%;">
+<colgroup>
+<col width="50%" />
+<col width="40%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>English</th>
+<th>R Language</th>
+<th>Output type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Iterate on a vector of characters representing filepaths, where the function loads in Dataframes.</td>
+<td><pre><code>files = c(&quot;f1.csv&quot;, &quot;f2.csv&quot;, &quot;f3.csv&quot;)
+
+map(files, read_csv)</code></pre></td>
+<td>List of Dataframes</td>
+</tr>
+<tr class="even">
+<td>Iterate on a vector of characters representing filepaths, where the a fucstom function loads in Dataframes and processes them.</td>
+<td><pre><code>process_data = function(file) {
+  df = read_csv(file)
+  drop_na(df)
+  return(df)
+}
+
+files = c(&quot;f1.csv&quot;, &quot;f2.csv&quot;, &quot;f3.csv&quot;)
+
+map(files, read_csv)</code></pre></td>
+<td>List of Dataframes</td>
+</tr>
+<tr class="odd">
+<td>Iterate on the columns of a Dataframe to compute summary statistics. (Treat the Dataframe as a List to be itereated through)</td>
+<td><pre><code>penguins_numeric = penguins %&gt;% select(bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g)
+
+map_dbl(penguins_numeric, mean, na.rm = TRUE)</code></pre></td>
+<td>Numerical vector</td>
+</tr>
+<tr class="even">
+<td>Itereate over different conditions to analyze a Dataframe multiple times.</td>
+<td><pre><code>penguins_analysis = function(current_species) {
+  penguins_subset = filter(penguins, species == current_species)
+  result = mean(penguins_subset$bill_length_mm, na.rm=TRUE)
+  return(result)
+}
+
+map_dbl(c(&quot;Adelie&quot;, &quot;Chinstrap&quot;, &quot;Gentoo&quot;), penguins_analysis)</code></pre></td>
+<td>Numerical vector</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
@@ -277,8 +691,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="fundamentals.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="iteration.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="about-the-authors.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
