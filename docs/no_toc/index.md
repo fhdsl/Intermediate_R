@@ -1,6 +1,6 @@
 ---
 title: "Intermediate R"
-date: "June, 2025"
+date: "March, 2026"
 site: bookdown::bookdown_site
 documentclass: book
 bibliography: [book.bib]

@@ -49,4 +49,14 @@ calculate-summary-statistics-on-columns-of-a-dataframe.
 to-do-this-functionally-we-think-about-2
 to-do-this-with-a-for-loop-we-think-about-2
 exercises-4
+cheatsheet
+lists-1
+exploring-new-data-structures
+data-type-checking-and-coercing
+subsetting-and-removing-missing-values
+data-recoding
+conditional-statements
+dataframe-transformations
+writing-functions
+iteration-1
 references
